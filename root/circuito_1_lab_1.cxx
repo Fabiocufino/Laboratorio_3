@@ -15,7 +15,7 @@ void circuito_1_lab_1()
     auto c1 = new TCanvas("c1", "Circuito 1", 1100, 600); 
     c1->SetGrid();
     c1->SetFillColor(0);
-    TGraphErrors *fileInput0 = new TGraphErrors("../Dati/prova.txt", "%lg %lg %lg");
+    TGraph *fileInput0 = new TGraph("../Dati/dati_circuito_1.txt", "%lg %lg");
 
     fileInput0->SetMarkerColor(4);
     fileInput0->SetLineColor(4);
