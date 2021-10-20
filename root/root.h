@@ -1,15 +1,17 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <fstream>
+
 #include "TH1.h"
 #include "TMath.h"
-#include <cmath>
 #include "TF1.h"
 #include "TLegend.h"
 #include "TCanvas.h"
-#include "fstream"
 #include "TFitResult.h"
 #include "TMatrixD.h"
-#include "vector"
-#include "iostream"
 #include "TVectorD.h"
+
 #include "fit_results.h"
 
 TVector into_root(vector<double> x)

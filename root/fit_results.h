@@ -1,3 +1,4 @@
+#ifndef ROOTDATACLASS
 #define ROOTDATACLASS
 #include <fstream>
 #include <cmath>
@@ -38,3 +39,5 @@ public:
         sigma_post.push_back(sigma_y_posteriori(asse_x, asse_y));
     }
 };
+
+#endif

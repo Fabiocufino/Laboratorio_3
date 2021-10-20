@@ -1,3 +1,5 @@
+#include <cmath>
+#include <fstream>
 #include "TH1.h"
 #include "TMath.h"
 #include "TF1.h"
@@ -5,56 +7,11 @@
 #include "TCanvas.h"
 #include "TFitResult.h"
 #include "TMatrixD.h"
-#include "reader.h"
+
+#include "datacontainer.h"
 #include "root.h"
-#include <cmath>
-#include "fstream"
 
 using namespace std;
-
-double err_tensione(double x)
-{
-    if (x <= 600)
-    {
-        double perc = 0.5;
-        double digit = 2;
-        double lsd = 0.1;
-        double gain = perc / 100. * x * 1. / sqrt(3);
-        double read = digit * lsd * 1. / sqrt(3);
-        return sqrt(pow(gain, 2) + pow(read, 2));
-    }
-    else if (x >= 600 )
-    {
-        double perc = 0.5;
-        double digit = 2;
-        double lsd = 1;
-        double gain = perc / 100. * x * 1. / sqrt(3);
-        double read = digit * lsd * 1. / sqrt(3);
-        return sqrt(pow(gain, 2) + pow(read, 2));
-    }
-};
-
-double err_corrente(double x)
-{
-    if (x <= 1000)
-    {
-        double perc = 0.1;
-        double digit = 15;
-        double lsd = 0.01;
-        double gain = perc / 100. * x * 1. / sqrt(3);
-        double read = digit * lsd * 1. / sqrt(3);
-        return sqrt(pow(gain, 2) + pow(read, 2));
-    }
-    else if (x >= 1000 && x <= 10000)
-    {
-        double perc = 0.08;
-        double digit = 8;
-        double lsd = 0.0001;
-        double gain = perc / 100. * x * 1. / sqrt(3);
-        double read = digit * lsd * 1. / sqrt(3);
-        return sqrt(pow(gain, 2) + pow(read, 2));
-    }
-}
 
 void circuito_1_lab_1()
 {
@@ -69,11 +26,15 @@ void circuito_1_lab_1()
     //Calcolare gli errori associati a vd e id in c++
 
     //Convertire tutti  i dati precedenti in rootvettore e darli in pasto a TGraph
-    vdid->NewCol(log, 1); //genera colonna con log(is)
-
-    vdid->NewColPar(err_tensione, 0, 0.05, 3 * 0.001);
     vector<double> &vd = vdid->colonne[0];
-    vector<double> &id = vdid->colonne[4];
+
+    auto n_log_id = vdid->NewCol(log, 1); //genera colonna con log(is)
+    vector<double> &log_id = vdid->colonne[n_log_id];
+
+    auto n_err_vd = vdid->NewCol(err_tensione, 1);
+    vector<double> &err_vd = vdid->colonne[n_err_vd];
+    auto n_err_id = vdid->NewCol(err_corrente, 1);
+    vector<double> &err_id = vdid->colonne[n_err_id];
 
     //Fare fit lineare su graifco
 
@@ -83,7 +44,7 @@ void circuito_1_lab_1()
     c1->SetGrid();
     c1->SetFillColor(0);
 
-    TGraph *fileInput0 = new TGraph(into_root(vd), into_root(id));
+    TGraph *fileInput0 = new TGraph(into_root(vd), into_root(log_id));
 
     fileInput0->SetMarkerColor(4);
     fileInput0->SetLineColor(4);
@@ -102,5 +63,5 @@ void circuito_1_lab_1()
     retta->SetLineColor(kRed);
     retta->SetLineStyle(2);
     retta->SetLineWidth(2);
-    fit(retta, 2, fileInput0, vd, id, fit1);
+    fit(retta, 2, fileInput0, vd, log_id, fit1);
 }

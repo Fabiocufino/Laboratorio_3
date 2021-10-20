@@ -1,7 +1,9 @@
+#ifndef DATACONTAINER
+#define DATACONTAINER
 #include <vector>
 #include <fstream>
 #include <iostream>
-
+#include "generatori.h"
 using namespace std;
 
 class DataContainer
@@ -10,7 +12,8 @@ public:
     void read(string filename);
     vector<vector<double>> colonne;
     string Filename() { return fileread; };
-    void NewCol(double (*generatore)(double), int colonna_input);
+    int NewCol(double (*generatore)(double), int colonna_input);
+    int NewCol2(double (*generatore)(double, double), vector<double> args);
 
 private:
     string fileread;
@@ -66,11 +69,10 @@ void DataContainer::read(string filename)
 //
 //vdid->correnti
 
-void DataContainer::NewCol(double (*generatore)(double), int colonna_input)
+int DataContainer::NewCol(double (*generatore)(double), int colonna_input)
 {
     vector<double> col_element;
     colonne.push_back(col_element);
-    //typedef colonne[colonne.size() - 1] nuovacolonna;
     for (int i = 0; i < colonne[0].size(); i++)
     {
         colonne[colonne.size() - 1].push_back(generatore(colonne[colonna_input][i]));
@@ -78,20 +80,18 @@ void DataContainer::NewCol(double (*generatore)(double), int colonna_input)
     cout << "Nuova colonna creata con elementi: " << colonne[colonne.size() - 1].size() << endl
          << "Indice nuova colonna: " << colonne.size() - 1;
     cout << "COsa ritorno:" << &colonne[colonne.size() - 1] << endl;
-    //return &colonne[colonne.size() - 1];
+    return (colonne.size() - 1);
 }
 
-void DataContainer::NewColPar(double (*generatore)(double, double, double), int colonna_input, double par1, double par2)
+int DataContainer::NewCol2(double (*gen)(double, double), vector<double> args)
 {
     vector<double> col_element;
     colonne.push_back(col_element);
-    //typedef colonne[colonne.size() - 1] nuovacolonna;
     for (int i = 0; i < colonne[0].size(); i++)
     {
-        colonne[colonne.size() - 1].push_back(generatore(colonne[colonna_input][i]), par1, par2);
+        colonne[colonne.size() - 1].push_back(gen(colonne[args[0]][i], colonne[args[1][i]]));
     }
-    cout << "Nuova colonna creata con elementi: " << colonne[colonne.size() - 1].size() << endl
-         << "Indice nuova colonna: " << colonne.size() - 1;
-    cout << "COsa ritorno:" << &colonne[colonne.size() - 1] << endl;
-    //return &colonne[colonne.size() - 1];
+    return (colonne.size() - 1);
 }
+
+#endif
