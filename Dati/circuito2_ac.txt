@@ -1,0 +1,7 @@
+#circuito 2 in ac - caratterizzazione forma d'onda
+#Vin[V] 	#FSV[V/div] #Vd[mV] #FSV[mv/Div]
+-7.40   5   -1  500
+-1.40   5  -240    500
+10.4    5   560 500
+4   5   460 500
+-5.405  -760    500

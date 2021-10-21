@@ -1,4 +1,5 @@
-#commento a caso
+#Primo circuito - caratterizzazione curva per Is e N
+#mV #uA #FSmV #FSuA
 343.6	2.84 600 1000
 390.6	7.38 600 1000
 410.4	11.08 600 1000
