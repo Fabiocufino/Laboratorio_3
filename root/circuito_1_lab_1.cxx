@@ -1,12 +1,15 @@
-#include <cmath>
-#include <fstream>
 #include "TH1.h"
 #include "TMath.h"
 #include "TF1.h"
 #include "TLegend.h"
 #include "TCanvas.h"
+#include <fstream>
+#include <cmath>
 #include "TFitResult.h"
 #include "TMatrixD.h"
+#include "TVectorD.h"
+#include "TGraphErrors.h"
+#include <vector>
 
 #include "datacontainer.h"
 #include "root.h"
@@ -15,53 +18,88 @@ using namespace std;
 
 void circuito_1_lab_1()
 {
-    //Leggere i dati del file e archiviarli in vettori c++
-    DataContainer *vdid = new DataContainer();
-    vdid->read("../Dati/dati_circuito_1.txt");
-    for (int i = 0; i < vdid->colonne[0].size(); i++)
+    DataContainer uno;
+    uno.read("../Dati/dati_circuito_1.txt");
+
+    vector<double> log_id;
+    vector<double> err_vd;
+    vector<double> err_id;
+    vector<double> err_logid;
+
+    for (int i = 0; i < uno.vd.size(); i++)
     {
-        cout << vdid->colonne[0][i] << endl;
+        log_id.push_back(log(uno.id[i]));
+        err_id.push_back(err_corrente(uno.id[i]));
+        err_logid.push_back(err_log(uno.id[i], err_id[i]));
+        err_vd.push_back(err_tensione(uno.vd[i]));
     }
 
-    //Calcolare gli errori associati a vd e id in c++
-
-    //Convertire tutti  i dati precedenti in rootvettore e darli in pasto a TGraph
-    vector<double> &vd = vdid->colonne[0];
-
-    auto n_log_id = vdid->NewCol(log, 1); //genera colonna con log(is)
-    vector<double> &log_id = vdid->colonne[n_log_id];
-
-    auto n_err_vd = vdid->NewCol(err_tensione, 1);
-    vector<double> &err_vd = vdid->colonne[n_err_vd];
-    auto n_err_id = vdid->NewCol(err_corrente, 1);
-    vector<double> &err_id = vdid->colonne[n_err_id];
-
-    //Fare fit lineare su graifco
-
-    //Stampare i valori di interpolazione con le grandezze fisiche associate n e Is con errori
-
-    auto c1 = new TCanvas("c1", "Circuito 1", 1100, 600);
+    auto c1 = new TCanvas("c1", "Circuito 1", 1000, 600);
     c1->SetGrid();
     c1->SetFillColor(0);
+    TGraphErrors *fileInput = new TGraphErrors(into_root(uno.vd), into_root(log_id), into_root(err_vd), into_root(err_logid));
 
-    TGraph *fileInput0 = new TGraph(into_root(vd), into_root(log_id));
+    fileInput->SetMarkerColor(4);
+    fileInput->SetLineColor(kAzure - 3);
+    fileInput->SetMarkerStyle(20);
+    fileInput->SetMarkerSize(0.7);
+    fileInput->SetTitle("");
+    fileInput->GetXaxis()->SetTitle("Voltaggio V_{D} [mV]");
+    fileInput->GetYaxis()->SetTitle("ln(I_{D})");
+    fileInput->GetXaxis()->SetAxisColor(14);
+    fileInput->GetYaxis()->SetAxisColor(14);
 
-    fileInput0->SetMarkerColor(4);
-    fileInput0->SetLineColor(4);
-    fileInput0->SetMarkerStyle(20);
-    fileInput0->SetMarkerSize(0.7);
-    fileInput0->SetTitle("");
-    fileInput0->GetXaxis()->SetTitle("Voltaggio V_{D} [mV]");
-    fileInput0->GetYaxis()->SetTitle("ln(I_{D})");
-    fileInput0->GetXaxis()->SetAxisColor(14);
-    fileInput0->GetYaxis()->SetAxisColor(14);
-
-    fileInput0->Draw("AP");
+    fileInput->Draw("AP");
 
     fit_results fit1;
     TF1 *retta = new TF1("retta", "pol1", 0, 10);
     retta->SetLineColor(kRed);
     retta->SetLineStyle(2);
     retta->SetLineWidth(2);
-    fit(retta, 2, fileInput0, vd, log_id, fit1);
+    fit(retta, 2, fileInput, uno.vd, log_id, fit1);
+
+    TPaveStats *info;
+    TText *scri;
+    informazioni_fit_lineare(info,
+                             scri,
+                             to_string(fit1.chi_square[0]),
+                             to_string(fit1.dof[0]),
+                             to_string(fit1.a[0]),
+                             to_string(fit1.err_a[0]),
+                             to_string(fit1.b[0]),
+                             to_string(fit1.err_b[0]),
+                             to_string(fit1.rho[0]),
+                             to_string(fit1.t_student[0]),
+                             to_string(fit1.sigma_post[0]));
+
+    double n;
+    double is;
+
+    is = exp(fit1.a[0]);
+    n = 1. / (fit1.b[0] * 26.0);
+    cout << "is :" << is << " uA" << endl
+         << "n: " << n << endl;
+
+    //=================================================================inizio run test
+    vector<double> scarti;
+    run_test_lineare(scarti, uno.vd, log_id, fit1.a[0], fit1.b[0]);
+
+    print_vector(scarti);
+
+    auto c2 = new TCanvas("c2", "Scarti circuito 1", 1100, 600);
+    c2->SetGrid();
+    c2->SetFillColor(0);
+    TGraphErrors *graph_scarti = new TGraphErrors(into_root(uno.vd), into_root(scarti), into_root(err_vd), into_root(err_logid));
+
+    graph_scarti->SetMarkerColor(4);
+    graph_scarti->SetLineColor(kAzure - 3);
+    graph_scarti->SetMarkerStyle(20);
+    graph_scarti->SetMarkerSize(0.7);
+    graph_scarti->SetTitle("");
+    graph_scarti->GetXaxis()->SetTitle("Voltaggio V_{D} [mV]");
+    graph_scarti->GetYaxis()->SetTitle("ln(I_{D})");
+    graph_scarti->GetXaxis()->SetAxisColor(14);
+    graph_scarti->GetYaxis()->SetAxisColor(14);
+
+    graph_scarti->Draw("AP");
 }

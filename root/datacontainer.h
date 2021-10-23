@@ -3,17 +3,18 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
-#include "generatori.h"
 using namespace std;
 
 class DataContainer
 {
 public:
     void read(string filename);
-    vector<vector<double>> colonne;
-    string Filename() { return fileread; };
-    int NewCol(double (*generatore)(double), int colonna_input);
-    int NewCol2(double (*generatore)(double, double), vector<double> args);
+    vector<double> vd;
+    vector<double> id;
+    vector<double> fs_vd;
+    vector<double> fs_id;
+    vector<double> err_vd;
+    vector<double> err_id;
 
 private:
     string fileread;
@@ -21,77 +22,94 @@ private:
 
 void DataContainer::read(string filename)
 {
-    int ncols = 0;
+
     fileread = filename;
     ifstream fin(fileread);
     if (!fin)
     {
         cout << "Errore lettura file: " + fileread + " Linea funzione: " + __LINE__ << endl;
     }
-    vector<double> col_element;
-    int i = 0;
-    double dummy;
+
     string temp_line;
     while (getline(fin, temp_line))
     {
-        if (temp_line.rfind("#", 0) == 0 || temp_line.size() < 5)
+        if (temp_line.rfind("#", 0) == 0 || temp_line.size() < 2)
         {
             continue;
         }
         else
         {
-            if (i == 0)
-            {
-                istringstream ioo(temp_line);
-                vector<double> temp_col;
-                double temporary;
-                while (ioo >> temporary)
-                {
-                    temp_col.push_back(temporary);
-                }
-                ncols = temp_col.size();
-                for (int i = 0; i < ncols; i++)
-                {
-                    colonne.push_back(col_element);
-                }
-            }
             istringstream iss(temp_line);
-            while (iss >> dummy)
-            {
-                colonne[i % ncols].push_back(dummy);
-                i++;
-            }
+            double temp_vd, temp_id, temp_fsvd, temp_fsid;
+            iss >> temp_vd >> temp_id >> temp_fsvd >> temp_fsid;
+            vd.push_back(temp_vd);
+            id.push_back(temp_id);
+            fs_vd.push_back(temp_fsvd);
+            fs_id.push_back(temp_fsid);
         }
     }
 }
-
-//vdid->read("../Dati/dati_circuito_1.txt", 2 , vector<double> correnti);
-//
-//vdid->correnti
-
-int DataContainer::NewCol(double (*generatore)(double), int colonna_input)
+///////////////////////////////////////////////Funzioni che servono//////////////////////////
+double err_tensione(double x)
 {
-    vector<double> col_element;
-    colonne.push_back(col_element);
-    for (int i = 0; i < colonne[0].size(); i++)
+    double err;
+    if (x <= 600)
     {
-        colonne[colonne.size() - 1].push_back(generatore(colonne[colonna_input][i]));
+        double perc = 0.5;
+        double digit = 2;
+        double lsd = 0.1;
+        double gain = perc / 100. * x * 1. / sqrt(3);
+        double read = digit * lsd * 1. / sqrt(3);
+        err = sqrt(pow(gain, 2) + pow(read, 2));
     }
-    cout << "Nuova colonna creata con elementi: " << colonne[colonne.size() - 1].size() << endl
-         << "Indice nuova colonna: " << colonne.size() - 1;
-    cout << "COsa ritorno:" << &colonne[colonne.size() - 1] << endl;
-    return (colonne.size() - 1);
+    else if (x >= 600)
+    {
+        double perc = 0.5;
+        double digit = 2;
+        double lsd = 1;
+        double gain = perc / 100. * x * 1. / sqrt(3);
+        double read = digit * lsd * 1. / sqrt(3);
+        err = sqrt(pow(gain, 2) + pow(read, 2));
+    }
+    return err;
 }
 
-int DataContainer::NewCol2(double (*gen)(double, double), vector<double> args)
+double err_corrente(double x)
 {
-    vector<double> col_element;
-    colonne.push_back(col_element);
-    for (int i = 0; i < colonne[0].size(); i++)
+    double err;
+    if (x <= 1000)
     {
-        colonne[colonne.size() - 1].push_back(gen(colonne[args[0]][i], colonne[args[1][i]]));
+        double perc = 0.1;
+        double digit = 15;
+        double lsd = 0.01;
+        double gain = perc / 100. * x * 1. / sqrt(3);
+        double read = digit * lsd * 1. / sqrt(3);
+        err = sqrt(pow(gain, 2) + pow(read, 2));
     }
-    return (colonne.size() - 1);
+    else if (x >= 1000 && x <= 10000)
+    {
+        double perc = 0.08;
+        double digit = 8;
+        double lsd = 0.0001;
+        double gain = perc / 100. * x * 1. / sqrt(3);
+        double read = digit * lsd * 1. / sqrt(3);
+        err = sqrt(pow(gain, 2) + pow(read, 2));
+    }
+    return err;
 }
 
+//Funzione per calcolo errore log corrente, prende come argomenti x ed err_x
+double err_log(double x, double err_x)
+{
+    return err_x / x;
+}
+
+//fa il cout degli elementi di un vettore
+void print_vector(vector<double> x)
+{
+    for (int i = 0; i < x.size(); i++)
+    {
+        cout << x[i] << endl;
+    }
+}
 #endif
