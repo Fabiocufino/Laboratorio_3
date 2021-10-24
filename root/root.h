@@ -26,8 +26,8 @@ TVectorD into_root(vector<double> x)
 //Mette nella struttura fit_resuts tutti i parametri del fit
 void fit(TF1 *f, Double_t number_of_parameters, TGraph *graf, vector<double> &asse_x, vector<double> &asse_y, fit_results &fit_res_str, double asse_x_inizio = -__DBL_MAX__, double asse_x_fine = __DBL_MAX__)
 {
-    TFitResultPtr fit_res = graf->Fit(f, "S");
-    //TFitResultPtr fit_res = graf->Fit(f, "+S", "", asse_x_inizio, asse_x_fine);
+    //TFitResultPtr fit_res = graf->Fit(f, "S");
+    TFitResultPtr fit_res = graf->Fit(f, "+S", "", asse_x_inizio, asse_x_fine); //quando ci sono più fit nello stesso canvas li fa vedere tutti
     TMatrixD cov = fit_res->GetCovarianceMatrix();
 
     fit_res_str.a.push_back(f->GetParameter(0));

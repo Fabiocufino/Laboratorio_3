@@ -112,4 +112,50 @@ void print_vector(vector<double> x)
         cout << x[i] << endl;
     }
 }
+
+//-----------------------------------------------------------------------------
+class DataContainer_due
+{
+public:
+    void read(string filename);
+    vector<double> t;
+    vector<double> fst;
+    vector<double> v_in;
+    vector<double> v_d;
+    vector<double> fsv;
+private:
+    string fileread;
+};
+
+void DataContainer_due::read(string filename)
+{
+
+    fileread = filename;
+    ifstream fin(fileread);
+    if (!fin)
+    {
+        cout << "Errore lettura file: " + fileread + " Linea funzione: " + __LINE__ << endl;
+    }
+
+    string temp_line;
+    while (getline(fin, temp_line))
+    {
+        if (temp_line.rfind("#", 0) == 0 || temp_line.size() < 2)
+        {
+            continue;
+        }
+        else
+        {
+            istringstream iss(temp_line);
+            double temp_vd, temp_id, temp_fsvd, temp_fsid, temp5;
+            iss >> temp_vd >> temp_id >> temp_fsvd >> temp_fsid >> temp5;
+            t.push_back(temp_vd);
+            fst.push_back(temp_id);
+            v_in.push_back(temp_fsvd);
+            v_d.push_back(temp_fsid);
+            fsv.push_back(temp5);
+        }
+    }
+}
+
 #endif
