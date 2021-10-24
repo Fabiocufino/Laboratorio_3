@@ -34,6 +34,7 @@ void circuito_1_lab_1()
         err_vd.push_back(err_tensione(uno.vd[i]));
     }
 
+        //=================================================================inizio grafico
     auto c1 = new TCanvas("c1", "Circuito 1", 1000, 600);
     c1->SetGrid();
     c1->SetFillColor(0);
@@ -76,15 +77,15 @@ void circuito_1_lab_1()
     double is;
 
     is = exp(fit1.a[0]);
+    double err_is = exp(fit1.a[0]) * fit1.err_a[0];
     n = 1. / (fit1.b[0] * 26.0);
-    cout << "is :" << is << " uA" << endl
-         << "n: " << n << endl;
+    double err_n = fit1.err_b[0] / (pow(fit1.b[0], 2) * 26.0);
+    cout << "is :" << is << " +- " << err_is << " uA" << endl
+         << "n: " << n << " +- " << err_n << endl;
 
     //=================================================================inizio run test
     vector<double> scarti;
     run_test_lineare(scarti, uno.vd, log_id, fit1.a[0], fit1.b[0]);
-
-    print_vector(scarti);
 
     auto c2 = new TCanvas("c2", "Scarti circuito 1", 1100, 600);
     c2->SetGrid();

@@ -1,78 +1,56 @@
-```cpp
 #include "TH1.h"
 #include "TMath.h"
-#include <cmath>
 #include "TF1.h"
 #include "TLegend.h"
 #include "TCanvas.h"
-#include "fstream"
+#include <fstream>
+#include <cmath>
 #include "TFitResult.h"
 #include "TMatrixD.h"
-#include "vector"
-#include "iostream"
-#include "usual.h"
+#include "TVectorD.h"
+#include "TGraphErrors.h"
+#include <vector>
+
+#include "datacontainer.h"
+#include "root.h"
 using namespace std;
 
-void sferica()
+void circuito_2_lab_1()
 {
-    TCanvas *c1 = new TCanvas("c1", "Canvas", 200, 10, 1500, 900);
+    DataContainer_due due;
+    due.read("../Dati/circuito2_dc.txt");
 
+    auto c1 = new TCanvas("c1", "Circuito 1", 1000, 600);
     c1->SetGrid();
     c1->SetFillColor(0);
+    TGraph *fileInput = new TGraph(into_root(due.v_in), into_root(due.v_d));
 
-    ifstream fab("../Dati/circ_2_1.txt");
-    double val;
-    vector<double> v_in;
-    while (fab >> val)
-        v_in.push_back(val);
+    fileInput->SetMarkerColor(4);
+    fileInput->SetLineColor(kAzure - 3);
+    fileInput->SetMarkerStyle(20);
+    fileInput->SetMarkerSize(0.7);
+    fileInput->SetTitle("");
+    fileInput->GetXaxis()->SetTitle("V_{in} [V]");
+    fileInput->GetYaxis()->SetTitle("V_{d} [mV]");
+    fileInput->GetXaxis()->SetAxisColor(14);
+    fileInput->GetYaxis()->SetAxisColor(14);
 
-    TVectorD root_v_in(v_in.size(),v_in.data());
+    fileInput->Draw("AP");
 
-    TGraph *fabio = new TGraph(asse_x_f, root_sferica_f);
+    fit_results retta_1;
+    TF1 *retta1 = new TF1("retta1", "pol1", 0, 10);
+    retta1->SetLineColor(kRed);
+    retta1->SetLineStyle(2);
+    retta1->SetLineWidth(2);
+    fit(retta1, 2, fileInput, due.v_in, due.v_d, retta_1, 0, 2);
 
-    fabio->SetMarkerColor(2);
-    fabio->SetMarkerStyle(20);
-    fabio->SetMarkerSize(0.8);
-    fabio->SetTitle("Operatore A");
-    fabio->GetXaxis()->SetTitle("Numero della misurazione");
-    fabio->GetYaxis()->SetTitle(" [1/m]");
-    fabio->GetXaxis()->SetAxisColor(14);
-    fabio->GetYaxis()->SetAxisColor(14);
+    fit_results retta_2;
+    TF1 *retta2 = new TF1("retta2", "pol1", 0, 10);
+    retta2->SetLineColor(kRed);
+    retta2->SetLineStyle(2);
+    retta2->SetLineWidth(2);
+    fit(retta1, 2, fileInput, due.v_in, due.v_d, retta_2, 7, 10);
 
-    fabio->Draw("AP");
-
-    //------------------Mark-------------
-    ifstream mar("../Dati/circ_2_2.txt");
-    double val1;
-    vector<double> sferica_m;
-    while (mar >> val1)
-        sferica_m.push_back(val1);
-
-    TVectorD root_sferica_m(sferica_m.size(), sferica_m.data());
-    TVectorD asse_x_m(sferica_f.size());
-    for (int i = 0; i < sferica_m.size(); i++)
-        asse_x_m(i) = i + 1;
-
-    TGraph *marco = new TGraph(asse_x_m, root_sferica_m);
-
-    marco->SetMarkerColor(3);
-    marco->SetMarkerStyle(20);
-    marco->SetMarkerSize(0.8);
-    marco->SetTitle("Operatore B");
-    marco->GetXaxis()->SetTitle("Numero della misurazione");
-    marco->GetYaxis()->SetTitle(" [1/m]");
-    marco->GetXaxis()->SetAxisColor(14);
-    marco->GetYaxis()->SetAxisColor(14);
-
-    marco->Draw("Psame");
-
-
-    TLegend *legend = new TLegend(0.15, 0.15, 0.5, 0.3);
-    legend->SetHeader("Aberrazione sferica", "C");
-    legend->AddEntry(fabio, "Operatore A", "P");
-    legend->AddEntry(marco, "Operatore B", "P");
-    legend->SetTextSize(0.04);
-    legend->SetBorderSize(1);
-    legend->Draw();
+    cout << (retta_2.a[0] - retta_1.a[0]) / (retta_1.b[0] - retta_2.b[0]) << endl;
+    //Manca propagazione errore
 }
-```
