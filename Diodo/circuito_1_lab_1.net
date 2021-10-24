@@ -1,9 +1,0 @@
-* Z:\home\fabio\Laboratorio_3\Diodo\circuito_1_lab_1.asc
-V1 N001 0 PULSE(0 1 0 100m 0 0 100m)
-R1 N002 N001 10k
-D1 N002 0 1N4148
-.model D D
-.lib C:\users\fabio\Documents\LTspiceXVII\lib\cmp\standard.dio
-.tran 200m
-.backanno
-.end
