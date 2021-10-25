@@ -1,0 +1,13 @@
+* C:\Users\berto\NotSync\GitHub\Laboratorio_3\Diodo\circuito_2_lab_1.asc
+V1 N001 0
+R2 N002 0 4.7k
+R1 N002 N001 12k
+R3 Vd N002 4.7k
+R4 Vd 0 8.2k
+D1 Vd 0 myDiode
+.model D D
+.lib C:\Users\berto\OneDrive\Documenti\LTspiceXVII\lib\cmp\standard.dio
+.dc V1 0 10 0.01
+.model myDiode D(Is=1.9312n N=1.822 mfg=unipd type=silicon)
+.backanno
+.end
