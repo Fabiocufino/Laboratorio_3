@@ -158,4 +158,46 @@ void DataContainer_due::read(string filename)
     }
 }
 
+class DataContainer_due_ac
+{
+public:
+    void read(string filename);
+    vector<double> v_in;
+    vector<double> fsv_in;
+    vector<double> v_d;
+    vector<double> fsv_d;
+private:
+    string fileread;
+};
+
+void DataContainer_due_ac::read(string filename)
+{
+
+    fileread = filename;
+    ifstream fin(fileread);
+    if (!fin)
+    {
+        cout << "Errore lettura file: " + fileread + " Linea funzione: " + __LINE__ << endl;
+    }
+
+    string temp_line;
+    while (getline(fin, temp_line))
+    {
+        if (temp_line.rfind("#", 0) == 0 || temp_line.size() < 2)
+        {
+            continue;
+        }
+        else
+        {
+            istringstream iss(temp_line);
+            double temp_vd, temp_id, temp_fsvd, temp_fsid;
+            iss >> temp_vd >> temp_id >> temp_fsvd >> temp_fsid;
+            v_in.push_back(temp_vd);
+            fsv_in.push_back(temp_id);
+            v_d.push_back(temp_fsvd);
+            fsv_d.push_back(temp_fsid);
+        }
+    }
+}
+
 #endif
