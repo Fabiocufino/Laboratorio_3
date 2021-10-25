@@ -1,0 +1,7 @@
+Esperienza OpAmp
+
+2 capacitori da 0.1 uF
+1 capacitore da 0.3/1.5 nF
+3 resistenza da 10 kohm
+1 resistenza da 60/80 kohm
+4 resistenze da 100 ohm
