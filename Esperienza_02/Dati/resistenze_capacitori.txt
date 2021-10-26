@@ -1,0 +1,40 @@
+#//////////////////////////
+#circuito 1
+#c1 nF #fs nF
+99.5    100
+
+#c2 nf fs nF
+111.0   1000
+
+#rf kohm fs kohm
+67.759  100
+
+#r1 kohm fs kohm
+9.993   100
+
+#r50 ohm fs ohm
+46.51   1000
+
+
+#fine circuito 1
+#//////////////////////////
+#inizio circuito 2
+
+#c2 nf fs nf
+1.01    10
+
+#fine circuito 2
+#//////////////////////////////
+#inizio circuito 3
+
+#r50 ohm fs ohm
+46.31 1000
+
+#r50b ohm fs ohm
+46.74 1000
+
+#r1 kohm fs kohm
+10.003  100
+
+#r1b kohm fs kohm
+9.978   100
