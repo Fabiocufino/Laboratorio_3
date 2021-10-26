@@ -4,12 +4,13 @@ R1 N001 A 1k
 R3 B 0 1k
 R2 B A 1k
 R4 OUT B 100k
-D1 OUT N003 1N4148
+D1 OUT N003 myDiode
 V2 N003 0 2.5
 C1 A N002 0.47µ
 V3 N001 0 12
 .model D D
 .lib C:\Users\berto\OneDrive\Documenti\LTspiceXVII\lib\cmp\standard.dio
 .tran 1ms
+.model myDiode D(Is=1.9312n N=1.822 mfg=unipd type=silicon)
 .backanno
 .end

@@ -2,20 +2,20 @@ Circuit: * C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_01\Diodo\circu
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Tue Oct 26 18:40:35 2021
-Total elapsed time: 0.176 seconds.
+Date: Tue Oct 26 18:48:28 2021
+Total elapsed time: 0.066 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 2342
-traniter = 2330
-tranpoints = 1091
-accept = 1058
-rejected = 33
-matrix size = 10
+totiter = 2236
+traniter = 2224
+tranpoints = 1042
+accept = 1042
+rejected = 0
+matrix size = 9
 fillins = 0
 solver = Normal
-Matrix Compiler1: 346 bytes object code size  0.2/0.1/[0.1]
-Matrix Compiler2: off  [0.1]/0.2/0.1
+Matrix Compiler1:      18 opcodes  0.1/[0.1]/0.1
+Matrix Compiler2: off  [0.1]/0.1/0.1
 
