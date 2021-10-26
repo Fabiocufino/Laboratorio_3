@@ -11,6 +11,6 @@ V3 N001 0 12
 .model D D
 .lib C:\Users\berto\OneDrive\Documenti\LTspiceXVII\lib\cmp\standard.dio
 .tran 1ms
-.model myDiode D(Is=1.9312n N=1.822 mfg=unipd type=silicon)
+.model myDiode D(Is=1.9312n N=1.822 mfg=unipd type=silicon Vfwd=0.509321)
 .backanno
 .end
