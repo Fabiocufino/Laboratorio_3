@@ -1,9 +1,9 @@
-Circuit: * \\wsl$\Ubuntu-20.04\home\fabiocufino\Laboratorio_3\Diodo\circuito_3_lab_1.asc
+Circuit: * C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_01\Diodo\circuito_3_lab_1.asc
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Tue Oct 19 13:42:46 2021
-Total elapsed time: 0.235 seconds.
+Date: Tue Oct 26 18:40:35 2021
+Total elapsed time: 0.176 seconds.
 
 tnom = 27
 temp = 27
@@ -17,5 +17,5 @@ matrix size = 10
 fillins = 0
 solver = Normal
 Matrix Compiler1: 346 bytes object code size  0.2/0.1/[0.1]
-Matrix Compiler2: 640 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler2: off  [0.1]/0.2/0.1
 
