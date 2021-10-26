@@ -98,13 +98,13 @@ double err_corrente(double x)
     return err;
 }
 
-//Funzione per calcolo errore log corrente, prende come argomenti x ed err_x
+// Funzione per calcolo errore log corrente, prende come argomenti x ed err_x
 double err_log(double x, double err_x)
 {
     return err_x / x;
 }
 
-//fa il cout degli elementi di un vettore
+// fa il cout degli elementi di un vettore
 void print_vector(vector<double> x)
 {
     for (int i = 0; i < x.size(); i++)
@@ -123,6 +123,7 @@ public:
     vector<double> v_in;
     vector<double> v_d;
     vector<double> fsv;
+
 private:
     string fileread;
 };
@@ -166,6 +167,7 @@ public:
     vector<double> fsv_in;
     vector<double> v_d;
     vector<double> fsv_d;
+
 private:
     string fileread;
 };
@@ -200,4 +202,54 @@ void DataContainer_due_ac::read(string filename)
     }
 }
 
+class DataContainer_tre
+{
+public:
+    void read(string filename);
+    vector<double> v_in;
+    vector<double> fsv_in;
+    vector<double> v_a;
+    vector<double> fsv_a;
+    vector<double> v_b;
+    vector<double> fsv_b;
+    vector<double> v_out;
+    vector<double> fsv_out;
+
+private:
+    string fileread;
+};
+
+void DataContainer_tre::read(string filename)
+{
+
+    fileread = filename;
+    ifstream fin(fileread);
+    if (!fin)
+    {
+        cout << "Errore lettura file: " + fileread + " Linea funzione: " + __LINE__ << endl;
+    }
+
+    string temp_line;
+    while (getline(fin, temp_line))
+    {
+        if (temp_line.rfind("#", 0) == 0 || temp_line.size() < 2)
+        {
+            continue;
+        }
+        else
+        {
+            istringstream iss(temp_line);
+            double temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8;
+            iss >> temp1 >> temp2 >> temp3 >> temp4 >> temp5 >> temp6 >> temp7 >> temp8;
+            v_in.push_back(temp1);
+            fsv_in.push_back(temp2);
+            v_a.push_back(temp3);
+            fsv_a.push_back(temp4);
+            v_b.push_back(temp5);
+            fsv_b.push_back(temp6);
+            v_out.push_back(temp7);
+            fsv_out.push_back(temp8);
+        }
+    }
+}
 #endif
