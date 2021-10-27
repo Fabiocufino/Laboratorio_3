@@ -1,0 +1,21 @@
+Circuit: * C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_02\Circuiti\Circuito5.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Wed Oct 27 10:33:27 2021
+Total elapsed time: 0.106 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2345
+traniter = 2325
+tranpoints = 1100
+accept = 1076
+rejected = 24
+matrix size = 15
+fillins = 8
+solver = Normal
+Matrix Compiler1: 1.14 KB object code size  0.5/0.4/[0.2]
+Matrix Compiler2: off  [0.2]/0.5/0.3
+
