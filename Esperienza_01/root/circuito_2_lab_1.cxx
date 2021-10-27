@@ -69,6 +69,9 @@ void circuito_2_lab_1()
 
     ideal->Draw("Psame");
 
+
+
+
     // Manca propagazione errore
     double v_in = (retta_2.a[0] - retta_1.a[0]) / (retta_1.b[0] - retta_2.b[0]);
     cout << "V_ON: " << v_in << " volt" << endl;
@@ -90,7 +93,7 @@ void circuito_2_lab_1()
 
     double r_a = pow(((1 / r_2) + (1 / (r_3 + r_4))), -1);
     double coeff = r_a / (r_a + r_1) * r_4 / (r_3 + r_4);
-    cout << "Coeff: " << coeff << endl;
+    cout << "Coeff: " << coeff << "+/-"<< 0.00012414<<endl;
 
     cout << "Stima di V_ON: " << coeff * v_in << endl;
     cout << retta_1.b[0] << endl;

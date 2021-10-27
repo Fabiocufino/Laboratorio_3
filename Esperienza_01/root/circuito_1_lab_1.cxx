@@ -34,7 +34,7 @@ void circuito_1_lab_1()
         err_vd.push_back(err_tensione(uno.vd[i]));
     }
 
-        //=================================================================inizio grafico
+    //=================================================================inizio grafico
     auto c1 = new TCanvas("c1", "Circuito 1", 1000, 600);
     c1->SetGrid();
     c1->SetFillColor(0);
@@ -46,7 +46,7 @@ void circuito_1_lab_1()
     fileInput->SetMarkerSize(0.7);
     fileInput->SetTitle("");
     fileInput->GetXaxis()->SetTitle("Voltaggio V_{D} [mV]");
-    fileInput->GetYaxis()->SetTitle("ln(I_{D})");
+    fileInput->GetYaxis()->SetTitle("ln(I_{D}) [uA]");
     fileInput->GetXaxis()->SetAxisColor(14);
     fileInput->GetYaxis()->SetAxisColor(14);
 
@@ -71,7 +71,8 @@ void circuito_1_lab_1()
                              to_string(fit1.err_b[0]),
                              to_string(fit1.rho[0]),
                              to_string(fit1.t_student[0]),
-                             to_string(fit1.sigma_post[0]));
+                             to_string(fit1.sigma_post[0]),
+                             "Fit lineare sui dati");
 
     double n;
     double is;
@@ -82,6 +83,13 @@ void circuito_1_lab_1()
     double err_n = fit1.err_b[0] / (pow(fit1.b[0], 2) * 26.0);
     cout << "is :" << is << " +- " << err_is << " uA" << endl
          << "n: " << n << " +- " << err_n << endl;
+
+    TLegend *legend = new TLegend(0.15, 0.15, 0.5, 0.3);
+    legend->AddEntry(fileInput, "Dati con errore", "P");
+    legend->AddEntry(retta, "Retta Interpolante", "L");
+    legend->SetTextSize(0.04);
+    legend->SetBorderSize(1);
+    legend->Draw();
 
     //=================================================================inizio run test
     vector<double> scarti;
@@ -98,7 +106,7 @@ void circuito_1_lab_1()
     graph_scarti->SetMarkerSize(0.7);
     graph_scarti->SetTitle("");
     graph_scarti->GetXaxis()->SetTitle("Voltaggio V_{D} [mV]");
-    graph_scarti->GetYaxis()->SetTitle("ln(I_{D})");
+    graph_scarti->GetYaxis()->SetTitle("Scarti");
     graph_scarti->GetXaxis()->SetAxisColor(14);
     graph_scarti->GetYaxis()->SetAxisColor(14);
 
