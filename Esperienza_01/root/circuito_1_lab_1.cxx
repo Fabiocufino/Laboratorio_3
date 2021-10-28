@@ -14,7 +14,11 @@
 #include "datacontainer.h"
 #include "root.h"
 
+#include "DATACLASSGEN.h"
 using namespace std;
+
+
+
 
 void circuito_1_lab_1()
 {

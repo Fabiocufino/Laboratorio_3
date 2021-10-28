@@ -1,24 +1,22 @@
-#ifndef DATACONTAINER
-#define DATACONTAINER
 #include <vector>
 #include <fstream>
 #include <iostream>
 using namespace std;
 
-class DataContainer
+class DataContainerGen
 {
 public:
-    void read(string filename);
+    void read(string filename, int n_col, vector<double> v1);
+
+private:
     vector<double> colonna1;
     vector<double> colonna2;
     vector<double> colonna3;
     vector<double> colonna4;
-
-private:
     string fileread;
 };
 
-void DataContainer::read(string filename, int n_col, vector<double> v1)
+void DataContainerGen::read(string filename, int n_col, vector<double> v1)
 {
 
     fileread = filename;
@@ -47,8 +45,7 @@ void DataContainer::read(string filename, int n_col, vector<double> v1)
                 colonna3.push_back(temp_3);
                 colonna4.push_back(temp_4);
             }
-            vector<double> &v1 = colonna1;
+            &v1 = colonna1;
         }
     }
 }
-#endif
