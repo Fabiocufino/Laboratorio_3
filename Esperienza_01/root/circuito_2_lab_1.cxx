@@ -71,6 +71,10 @@ void circuito_2_lab_1()
 
 
 
+    //commeto
+
+
+
 
     // Manca propagazione errore
     double v_in = (retta_2.a[0] - retta_1.a[0]) / (retta_1.b[0] - retta_2.b[0]);
