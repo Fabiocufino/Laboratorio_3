@@ -26,7 +26,7 @@ void fit_circ_1()
     fileInput->SetMarkerStyle(20);
     fileInput->SetMarkerSize(0.7);
     fileInput->SetTitle("");
-    fileInput->GetXaxis()->SetTitle("Vpp_{IN} [?]");
+    fileInput->GetXaxis()->SetTitle("Vpp_{IN} [mV]");
     fileInput->GetYaxis()->SetTitle("Vpp_{OUT} [?]");
     fileInput->GetXaxis()->SetAxisColor(14);
     fileInput->GetYaxis()->SetAxisColor(14);
