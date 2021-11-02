@@ -2,8 +2,8 @@ Circuit: * C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_02\Circuiti\Ci
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Wed Oct 27 13:33:09 2021
-Total elapsed time: 0.154 seconds.
+Date: Tue Nov 02 18:48:44 2021
+Total elapsed time: 0.107 seconds.
 
 tnom = 27
 temp = 27
@@ -16,6 +16,6 @@ rejected = 24
 matrix size = 15
 fillins = 8
 solver = Normal
-Matrix Compiler1:      66 opcodes  0.3/[0.2]/0.2
-Matrix Compiler2: off  [0.2]/0.3/0.3
+Matrix Compiler1: 1.14 KB object code size  0.3/0.2/[0.1]
+Matrix Compiler2: 1.52 KB object code size  0.2/0.2/[0.2]
 
