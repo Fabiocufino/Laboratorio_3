@@ -1,21 +1,22 @@
-Circuit: * C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_02\Circuiti\Circuito4.asc
+Circuit: * Z:\home\fabio\Laboratorio_3\Esperienza_02\Circuiti\Circuito4.asc
 
-Direct Newton iteration for .op point succeeded.
+R50b: both pins shorted together -- ignoring.
+Vg: Missing value, assumed 0V @ DC
 
-Date: Wed Oct 27 12:10:51 2021
-Total elapsed time: 0.059 seconds.
+Date: Thu Nov 04 10:16:25 2021
+Total elapsed time: 0.031 seconds.
 
 tnom = 27
 temp = 27
-method = modified trap
-totiter = 2086
-traniter = 2082
-tranpoints = 1042
-accept = 1042
+method = trap
+totiter = 363
+traniter = 0
+tranpoints = 0
+accept = 0
 rejected = 0
-matrix size = 12
-fillins = 1
+matrix size = 27
+fillins = 16
 solver = Normal
-Matrix Compiler1: 554 bytes object code size  0.1/0.1/[0.1]
-Matrix Compiler2: 990 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler1: 2.06 KB object code size  0.8/0.5/[0.3]
+Matrix Compiler2: 2.40 KB object code size  0.4/0.6/[0.3]
 
