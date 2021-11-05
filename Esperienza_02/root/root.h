@@ -149,3 +149,39 @@ void informazioni_fit_lineare(TPaveStats *ptstats1, TText *ptstats_LaTex1, strin
     ptstats1->SetOptFit(111);
     ptstats1->Draw();
 }
+
+void informazioni_fit_3_par(TPaveStats *ptstats1, TText *ptstats_LaTex1, string chi_s, string dof, string par_0, string err_par_0, string par_1, string err_par_1, string par_2, string err_par_2, string title = "")
+{
+    ptstats1 = new TPaveStats(0.5, 0.65, 0.95, 0.95, "brNDC");
+    ptstats1->SetName("stats");
+    ptstats1->SetBorderSize(1);
+    ptstats1->SetFillColor(0);
+    ptstats1->SetTextAlign(12);
+    ptstats1->SetTextFont(22);
+
+    if (title.size() != 0)
+    {
+        const char *title_c = title.c_str();
+        ptstats_LaTex1 = ptstats1->AddText(title_c);
+    }
+
+    string first = "#chi^{2} / ndf =" + chi_s + "/" + dof;
+    const char *first_c = first.c_str();
+    ptstats_LaTex1 = ptstats1->AddText(first_c);
+
+    string second = "a        = " + par_0 + "#pm" + err_par_0;
+    const char *second_c = second.c_str();
+    ptstats_LaTex1 = ptstats1->AddText(second_c);
+
+    string third = "b        = " + par_1 + "#pm" + err_par_1;
+    const char *third_c = third.c_str();
+    ptstats_LaTex1 = ptstats1->AddText(third_c);
+
+    string fourth = "c        = " + par_2 + "#pm" + err_par_2;
+    const char *fourth_c = fourth.c_str();
+    ptstats_LaTex1 = ptstats1->AddText(fourth_c);
+
+    ptstats1->SetOptStat(0);
+    ptstats1->SetOptFit(111);
+    ptstats1->Draw("same");
+}

@@ -94,13 +94,6 @@ void circ_4()
     fit_results fit1;
     fit(fit_sin, 3, fileInput, v_in, v_out, fit1, -0.002, 2100);
 
-    TLegend *legend = new TLegend(0.15, 0.15, 0.5, 0.3);
-    legend->AddEntry(fileInput, "Dati con errore", "P");
-    legend->AddEntry(fit_sin, "a+bx interpolante", "l");
-    legend->SetTextSize(0.04);
-    legend->SetBorderSize(1);
-    legend->Draw();
-
     TPaveStats *info;
     TText *scri;
     informazioni_fit_lineare(info,
@@ -116,13 +109,12 @@ void circ_4()
                              to_string(fit1.sigma_post[0]),
                              "Fit lineare sui dati");
 
-
     TGraph *simul = new TGraph("../Dati/Circuito4_vtc.txt");
 
     simul->SetMarkerColor(4);
     simul->SetMarkerColor(kAzure - 4);
     simul->SetMarkerStyle(20);
-    simul->SetMarkerSize(0.7);
+    simul->SetMarkerSize(0.5);
     simul->SetTitle("");
     simul->GetXaxis()->SetTitle("V_{in} [mV]");
     simul->GetYaxis()->SetTitle("V_{out} [mV]");
@@ -130,5 +122,11 @@ void circ_4()
     simul->GetYaxis()->SetAxisColor(14);
 
     simul->Draw("Psame");
-
+    TLegend *legend = new TLegend(0.15, 0.15, 0.5, 0.3);
+    legend->AddEntry(fileInput, "Dati sperimentali con errore", "P");
+    legend->AddEntry(simul, "Dati Simulati", "P");
+    legend->AddEntry(fit_sin, "a+bx interpolante dati sperimentali", "l");
+    legend->SetTextSize(0.04);
+    legend->SetBorderSize(1);
+    legend->Draw();
 }
