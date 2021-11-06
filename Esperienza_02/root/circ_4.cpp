@@ -129,4 +129,9 @@ void circ_4()
     legend->SetTextSize(0.04);
     legend->SetBorderSize(1);
     legend->Draw();
+
+    for (int i = 0; i < v_out.size(); i++)
+    {
+        cout << v_in[i] << "+/-" << err_vin[i] << " " << v_out[i] << "+/-" << err_vout[i] << endl;
+    }
 }
