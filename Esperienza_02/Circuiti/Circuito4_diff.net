@@ -1,4 +1,4 @@
-* C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_02\Circuiti\Circuito4_diff.asc
+* \\wsl.localhost\Ubuntu-20.04\home\fabiocufino\Laboratorio_3\Esperienza_02\Circuiti\Circuito4_diff.asc
 C2 0 N006 0.1µ
 V3 0 N006 +15
 V4 N001 0 +15
@@ -12,9 +12,10 @@ R3 V2 N004 10k
 Vg N005 0 SINE(0 1 200)
 R50 V2 0 50
 R4 N004 0 68k
-V1 N002 0 PULSE(-2 2 0 1n 1n 0.01 0.02 100)
+V1 N002 0 PULSE(2 -2 0 1n 1n 0.01 0.02 100)
 R2 V1 N002 50
-.tran 25m
+.tran 20ms
+;dc Vg 0.2 4 0.1
 .lib UniversalOpamps2.sub
 .backanno
 .end
