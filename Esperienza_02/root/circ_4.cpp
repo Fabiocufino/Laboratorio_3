@@ -46,6 +46,15 @@ void circ_4()
     double err_r50 = err_res_cap(r50, 0.1, 8, 0.01);   //ohm
     double err_r50b = err_res_cap(r50b, 0.1, 8, 0.01); //ohm
 
+    cout << "Resistenze:" << endl
+         << "r1\t" << r1 << "+-" << err_r1 << endl
+         << "rf\t" << rf << "+-" << err_rf << endl
+         << "r3\t" << r3 << "+-" << err_r3 << endl
+         << "r4\t" << r4 << "+-" << err_r4 << endl
+         << "r50\t" << r50 << "+-" << err_r50 << endl
+         << "r50b\t" << r50b << "+-" << err_r50b << endl
+         << endl;
+
     double ampl_th = (1 + rf / r1) * (r4 / (r3 + r4));
     double err_ampl_th = (pow(err_r4, 2) * pow(r1, 2) * pow(r3, 2) * pow((r1 + rf), 2) +
                           pow(r4, 2) * (pow(err_r3, 2) * pow(r1, 2) * pow((r1 + rf), 2) + pow((r3 + r4), 2) * (pow(err_rf, 2) * pow(r1, 2) +
@@ -130,8 +139,9 @@ void circ_4()
     legend->SetBorderSize(1);
     legend->Draw();
 
+    cout << endl;
     for (int i = 0; i < v_out.size(); i++)
     {
-        cout << v_in[i] << "+/-" << err_vin[i] << " " << v_out[i] << "+/-" << err_vout[i] << endl;
+        cout << v_in[i] << "+-" << err_vin[i] << " " << v_out[i] << "+-" << err_vout[i] << endl;
     }
 }
