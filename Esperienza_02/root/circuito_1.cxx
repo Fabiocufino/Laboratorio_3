@@ -163,6 +163,6 @@ void circuito_1()
 
      for (int i = 0; i < err_vin.size(); i++)
      {
-          cout << vin[i] << " +/- " << err_vin[i] << "  " << fs_vin[i] << "  " << vout[i] << " +/- " << err_vout[i] << "  " << fs_vin[i] << endl;
+          cout << vin[i] << "\t" << err_vin[i] << "\t" << fs_vin[i] << "\t" << vout[i] << "\t" << err_vout[i] << "\t" << fs_vin[i] << endl;
      }
 }

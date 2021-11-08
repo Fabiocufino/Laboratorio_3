@@ -54,6 +54,14 @@ void circ_3()
     double err_r50 = err_res_cap(r50, 0.1, 8, 0.01);     //ohm
     double err_r50b = err_res_cap(r50b, 0.1, 8, 0.01);   //ohm
 
+    cout << "Resistenze usate:" << endl
+         << "R1:\t" << r1 << "+-" << err_r1 << endl
+         << "R1b:\t" << r1b << "+-" << err_r1b << endl
+         << "Rf_sum:\t" << rf_sum << "+-" << err_rf_sum << endl
+         << "R50:\t" << r50b << "+-" << err_r50 << endl
+         << "R50B:\t" << r50b << "+-" << err_r50b << endl
+         << endl;
+
     DataContainerGen tre;
     tre.read("../Dati/circuito_3.txt", 4);
     vector<double> &t = tre.tabella[(int)Colonna::t];
@@ -80,6 +88,12 @@ void circ_3()
         err_v_volt.push_back(c * pow(10, -3));
     }
 
+    for (int i = 0; i < v_volt.size(); i++)
+    {
+        cout << t_sec[i] * 1e6 << "\t" << v_volt[i] * 1e3 << "+-" << err_v_volt[i] * 1e3 << endl;
+    }
+    cout << endl;
+
     // ------------------------------------------INIZIO GRAFCIO E CALCOLO PARAMETRI-- -------------
     auto canvas1 = new TCanvas("c1", "Circuito 1", 1000, 600);
     canvas1->SetGrid();
@@ -105,19 +119,19 @@ void circ_3()
     fit_sin->SetLineWidth(1);
 
     fit_sin->SetParameter(0, -1.43562);
-    fit_sin->SetParameter(1, -8 + 4* M_PI);
+    fit_sin->SetParameter(1, -8 + 4 * M_PI);
     fit_sin->SetParameter(2, 0.953194);
 
-    fit_sin->SetParName(0,"t_{0}");
-    fit_sin->SetParName(1,"#phi_{1} - #phi_{2}");
-    fit_sin->SetParName(2,"c");
+    fit_sin->SetParName(0, "t_{0}");
+    fit_sin->SetParName(1, "#phi_{1} - #phi_{2}");
+    fit_sin->SetParName(2, "c");
 
     fit_results fitres;
     fit(fit_sin, 3, fileInput, t_sec, v_volt, fitres, -0.002, 0.002);
 
     TLegend *legend = new TLegend(0.15, 0.15, 0.5, 0.3);
     legend->AddEntry(fileInput, "Dati con errore", "P");
-    legend->AddEntry(fit_sin, "A_{1}sin(#omega_{1} t + #phi_{1})+A_{2}sin(#omega_{2} t + #phi_{2}) + c", "L");
+    legend->AddEntry(fit_sin, "A_{1}sin(#omega_{1} (t-t_{0}) + #phi_{1})+A_{2}sin(#omega_{2} (t-t_{0}) + #phi_{2}) + c", "L");
     legend->SetTextSize(0.04);
     legend->SetBorderSize(1);
     legend->Draw();

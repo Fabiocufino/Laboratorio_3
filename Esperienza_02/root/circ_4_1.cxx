@@ -47,19 +47,19 @@ double seno(double *x, double *par)
 void circ_4_1()
 {
 
-    double r1 = 10.003e3; //ohm
-    double rf = 67.674e3; //ohm
-    double r3 = 9.981e3;  //ohm
-    double r4 = 68.54e3;  //ohm
-    double r50 = 46.51;   //ohm
-    double r50b = 46.74;  //ohm
+    double r1 = 10.003e3; // ohm
+    double rf = 67.674e3; // ohm
+    double r3 = 9.981e3;  // ohm
+    double r4 = 68.54e3;  // ohm
+    double r50 = 46.51;   // ohm
+    double r50b = 46.74;  // ohm
 
-    double err_r1 = err_res_cap(r1, 0.07, 8, 1);       //ohm
-    double err_rf = err_res_cap(rf, 0.07, 8, 1);       //ohm
-    double err_r3 = err_res_cap(r3, 0.07, 8, 1);       //ohm
-    double err_r4 = err_res_cap(r4, 0.07, 8, 1);       //ohm
-    double err_r50 = err_res_cap(r50, 0.1, 8, 0.01);   //ohm
-    double err_r50b = err_res_cap(r50b, 0.1, 8, 0.01); //ohm
+    double err_r1 = err_res_cap(r1, 0.07, 8, 1);       // ohm
+    double err_rf = err_res_cap(rf, 0.07, 8, 1);       // ohm
+    double err_r3 = err_res_cap(r3, 0.07, 8, 1);       // ohm
+    double err_r4 = err_res_cap(r4, 0.07, 8, 1);       // ohm
+    double err_r50 = err_res_cap(r50, 0.1, 8, 0.01);   // ohm
+    double err_r50b = err_res_cap(r50b, 0.1, 8, 0.01); // ohm
 
     DataContainerGen quattro_diff;
     quattro_diff.read("../Dati/circuito_4_diff.txt", 8);
@@ -121,31 +121,31 @@ void circ_4_1()
     fit_sin2->SetLineWidth(1);
 
     fit_sin2->SetParameter(0, 3.11599);
-    //fit_sin2->SetParameter(1, 1.20542e-03);
-    //fit_sin2->SetParameter(3, 6.16184e+00);
+    // fit_sin2->SetParameter(1, 1.20542e-03);
+    // fit_sin2->SetParameter(3, 6.16184e+00);
 
     fit_sin2->SetParLimits(0, 3.01599, 3.31599);
 
     fit_results fit2;
     fit(fit_sin2, 3, fileInput, t, vout, fit1, 8.7, 18);
 
-    //TPaveStats *info;
-    //TText *scri;
-    //informazioni_fit_3_par(info,
-    //                       scri,
-    //                       to_string(fit1.chi_square[0]),
-    //                       to_string(fit1.dof[0]),
-    //                       to_string(fit1.a[0]),
-    //                       to_string(fit1.err_a[0]),
-    //                       to_string(fit1.b[0]),
-    //                       to_string(fit1.err_b[0]),
-    //                       to_string(fit1.c[0]),
-    //                       to_string(fit1.err_c[0]),
-    //                       "Fit 1 sui dati");
-//
-    //TPaveStats *info2;
-    //TText *scri2;
-    //informazioni_fit_3_par(info2,
+    // TPaveStats *info;
+    // TText *scri;
+    // informazioni_fit_3_par(info,
+    //                        scri,
+    //                        to_string(fit1.chi_square[0]),
+    //                        to_string(fit1.dof[0]),
+    //                        to_string(fit1.a[0]),
+    //                        to_string(fit1.err_a[0]),
+    //                        to_string(fit1.b[0]),
+    //                        to_string(fit1.err_b[0]),
+    //                        to_string(fit1.c[0]),
+    //                        to_string(fit1.err_c[0]),
+    //                        "Fit 1 sui dati");
+    //
+    // TPaveStats *info2;
+    // TText *scri2;
+    // informazioni_fit_3_par(info2,
     //                       scri2,
     //                       to_string(fit2.chi_square[0]),
     //                       to_string(fit2.dof[0]),
@@ -157,6 +157,7 @@ void circ_4_1()
     //                       to_string(fit2.err_c[0]),
     //                       "Fit 2 sui dati");
     //
+<<<<<<< HEAD
     TGraph *simul = new TGraph("../Circuiti/Circuito4_diff_vout.txt");
     
     simul->SetMarkerColor(4);
@@ -177,4 +178,31 @@ void circ_4_1()
     //legend->SetTextSize(0.04);
     //legend->SetBorderSize(1);
     //legend->Draw();
+=======
+    // TGraph *simul = new TGraph("../Circuiti/Circuito4_diff_vout.txt");
+    //
+    // simul->SetMarkerColor(4);
+    // simul->SetMarkerColor(kAzure - 4);
+    // simul->SetMarkerStyle(20);
+    // simul->SetMarkerSize(0.5);
+    // simul->SetTitle("");
+    // simul->GetXaxis()->SetTitle("V_{in} [mV]");
+    // simul->GetYaxis()->SetTitle("V_{out} [mV]");
+    // simul->GetXaxis()->SetAxisColor(14);
+    // simul->GetYaxis()->SetAxisColor(14);
+    //
+    // simul->Draw("Psame");
+
+    TLegend *legend = new TLegend(0.15, 0.15, 0.5, 0.3);
+    legend->AddEntry(fileInput, "Dati sperimentali con errore", "P");
+    legend->AddEntry(fit_sin2, "Funzioni interpolanti", "l");
+    legend->SetTextSize(0.04);
+    legend->SetBorderSize(1);
+    legend->Draw();
+
+    for (int i = 0; i < vout.size(); i++)
+    {
+        cout << t[i] << " " << v1[i] << " +/- " << err_v1[i] << " " << v2[i] << "+/-" << err_v2[i] << " " << vout[i] << "+/-" << err_vout[i] << endl;
+    }
+>>>>>>> main
 }
