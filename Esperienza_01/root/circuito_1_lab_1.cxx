@@ -17,9 +17,6 @@
 #include "DATACLASSGEN.h"
 using namespace std;
 
-
-
-
 void circuito_1_lab_1()
 {
     DataContainer uno;
@@ -37,6 +34,8 @@ void circuito_1_lab_1()
         err_logid.push_back(err_log(uno.id[i], err_id[i]));
         err_vd.push_back(err_tensione(uno.vd[i]));
     }
+
+    vector<double> new_error;
 
     //=================================================================inizio grafico
     auto c1 = new TCanvas("c1", "Circuito 1", 1000, 600);
@@ -96,13 +95,19 @@ void circuito_1_lab_1()
     legend->Draw();
 
     //=================================================================inizio run test
+
+    for (int i = 0; i < err_logid.size(); i++)
+    {
+        new_error.push_back(sqrt(pow(err_logid[i], 2) + pow(fit1.b[0] * err_vd[i], 2)));
+    }
+
     vector<double> scarti;
     run_test_lineare(scarti, uno.vd, log_id, fit1.a[0], fit1.b[0]);
 
     auto c2 = new TCanvas("c2", "Scarti circuito 1", 1100, 600);
     c2->SetGrid();
     c2->SetFillColor(0);
-    TGraphErrors *graph_scarti = new TGraphErrors(into_root(uno.vd), into_root(scarti), into_root(err_vd), into_root(err_logid));
+    TGraphErrors *graph_scarti = new TGraphErrors(into_root(uno.vd), into_root(scarti), into_root(err_vd), into_root(new_error));
 
     graph_scarti->SetMarkerColor(4);
     graph_scarti->SetLineColor(kAzure - 3);

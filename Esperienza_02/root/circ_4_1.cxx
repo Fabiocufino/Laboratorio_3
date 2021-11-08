@@ -157,28 +157,6 @@ void circ_4_1()
     //                       to_string(fit2.err_c[0]),
     //                       "Fit 2 sui dati");
     //
-<<<<<<< HEAD
-    TGraph *simul = new TGraph("../Circuiti/Circuito4_diff_vout.txt");
-    
-    simul->SetMarkerColor(4);
-    simul->SetMarkerColor(kAzure - 4);
-    simul->SetMarkerStyle(20);
-    simul->SetMarkerSize(0.5);
-    simul->SetTitle("");
-    simul->GetXaxis()->SetTitle("V_{in} [mV]");
-    simul->GetYaxis()->SetTitle("V_{out} [mV]");
-    simul->GetXaxis()->SetAxisColor(14);
-    simul->GetYaxis()->SetAxisColor(14);
-    
-    simul->Draw("Psame");
-    //TLegend *legend = new TLegend(0.15, 0.15, 0.5, 0.3);
-    //legend->AddEntry(fileInput, "Dati sperimentali con errore", "P");
-    //legend->AddEntry(simul, "Dati Simulati", "P");
-    //legend->AddEntry(fit_sin, "a+bx interpolante dati sperimentali", "l");
-    //legend->SetTextSize(0.04);
-    //legend->SetBorderSize(1);
-    //legend->Draw();
-=======
     // TGraph *simul = new TGraph("../Circuiti/Circuito4_diff_vout.txt");
     //
     // simul->SetMarkerColor(4);
@@ -204,5 +182,4 @@ void circ_4_1()
     {
         cout << t[i] << " " << v1[i] << " +/- " << err_v1[i] << " " << v2[i] << "+/-" << err_v2[i] << " " << vout[i] << "+/-" << err_vout[i] << endl;
     }
->>>>>>> main
 }
