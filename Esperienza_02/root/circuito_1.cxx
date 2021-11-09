@@ -82,8 +82,8 @@ void circuito_1()
 
      TGraphErrors *fileInput = new TGraphErrors(into_root(vin), into_root(vout), into_root(err_vin), into_root(err_vout));
 
-     fileInput->SetMarkerColor(4);
-     fileInput->SetLineColor(kAzure - 4);
+     fileInput->SetLineColor(kAzure - 3);
+     fileInput->SetMarkerColor(kAzure - 3);
      fileInput->SetMarkerStyle(20);
      fileInput->SetMarkerSize(0.7);
      fileInput->SetTitle("");
@@ -124,16 +124,23 @@ void circuito_1()
      legend->Draw();
 
      //Inizio residui
+
+     vector<double> err_vuoto(err_vin.size(), 0);
+     vector<double> err_vd_scarti;
+     for (int i = 0; i < err_vout.size(); i++)
+     {
+          err_vd_scarti.push_back(sqrt(pow(err_vout[i], 2) + pow(fit1.b[0] * err_vout[i], 2)));
+     }
      vector<double> scarti;
      run_test_lineare(scarti, vin, vout, fit1.a[0], fit1.b[0]);
 
      auto canvas2 = new TCanvas("c2", "Scarti circuito 1", 1100, 600);
      canvas2->SetGrid();
      canvas2->SetFillColor(0);
-     TGraphErrors *graph_scarti = new TGraphErrors(into_root(vin), into_root(scarti), into_root(err_vin), into_root(err_vout));
+     TGraphErrors *graph_scarti = new TGraphErrors(into_root(vin), into_root(scarti), into_root(err_vuoto), into_root(err_vd_scarti));
 
-     graph_scarti->SetMarkerColor(4);
      graph_scarti->SetLineColor(kAzure - 3);
+     graph_scarti->SetMarkerColor(kAzure - 3);
      graph_scarti->SetMarkerStyle(20);
      graph_scarti->SetMarkerSize(0.7);
      graph_scarti->SetTitle("");
@@ -144,11 +151,18 @@ void circuito_1()
 
      graph_scarti->Draw("AP");
 
-     TLegend *legend2 = new TLegend(0.15, 0.15, 0.5, 0.3);
-     legend2->AddEntry(fileInput, "Dati con errore", "P");
-     legend2->SetTextSize(0.04);
-     legend2->SetBorderSize(1);
-     legend2->Draw();
+     TF1 *retta0 = new TF1("retta", "0", 0, 50000);
+     retta0->SetLineColor(kRed);
+     retta0->SetLineStyle(2);
+     retta0->SetLineWidth(1);
+     retta0->Draw("lsame");
+
+     TLegend *legends = new TLegend(0.15, 0.15, 0.5, 0.3);
+     legends->AddEntry(graph_scarti, "Dati sperimentali con errore", "P");
+     legends->AddEntry(retta, "retta y=0", "L");
+     legends->SetTextSize(0.04);
+     legends->SetBorderSize(1);
+     legends->Draw();
 
      //------------------------------------------FINE GRAFCIO E CALCOLO PARAMETRI---------------
 

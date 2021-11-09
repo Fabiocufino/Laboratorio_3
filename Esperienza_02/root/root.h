@@ -28,6 +28,19 @@ void fit(TF1 *f, Double_t number_of_parameters, TGraph *graf, vector<double> &as
 {
     //TFitResultPtr fit_res = graf->Fit(f, "S");
     TFitResultPtr fit_res = graf->Fit(f, "+S", "", asse_x_inizio, asse_x_fine); //quando ci sono più fit nello stesso canvas li fa vedere tutti
+
+    vector<double> asse_x_cutted;
+    vector<double> asse_y_cutted;
+
+    for (int i = 0; i < asse_x.size(); i++)
+    {
+        if (asse_x[i] >= asse_x_inizio && asse_x[i] <= asse_x_fine)
+        {
+            asse_x_cutted.push_back(asse_x[i]);
+            asse_y_cutted.push_back(asse_y[i]);
+        }
+    }
+
     TMatrixD cov = fit_res->GetCovarianceMatrix();
 
     fit_res_str.a.push_back(f->GetParameter(0));
@@ -39,9 +52,9 @@ void fit(TF1 *f, Double_t number_of_parameters, TGraph *graf, vector<double> &as
     {
         fit_res_str.b.push_back(f->GetParameter(1));
         fit_res_str.err_b.push_back(f->GetParError(1));
-        fit_res_str.rho.push_back(pearson(asse_x, asse_y));
-        fit_res_str.t_student.push_back(student(asse_x, asse_y));
-        fit_res_str.sigma_post.push_back(sigma_y_posteriori(asse_x, asse_y));
+        fit_res_str.rho.push_back(pearson(asse_x_cutted, asse_y_cutted));
+        fit_res_str.t_student.push_back(student(asse_x_cutted, asse_y_cutted));
+        fit_res_str.sigma_post.push_back(sigma_y_posteriori(asse_x_cutted, asse_y_cutted));
         fit_res_str.covariance_matrix[0][1] = cov[0][1];
         fit_res_str.covariance_matrix[1][0] = cov[0][1];
     }
@@ -50,9 +63,9 @@ void fit(TF1 *f, Double_t number_of_parameters, TGraph *graf, vector<double> &as
         fit_res_str.b.push_back(f->GetParameter(1));
         fit_res_str.err_b.push_back(f->GetParError(1));
         fit_res_str.covariance_matrix[0][1] = cov[0][1];
-        fit_res_str.rho.push_back(pearson(asse_x, asse_y));
-        fit_res_str.t_student.push_back(student(asse_x, asse_y));
-        fit_res_str.sigma_post.push_back(sigma_y_posteriori(asse_x, asse_y));
+        fit_res_str.rho.push_back(pearson(asse_x_cutted, asse_y_cutted));
+        fit_res_str.t_student.push_back(student(asse_x_cutted, asse_y_cutted));
+        fit_res_str.sigma_post.push_back(sigma_y_posteriori(asse_x_cutted, asse_y_cutted));
         fit_res_str.c.push_back(f->GetParameter(2));
         fit_res_str.err_c.push_back(f->GetParError(2));
 
@@ -65,9 +78,9 @@ void fit(TF1 *f, Double_t number_of_parameters, TGraph *graf, vector<double> &as
         fit_res_str.b.push_back(f->GetParameter(1));
         fit_res_str.err_b.push_back(f->GetParError(1));
         fit_res_str.covariance_matrix[0][1] = cov[0][1];
-        fit_res_str.rho.push_back(pearson(asse_x, asse_y));
-        fit_res_str.t_student.push_back(student(asse_x, asse_y));
-        fit_res_str.sigma_post.push_back(sigma_y_posteriori(asse_x, asse_y));
+        fit_res_str.rho.push_back(pearson(asse_x_cutted, asse_y_cutted));
+        fit_res_str.t_student.push_back(student(asse_x_cutted, asse_y_cutted));
+        fit_res_str.sigma_post.push_back(sigma_y_posteriori(asse_x_cutted, asse_y_cutted));
         fit_res_str.c.push_back(f->GetParameter(2));
         fit_res_str.err_c.push_back(f->GetParError(2));
         fit_res_str.d.push_back(f->GetParameter(2));
@@ -81,9 +94,9 @@ void fit(TF1 *f, Double_t number_of_parameters, TGraph *graf, vector<double> &as
         fit_res_str.b.push_back(f->GetParameter(1));
         fit_res_str.err_b.push_back(f->GetParError(1));
         fit_res_str.covariance_matrix[0][1] = cov[0][1];
-        fit_res_str.rho.push_back(pearson(asse_x, asse_y));
-        fit_res_str.t_student.push_back(student(asse_x, asse_y));
-        fit_res_str.sigma_post.push_back(sigma_y_posteriori(asse_x, asse_y));
+        fit_res_str.rho.push_back(pearson(asse_x_cutted, asse_y_cutted));
+        fit_res_str.t_student.push_back(student(asse_x_cutted, asse_y_cutted));
+        fit_res_str.sigma_post.push_back(sigma_y_posteriori(asse_x_cutted, asse_y_cutted));
         fit_res_str.c.push_back(f->GetParameter(2));
         fit_res_str.err_c.push_back(f->GetParError(2));
         fit_res_str.d.push_back(f->GetParameter(2));

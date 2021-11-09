@@ -120,21 +120,22 @@ void circ_2()
      for (int i = 0; i < freq.size(); i++)
      {
           ampl.push_back(20 * log10(v_out[i] / v_in[i]));
-          double err_amplitude = sqrt(pow(20 * (1 / (v_out[i] * log(10))) * err_vout[i], 2) + pow(20 * (1 / (v_in[i] * log(10))) * err_vin[i], 2));
+          double err_amplitude = sqrt((400 * pow(err_vin[i], 2)) / (pow(v_in[i], 2) * pow(log(10), 2)) + (400 * pow(err_vout[i], 2)) / (pow(v_out[i], 2) * pow(log(10), 2)));
           err_ampl.push_back(err_amplitude); //DA FARE
                                              //ampl_th.push_back(20 * log10((rf * 2 * M_PI * freq[i] * c2) / (sqrt(pow(r1 * 2 * M_PI * freq[i] * c2, 2) + 1))));
      }
 
+     vector<double> err_freq(err_vin.size(),0);
      //------------------------------------------INIZIO GRAFCIO E CALCOLO PARAMETRI---------------
      auto canvas1 = new TCanvas("c1", "Circuito 1", 1000, 600);
      canvas1->SetGrid();
      canvas1->SetFillColor(0);
      canvas1->SetLogx();
 
-     TGraphErrors *fileInput = new TGraphErrors(into_root(freq), into_root(ampl), into_root(err_ampl), into_root(err_ampl));
+     TGraphErrors *fileInput = new TGraphErrors(into_root(freq), into_root(ampl), into_root(err_freq), into_root(err_ampl));
 
-     fileInput->SetMarkerColor(4);
      fileInput->SetMarkerColor(kAzure - 2);
+     fileInput->SetLineColor(kAzure - 2);
      fileInput->SetMarkerStyle(20);
      fileInput->SetMarkerSize(0.7);
      fileInput->SetTitle("");
@@ -147,10 +148,9 @@ void circ_2()
 
      TGraph *simul = new TGraph("../Dati/circuito_2_simulato");
 
-     simul->SetMarkerColor(4);
      simul->SetMarkerColor(kAzure - 4);
      simul->SetMarkerStyle(20);
-     simul->SetMarkerSize(0.5);
+     simul->SetMarkerSize(0.7);
      simul->SetTitle("");
      simul->GetXaxis()->SetTitle("freq [Hz]");
      simul->GetYaxis()->SetTitle("A_{dB} [V/V]");

@@ -62,9 +62,21 @@ void circ_4_1()
     double err_r50b = err_res_cap(r50b, 0.1, 8, 0.01); // ohm
 
     DataContainerGen quattro_diff;
+    DataContainerGen quattro_th;
     quattro_diff.read("../Dati/circuito_4_diff.txt", 8);
 
+    quattro_th.read("../Dati/circ_4_th.txt", 4);
+
     vector<double> &t = quattro_diff.tabella[(int)Colonna::t];
+    vector<double> &t_th = quattro_th.tabella[(int)Colonna::t];
+    vector<double> t_trans;
+    vector<double> t_trans_th;
+    for (int i = 0; i < t.size(); i++)
+    {
+        t_trans.push_back(t[i] + 1.2198469);
+        t_trans_th.push_back(t_th[i] + 1.2198469);
+    }
+
     vector<double> &fs_t = quattro_diff.tabella[(int)Colonna::fst];
     vector<double> &v1 = quattro_diff.tabella[(int)Colonna::v1];
     vector<double> &fs_v1 = quattro_diff.tabella[(int)Colonna::fs_v1];
@@ -75,6 +87,9 @@ void circ_4_1()
     vector<double> err_vout;
     vector<double> err_v1;
     vector<double> err_v2;
+
+    vector<double> &vout_th = quattro_th.tabella[2];
+    vector<double> &err_vout_th = quattro_th.tabella[3];
 
     quattro_diff.err_oscilloscopio((int)Colonna::fs_vout, (int)Colonna::vout, err_vout);
     quattro_diff.err_oscilloscopio((int)Colonna::fs_v1, (int)Colonna::v1, err_v1);
@@ -87,10 +102,10 @@ void circ_4_1()
     canvas1->SetGrid();
     canvas1->SetFillColor(0);
 
-    TGraphErrors *fileInput = new TGraphErrors(into_root(t), into_root(vout), into_root(err_t), into_root(err_vout));
+    TGraphErrors *fileInput = new TGraphErrors(into_root(t_trans), into_root(vout), into_root(err_t), into_root(err_vout));
+    TGraphErrors *fileInput_2 = new TGraphErrors(into_root(t_trans), into_root(vout_th), into_root(err_t), into_root(err_vout_th));
 
-    fileInput->SetMarkerColor(4);
-    fileInput->SetMarkerColor(kAzure - 2);
+    fileInput->SetMarkerColor(kRed);
     fileInput->SetMarkerStyle(20);
     fileInput->SetMarkerSize(0.7);
     fileInput->SetTitle("");
@@ -101,79 +116,34 @@ void circ_4_1()
 
     fileInput->Draw("AP");
 
-    TF1 *fit_sin = new TF1("f2", seno, -0.002, 10, 3);
-    fit_sin->SetLineColor(kRed);
-    fit_sin->SetLineStyle(2);
-    fit_sin->SetLineWidth(1);
+    fileInput_2->SetMarkerColor(kOrange);
+    fileInput_2->SetMarkerStyle(20);
+    fileInput_2->SetMarkerSize(0.7);
+    fileInput_2->SetTitle("");
+    fileInput_2->GetXaxis()->SetTitle("t [ms]");
+    fileInput_2->GetYaxis()->SetTitle("V_{out} [mV]");
+    fileInput_2->GetXaxis()->SetAxisColor(14);
+    fileInput_2->GetYaxis()->SetAxisColor(14);
 
-    fit_sin->SetParameter(0, 3.11599);
-    fit_sin->SetParameter(1, 1.20542e-03);
-    fit_sin->SetParameter(3, 6.16184e+00);
+    fileInput_2->Draw("Psame");
 
-    fit_sin->SetParLimits(0, 3.01599, 3.31599);
+    TGraph *simul = new TGraph("../Circuiti/Circuito4_diff.txt");
 
-    fit_results fit1;
-    fit(fit_sin, 3, fileInput, t, vout, fit1, -0.2, 8.7);
+    simul->SetMarkerColor(4);
+    simul->SetMarkerColor(kAzure - 4);
+    simul->SetMarkerStyle(20);
+    simul->SetMarkerSize(0.5);
+    simul->SetTitle("");
+    simul->GetXaxis()->SetTitle("V_{in} [mV]");
+    simul->GetYaxis()->SetTitle("V_{out} [mV]");
+    simul->GetXaxis()->SetAxisColor(14);
+    simul->GetYaxis()->SetAxisColor(14);
 
-    TF1 *fit_sin2 = new TF1("f2", seno, -0.002, 10, 3);
-    fit_sin2->SetLineColor(kRed);
-    fit_sin2->SetLineStyle(2);
-    fit_sin2->SetLineWidth(1);
-
-    fit_sin2->SetParameter(0, 3.11599);
-    // fit_sin2->SetParameter(1, 1.20542e-03);
-    // fit_sin2->SetParameter(3, 6.16184e+00);
-
-    fit_sin2->SetParLimits(0, 3.01599, 3.31599);
-
-    fit_results fit2;
-    fit(fit_sin2, 3, fileInput, t, vout, fit1, 8.7, 18);
-
-    // TPaveStats *info;
-    // TText *scri;
-    // informazioni_fit_3_par(info,
-    //                        scri,
-    //                        to_string(fit1.chi_square[0]),
-    //                        to_string(fit1.dof[0]),
-    //                        to_string(fit1.a[0]),
-    //                        to_string(fit1.err_a[0]),
-    //                        to_string(fit1.b[0]),
-    //                        to_string(fit1.err_b[0]),
-    //                        to_string(fit1.c[0]),
-    //                        to_string(fit1.err_c[0]),
-    //                        "Fit 1 sui dati");
-    //
-    // TPaveStats *info2;
-    // TText *scri2;
-    // informazioni_fit_3_par(info2,
-    //                       scri2,
-    //                       to_string(fit2.chi_square[0]),
-    //                       to_string(fit2.dof[0]),
-    //                       to_string(fit2.a[0]),
-    //                       to_string(fit2.err_a[0]),
-    //                       to_string(fit2.b[0]),
-    //                       to_string(fit2.err_b[0]),
-    //                       to_string(fit2.c[0]),
-    //                       to_string(fit2.err_c[0]),
-    //                       "Fit 2 sui dati");
-    //
-    // TGraph *simul = new TGraph("../Circuiti/Circuito4_diff_vout.txt");
-    //
-    // simul->SetMarkerColor(4);
-    // simul->SetMarkerColor(kAzure - 4);
-    // simul->SetMarkerStyle(20);
-    // simul->SetMarkerSize(0.5);
-    // simul->SetTitle("");
-    // simul->GetXaxis()->SetTitle("V_{in} [mV]");
-    // simul->GetYaxis()->SetTitle("V_{out} [mV]");
-    // simul->GetXaxis()->SetAxisColor(14);
-    // simul->GetYaxis()->SetAxisColor(14);
-    //
-    // simul->Draw("Psame");
+    simul->Draw("Psame");
 
     TLegend *legend = new TLegend(0.15, 0.15, 0.5, 0.3);
     legend->AddEntry(fileInput, "Dati sperimentali con errore", "P");
-    legend->AddEntry(fit_sin2, "Funzioni interpolanti", "l");
+    legend->AddEntry(simul, "Dati simulati", "P");
     legend->SetTextSize(0.04);
     legend->SetBorderSize(1);
     legend->Draw();

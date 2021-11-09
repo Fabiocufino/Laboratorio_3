@@ -56,10 +56,11 @@ void circ_4()
          << endl;
 
     double ampl_th = (1 + rf / r1) * (r4 / (r3 + r4));
-    double err_ampl_th = (pow(err_r4, 2) * pow(r1, 2) * pow(r3, 2) * pow((r1 + rf), 2) +
-                          pow(r4, 2) * (pow(err_r3, 2) * pow(r1, 2) * pow((r1 + rf), 2) + pow((r3 + r4), 2) * (pow(err_rf, 2) * pow(r1, 2) +
-                                                                                                               pow(err_r1, 2) * pow(rf, 2)))) /
-                         (pow(r1, 4) * pow((r3 + r4), 4));
+    double err_ampl_th = sqrt((pow(err_r4, 2) * pow(r1, 2) * pow(r1 + rf, 2) * pow(r3, 2) +
+                               pow(r4, 2) * (pow(err_r3 * r1 * (r1 + rf), 2) +
+                                             (pow(err_rf * r1, 2) +
+                                              pow(err_r1 * rf, 2) * (pow(r3 + r4, 2))))) /
+                              (pow(r1, 4) * pow(r3 + r4, 4)));
     cout << "Amplificazione th: " << endl
          << ampl_th << "+-" << err_ampl_th << endl
          << endl;
@@ -144,4 +145,45 @@ void circ_4()
     {
         cout << v_in[i] << "+-" << err_vin[i] << " " << v_out[i] << "+-" << err_vout[i] << endl;
     }
+
+    //-------------------------------INIZIO GRAFICO SCARTI
+    vector<double> err_vuoto(err_vin.size(), 0);
+    vector<double> err_vd_scarti;
+    for (int i = 0; i < err_vout.size(); i++)
+    {
+        err_vd_scarti.push_back(sqrt(pow(err_vout[i], 2) + pow(fit1.b[0] * err_vout[i], 2)));
+    }
+
+    vector<double> scarti;
+    run_test_lineare(scarti, v_in, v_out, fit1.a[0], fit1.b[0]);
+
+    auto c2 = new TCanvas("c2", "Scarti circuito 1", 1100, 600);
+    c2->SetGrid();
+    c2->SetFillColor(0);
+    TGraphErrors *graph_scarti = new TGraphErrors(into_root(v_in), into_root(scarti), into_root(err_vuoto), into_root(err_vd_scarti));
+
+    graph_scarti->SetMarkerColor(4);
+    graph_scarti->SetLineColor(kAzure - 3);
+    graph_scarti->SetMarkerStyle(20);
+    graph_scarti->SetMarkerSize(0.7);
+    graph_scarti->SetTitle("");
+    graph_scarti->GetXaxis()->SetTitle("Voltaggio V_{D} [mV]");
+    graph_scarti->GetYaxis()->SetTitle("Scarti");
+    graph_scarti->GetXaxis()->SetAxisColor(14);
+    graph_scarti->GetYaxis()->SetAxisColor(14);
+
+    graph_scarti->Draw("AP");
+
+    TLine *line = new TLine(23, 0, 2115, 0);
+    line->SetLineStyle(2);
+    line->SetLineColor(kRed);
+    line->SetLineColor(kRed);
+    line->Draw("same");
+
+    TLegend *legends = new TLegend(0.15, 0.15, 0.5, 0.3);
+    legends->AddEntry(graph_scarti, "Dati sperimentali con errore", "P");
+    legends->AddEntry(fit_sin, "retta Y=0", "L");
+    legends->SetTextSize(0.04);
+    legends->SetBorderSize(1);
+    legends->Draw();
 }
