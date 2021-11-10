@@ -151,7 +151,7 @@ void circ_4()
     vector<double> err_vd_scarti;
     for (int i = 0; i < err_vout.size(); i++)
     {
-        err_vd_scarti.push_back(sqrt(pow(err_vout[i], 2) + pow(fit1.b[0] * err_vout[i], 2)));
+        err_vd_scarti.push_back(sqrt(pow(err_vout[i], 2) + pow(fit1.b[0] * err_vin[i], 2)));
     }
 
     vector<double> scarti;
