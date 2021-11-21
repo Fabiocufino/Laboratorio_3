@@ -121,11 +121,14 @@ void circ_2()
      {
           ampl.push_back(20 * log10(v_out[i] / v_in[i]));
           double err_amplitude = sqrt((400 * pow(err_vin[i], 2)) / (pow(v_in[i], 2) * pow(log(10), 2)) + (400 * pow(err_vout[i], 2)) / (pow(v_out[i], 2) * pow(log(10), 2)));
+          double err_amplitude_2 = sqrt(pow(20.0 / (v_out[i] * log(10)) * err_vout[i], 2) +
+                                        pow(20.0 / (v_in[i] * log(10)) * err_vin[i], 2));
           err_ampl.push_back(err_amplitude); //DA FARE
-                                             //ampl_th.push_back(20 * log10((rf * 2 * M_PI * freq[i] * c2) / (sqrt(pow(r1 * 2 * M_PI * freq[i] * c2, 2) + 1))));
+          //ampl_th.push_back(20 * log10((rf * 2 * M_PI * freq[i] * c2) / (sqrt(pow(r1 * 2 * M_PI * freq[i] * c2, 2) + 1))));
+          cout << err_amplitude << "\t" << err_amplitude_2 << endl;
      }
 
-     vector<double> err_freq(err_vin.size(),0);
+     vector<double> err_freq(err_vin.size(), 0);
      //------------------------------------------INIZIO GRAFCIO E CALCOLO PARAMETRI---------------
      auto canvas1 = new TCanvas("c1", "Circuito 1", 1000, 600);
      canvas1->SetGrid();
