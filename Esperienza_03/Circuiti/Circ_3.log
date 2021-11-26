@@ -1,13 +1,21 @@
 Circuit: * \\wsl.localhost\Ubuntu-20.04\home\fabiocufino\Laboratorio_3\Esperienza_03\Circuiti\Circ_3.asc
 
 Direct Newton iteration for .op point succeeded.
+.step x=3300
+.step x=150000
 
+<<<<<<< HEAD
 Date: Tue Nov 23 09:58:12 2021
 Total elapsed time: 0.079 seconds.
+=======
+Date: Wed Nov 24 12:36:33 2021
+Total elapsed time: 0.154 seconds.
+>>>>>>> main
 
 tnom = 27
 temp = 27
 method = modified trap
+<<<<<<< HEAD
 totiter = 2232
 traniter = 2228
 tranpoints = 1115
@@ -18,4 +26,16 @@ fillins = 1
 solver = Normal
 Matrix Compiler1: 694 bytes object code size  0.2/0.1/[0.1]
 Matrix Compiler2: 1.17 KB object code size  0.2/0.2/[0.1]
+=======
+totiter = 2335
+traniter = 2332
+tranpoints = 1167
+accept = 1139
+rejected = 28
+matrix size = 15
+fillins = 6
+solver = Normal
+Matrix Compiler1: 960 bytes object code size  0.6/0.5/[0.3]
+Matrix Compiler2: 1.42 KB object code size  0.4/0.6/[0.4]
+>>>>>>> main
 

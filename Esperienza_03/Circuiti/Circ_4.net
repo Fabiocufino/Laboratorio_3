@@ -1,0 +1,28 @@
+* C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_03\Circuiti\Circ_4.asc
+C2 0 N009 0.1µ
+V1 0 N009 +12
+V2 N001 0 +12
+C1 N001 0 0.1µ
+XU2 N008 N005 N001 N009 N005 level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+Csh1 N008 N003 97p
+Rsh1 N008 0 147.99k
+Rsh2 OUT N005 148.02k
+Csh2 OUT 0 100p
+XU1 0 N002 N001 N009 N003 level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+Rf_pre N003 N002 681.08k
+Cf_pre N003 N002 218p
+Rin N002 N006 55.306k
+V3 N006 0 PULSE(0 -1 0 1n 1n 10u 1m)
+Rpz N008 N003 1530k
+XU3 N007 N004 N001 N009 OUT2 level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+R2a OUT2 N004 133k
+R1a N004 0 10k
+XU4 OUT OUTsh N001 N009 OUTsh level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+R3b N007 0 10k
+R2b N007 N009 880k
+R1b N007 OUTsh 10k
+.tran 180u
+;.step param X 750k 900k 20k
+.lib UniversalOpamp.lib
+.backanno
+.end
