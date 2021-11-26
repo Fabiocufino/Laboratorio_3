@@ -1,22 +1,22 @@
-Circuit: * C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_03\Circuiti\Circ_2.asc
+Circuit: * \\wsl.localhost\Ubuntu-20.04\home\fabiocufino\Laboratorio_3\Esperienza_03\Circuiti\Circ_2.asc
 
-WARNING: Specified period is not longer than the sum of Trise, Tfall, and Ton for vpre_ideal.  Increasing period to 1
+WARNING: Specified period is not longer than the sum of Trise, Tfall, and Ton for vpre_ideal.  Increasing period to 0.01
 Direct Newton iteration for .op point succeeded.
 
-Date: Mon Nov 22 22:21:11 2021
-Total elapsed time: 0.053 seconds.
+Date: Tue Nov 23 09:36:55 2021
+Total elapsed time: 0.109 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 2158
-traniter = 2155
-tranpoints = 1075
-accept = 1074
-rejected = 1
-matrix size = 11
-fillins = 1
+totiter = 2154
+traniter = 2150
+tranpoints = 1072
+accept = 1070
+rejected = 2
+matrix size = 10
+fillins = 0
 solver = Normal
-Matrix Compiler1: 468 bytes object code size  0.2/0.2/[0.1]
-Matrix Compiler2: 863 bytes object code size  0.1/0.2/[0.1]
+Matrix Compiler1: 382 bytes object code size  0.2/0.1/[0.1]
+Matrix Compiler2: 762 bytes object code size  0.1/0.1/[0.1]
 
