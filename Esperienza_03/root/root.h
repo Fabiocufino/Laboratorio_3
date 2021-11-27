@@ -117,6 +117,14 @@ void run_test_lineare(vector<double> &scarti, vector<double> &asse_x, vector<dou
         scarti.push_back(asse_y[i] - (a_int + (b_ang * asse_x[i])));
     }
 }
+//Fa il run test per una funzione del tipo y=a* exp(-(b+x)/c)
+void run_test_esponenziale(vector<double> &scarti, vector<double> &asse_x, vector<double> &asse_y, double a, double b, double c)
+{
+    for (int i = 0; i < asse_x.size(); i++)
+    {
+        scarti.push_back(asse_y[i] - (a * exp(-(b + asse_x[i]) / c)));
+    }
+}
 
 //========================================================Parte Grafica per i grafici=======================
 void informazioni_fit_lineare(TPaveStats *ptstats1, TText *ptstats_LaTex1, string chi_s, string dof, string par_0, string err_par_0, string par_1, string err_par_1, string pear, string stu, string sigma_p, string title = "")

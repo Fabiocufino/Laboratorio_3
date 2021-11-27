@@ -1,8 +1,8 @@
-void c1()
+void circ_1_3()
 {
 //=========Macro generated from canvas: c1/Circuito 1_3
-//=========  (Sat Nov 27 15:38:54 2021) by ROOT version 6.24/02
-   TCanvas *c1 = new TCanvas("c1", "Circuito 1_3",468,206,1132,651);
+//=========  (Sat Nov 27 15:56:01 2021) by ROOT version 6.24/02
+   TCanvas *c1 = new TCanvas("c1", "Circuito 1_3",326,673,1181,690);
    c1->Range(0,0,1,1);
    c1->SetFillColor(0);
    c1->SetBorderMode(0);
@@ -13,7 +13,7 @@ void c1()
    TPad *pad1 = new TPad("pad1", "This is pad1",0.005,0.02,0.99,0.97);
    pad1->Draw();
    pad1->cd();
-   pad1->Range(-1.933052e-11,-619.367,2.211768e-10,879.5849);
+   pad1->Range(-1.440299e-11,-633.324,2.16484e-10,879.5854);
    pad1->SetFillColor(0);
    pad1->SetBorderMode(0);
    pad1->SetBorderSize(2);
@@ -82,19 +82,20 @@ void c1()
    gre->SetMarkerSize(0.7);
    
    TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",100,0,2.077156e-10);
-   Graph_Graph01001->SetMinimum(62.5361);
-   Graph_Graph01001->SetMaximum(874.7827);
+   Graph_Graph01001->SetMinimum(54.92867);
+   Graph_Graph01001->SetMaximum(874.7386);
    Graph_Graph01001->SetDirectory(0);
    Graph_Graph01001->SetStats(0);
 
    ci = TColor::GetColor("#000099");
    Graph_Graph01001->SetLineColor(ci);
-   Graph_Graph01001->GetXaxis()->SetTitle("Quantità di carica [uC (?)]");
+   Graph_Graph01001->GetXaxis()->SetTitle("Q_{in} [uC]");
+   Graph_Graph01001->GetXaxis()->SetRange(3,98);
    Graph_Graph01001->GetXaxis()->SetAxisColor(14);
    Graph_Graph01001->GetXaxis()->SetLabelFont(42);
    Graph_Graph01001->GetXaxis()->SetTitleOffset(1);
    Graph_Graph01001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitle("V_{pre}^{MAX} [V]");
+   Graph_Graph01001->GetYaxis()->SetTitle("V_{pre}^{MAX} [mV]");
    Graph_Graph01001->GetYaxis()->SetAxisColor(14);
    Graph_Graph01001->GetYaxis()->SetLabelFont(42);
    Graph_Graph01001->GetYaxis()->SetTitleFont(42);
@@ -129,15 +130,15 @@ void c1()
    gre->GetListOfFunctions()->Add(retta1002);
    gre->Draw("ap");
    
-   TPaveStats *ptstats = new TPaveStats(0.1139436,0.7295195,0.4415023,0.982151,"brNDC");
+   TPaveStats *ptstats = new TPaveStats(0.08964407,0.7229125,0.4547474,0.9856747,"brNDC");
    ptstats->SetName("stats");
    ptstats->SetBorderSize(1);
    ptstats->SetFillColor(0);
    ptstats->SetTextAlign(12);
    ptstats->SetTextFont(22);
    TText *ptstats_LaTex = ptstats->AddText("Fit lineare sui dati");
-   ptstats_LaTex->SetTextSize(0.03320301);
-   ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf =0.480044/8.000000");
+   ptstats_LaTex->SetTextSize(0.03453446);
+   ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf =0.480000/8");
    ptstats_LaTex = ptstats->AddText("a        = 8.239461#pm12.981189");
    ptstats_LaTex = ptstats->AddText("b        = 4.507e+12#pm1.326e+11");
    ptstats_LaTex = ptstats->AddText("Pearson        = 0.999721");
@@ -147,7 +148,7 @@ void c1()
    ptstats->SetOptFit(111);
    ptstats->Draw();
    
-   TLegend *leg = new TLegend(0.6998871,0.4878719,0.9297885,0.5885584,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.672421,0.4787185,0.9399611,0.606865,NULL,"brNDC");
    leg->SetBorderSize(1);
    leg->SetTextSize(0.04);
    leg->SetLineColor(1);
@@ -178,7 +179,7 @@ void c1()
    c1->cd();
   
 // ------------>Primitives in pad: pad2
-   TPad *pad2 = new TPad("pad2", "This is pad2",0.004008016,0.003478261,0.98998,0.3704348);
+   TPad *pad2 = new TPad("pad2", "This is pad2",0.005,0.02,0.99,0.37);
    pad2->Draw();
    pad2->cd();
    pad2->Range(-1.59464e-11,-65.25166,2.141389e-10,60.88147);
@@ -254,7 +255,6 @@ void c1()
 
    ci = TColor::GetColor("#000099");
    Graph_Graph01003->SetLineColor(ci);
-   Graph_Graph01003->GetXaxis()->SetAxisColor(14);
    Graph_Graph01003->GetXaxis()->SetLabelFont(42);
    Graph_Graph01003->GetXaxis()->SetLabelSize(0.09);
    Graph_Graph01003->GetXaxis()->SetTitleOffset(1);
@@ -273,7 +273,28 @@ void c1()
    
    gre->Draw("ap");
    
-   leg = new TLegend(0.101626,0.7298578,0.2682927,0.8720379,NULL,"brNDC");
+   TF1 *z1003 = new TF1("z","pol1",0,10, TF1::EAddToList::kDefault);
+   z1003->SetFillColor(19);
+   z1003->SetFillStyle(0);
+
+   ci = TColor::GetColor("#ff0000");
+   z1003->SetLineColor(ci);
+   z1003->SetLineWidth(2);
+   z1003->SetLineStyle(2);
+   z1003->GetXaxis()->SetLabelFont(42);
+   z1003->GetXaxis()->SetTitleOffset(1);
+   z1003->GetXaxis()->SetTitleFont(42);
+   z1003->GetYaxis()->SetLabelFont(42);
+   z1003->GetYaxis()->SetTitleFont(42);
+   z1003->SetParameter(0,0);
+   z1003->SetParError(0,0);
+   z1003->SetParLimits(0,0,0);
+   z1003->SetParameter(1,0);
+   z1003->SetParError(1,0);
+   z1003->SetParLimits(1,0,0);
+   z1003->Draw("lsame");
+   
+   leg = new TLegend(0.1094492,0.7162191,0.2506684,0.8451128,NULL,"brNDC");
    leg->SetBorderSize(1);
    leg->SetTextSize(0.08447205);
    leg->SetLineColor(1);

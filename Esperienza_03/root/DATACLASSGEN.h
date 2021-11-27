@@ -88,17 +88,16 @@ void DataContainerGen::dump(vector<int> cols_to_print)
     }
 };
 
-void DataContainerGen::err_oscilloscopio(int col_fondoscala, int colonna_v, vector<double> &vec, bool pp = false)
+void DataContainerGen::err_oscilloscopio(int col_fondoscala, int colonna_v, vector<double> &vec, bool tempi = false)
 {
     int uniforme = 6; // Da cambiare
     for (int j = 0; j < tabella[0].size(); j++)
     {
-        if (pp == true)
+        if (tempi == true)
         {
-            vec.push_back(sqrt(2.) * sqrt(pow(1. / 10. * 1. / sqrt(uniforme) * tabella[col_fondoscala][j], 2) +
-                                          pow(3. / 100. * tabella[colonna_v][j] / sqrt(uniforme), 2)));
+            vec.push_back(sqrt(pow(1. / 10. * 1. / sqrt(uniforme) * tabella[col_fondoscala][j], 2)));
         }
-        else if (pp == false)
+        else if (tempi == false)
         {
 
             vec.push_back(sqrt(pow(1. / 10. * 1. / sqrt(uniforme) * tabella[col_fondoscala][j], 2) +
