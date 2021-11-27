@@ -1,0 +1,14 @@
+* C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_03\Circuiti\Circ_1.asc
+C2 0 N002 0.1µ
+V1 0 N002 +15
+V2 N001 0 +15
+Rin IN A 55.31k
+Rf_pre OUT A 681.1k
+C1 N001 0 0.1µ
+XU2 0 A N001 N002 OUT level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+Vin IN 0 PULSE(0 -1 0 1n 1n 5u)
+Cf_pre OUT A 218p
+.tran 1000u
+.lib UniversalOpamp.lib
+.backanno
+.end
