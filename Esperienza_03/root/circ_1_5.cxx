@@ -11,6 +11,7 @@
 #include "TGraphErrors.h"
 #include <vector>
 #include <fstream>
+#include "TLine.h"
 
 #include "DATACLASSGEN.h"
 #include "root.h"
@@ -81,9 +82,8 @@ void circ_1_5()
         amp_simul.push_back(v_out_s[i] - v_in_s[i]);
     }
 
-
     TGraph *fileInput_simul = new TGraph(into_root(f_sim), into_root(amp_simul));
-    fileInput_simul->SetMarkerColor(kAzure -4);
+    fileInput_simul->SetMarkerColor(kAzure - 4);
     fileInput_simul->SetMarkerStyle(24);
     fileInput_simul->SetMarkerSize(0.7);
     fileInput_simul->SetTitle("");
@@ -93,9 +93,36 @@ void circ_1_5()
     fileInput_simul->GetYaxis()->SetAxisColor(14);
     fileInput_simul->Draw("Psame");
 
+    //Teorico
+    vector<double> amp_teor;
+    vector<double> f_teor;
+    double tau = 148. * pow(10, -6); //us
+    double R = (681.) * pow(10, 3);
+    double R1 = 55.31 * pow(10, 3);
+    for (int i = 0; i < f.size(); i++)
+    {
+        f_teor.push_back(f[i]);
+        double real = (-1. / tau) / ((-pow(2. * M_PI * f[i], 2.) - (1. / pow(tau, 2.))));
+        double imm = 2. * M_PI * f[i] / ((-pow(2. * M_PI * f[i], 2.) - (1. / pow(tau, 2.))));
+        amp_teor.push_back(-20. * log10(R1) + 20. * log10((R / tau) * (sqrt(pow(real, 2.) + pow(imm, 2.)))));
+    }
+
+    TGraph *fileInput_teor = new TGraph(into_root(f_teor), into_root(amp_teor));
+    fileInput_teor->SetLineColor(kRed);
+    fileInput_teor->SetLineStyle(2);
+    fileInput_teor->SetLineWidth(2);
+    fileInput_teor->Draw("Lsame");
+
+    //Plotto la freuenza relativa al tau
+    double f_tau = (1. / tau );
+    TLine *max = new TLine(f_tau, -40, f_tau, 30);
+    max->SetLineColor(kBlack);
+    max->Draw("same");
+
     TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
     legend->AddEntry(fileInput, "Dati Sperimentali con errore", "P");
     legend->AddEntry(fileInput_simul, "Dati Simulati", "P");
+    legend->AddEntry(fileInput_teor, "Previsione Teorica", "L");
     legend->SetTextSize(0.04);
     legend->SetBorderSize(1);
     legend->Draw();
