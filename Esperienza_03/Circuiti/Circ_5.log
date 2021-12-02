@@ -1,41 +1,21 @@
 Circuit: * C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_03\Circuiti\Circ_5.asc
 
 Direct Newton iteration for .op point succeeded.
-.step x=500
-.step x=1000
-.step x=1500
-.step x=2000
-.step x=2500
-.step x=3000
-.step x=3500
-.step x=4000
-.step x=4500
-.step x=5000
-.step x=5500
-.step x=6000
-.step x=6500
-.step x=7000
-.step x=7500
-.step x=8000
-.step x=8500
-.step x=9000
-.step x=9500
-.step x=10000
 
-Date: Fri Nov 26 09:09:17 2021
-Total elapsed time: 0.748 seconds.
+Date: Thu Dec 02 22:27:08 2021
+Total elapsed time: 0.073 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 2211
-traniter = 2208
-tranpoints = 1105
-accept = 1095
-rejected = 10
+totiter = 2279
+traniter = 2276
+tranpoints = 1139
+accept = 1128
+rejected = 11
 matrix size = 19
 fillins = 11
 solver = Normal
-Matrix Compiler1: 1.24 KB object code size  0.3/0.1/[0.1]
-Matrix Compiler2: 2.08 KB object code size  0.2/0.2/[0.1]
+Matrix Compiler1: 1.40 KB object code size  0.5/0.3/[0.2]
+Matrix Compiler2: 2.04 KB object code size  0.3/0.4/[0.2]
 
