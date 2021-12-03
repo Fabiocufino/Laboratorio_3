@@ -96,7 +96,7 @@ void circ_1_5()
     //Teorico
     vector<double> amp_teor;
     vector<double> f_teor;
-    double tau = 148. * pow(10, -6); //us
+    double tau = 143.47 * pow(10, -6); //us
     double R = (681.) * pow(10, 3);
     double R1 = 55.31 * pow(10, 3);
     for (int i = 0; i < f.size(); i++)
@@ -114,10 +114,17 @@ void circ_1_5()
     fileInput_teor->Draw("Lsame");
 
     //Plotto la freuenza relativa al tau
-    double f_tau = (1. / tau );
-    TLine *max = new TLine(f_tau, -40, f_tau, 30);
+    double f_tau = (1. / (2 * M_PI * tau));
+    cout << f_tau << endl;
+    TLine *max = new TLine(f_tau, -44, f_tau, 28);
     max->SetLineColor(kBlack);
+    max->SetLineStyle(2);
     max->Draw("same");
+
+    TLatex latex;
+    latex.SetTextSize(0.25);
+    latex.SetTextAlign(13); //align at top
+    latex.DrawLatex(1000, 19, "#it{f_{t}}#approx 1109.3");
 
     TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
     legend->AddEntry(fileInput, "Dati Sperimentali con errore", "P");
