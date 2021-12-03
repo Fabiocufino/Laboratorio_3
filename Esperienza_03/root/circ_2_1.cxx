@@ -26,7 +26,7 @@ double func(double *x, double *par)
 
     double a = par[0];
     double c = par[1];
-    double ex = a * (x[0]) * exp(-(x[0]) / c);
+    double ex = (a / c) * (x[0]) * exp(-(x[0]) / c);
     return ex;
 }
 
@@ -92,4 +92,12 @@ void circ_2_1()
     fileInput_simul->SetMarkerStyle(24);
     fileInput_simul->SetMarkerSize(0.7);
     fileInput_simul->Draw("Psame");
+
+    TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
+    legend->AddEntry(fileInput, "Dati Sperimentali con errore", "P");
+    legend->AddEntry(fileInput_simul, "Dati Simulati", "P");
+    legend->AddEntry(expon, "Fit Dati sperimentali", "L");
+    legend->SetTextSize(0.04);
+    legend->SetBorderSize(1);
+    legend->Draw();
 }
