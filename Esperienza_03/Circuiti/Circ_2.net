@@ -1,18 +1,19 @@
 * Z:\home\fabio\Laboratorio_3\Esperienza_03\Circuiti\Circ_2.asc
-C2 0 N006 0.1µ
-V1 0 N006 +15
+C2 0 N005 0.1µ
+V1 0 N005 +15
 V2 N001 0 +15
 C1 N001 0 0.1µ
-XU2 N005 N002 N001 N006 N002 level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
-Vpre_ideal B 0 PULSE(0 1 0 1n 1n 0.01 1m 2)
-Csh1 N005 B 97p
-Rsh1 N005 0 147.99k
+XU2 N004 N002 N001 N005 N002 level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+Vpre_ideal B 0 PULSE(0 1 0 1n 1n 0.01 1m 2) AC 1
+Csh1 N004 B 97p
+Rsh1 N004 0 147.99k
 Rsh2 N003 N002 148.02k
 Csh2 N003 0 100p
-R1 N004 0 10000000
-C3 N004 0 15p
-C4 N004 N003 15p
-.tran 100u
+R1 N003 0 10000000
+C3 N003 0 15p
+;tran 100u
+;dc Vpre_ideal 10 1000000  dec Vpre_ideal 32 10000
+.ac dec 10 100 1000000
 .lib UniversalOpamp.lib
 .backanno
 .end
