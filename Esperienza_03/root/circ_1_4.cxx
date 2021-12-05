@@ -42,6 +42,16 @@ void circ_1_4()
     vector<double> err_t;
     circ_1_4.err_oscilloscopio(1, 0, err_t);
 
+    vector<int> cols_to_print = {0, 1};
+    circ_1_4.dump(cols_to_print);
+    ///////////////////
+    //printing for latex
+    //////////////////
+    for (int i = 0; i < err_t.size(); i++)
+    {
+        cout << err_t[i] << "\t" << err_v_out[i] << endl;
+    }
+
     TCanvas *c1 = new TCanvas("c1", "Circuito 1_3", 468, 206, 1332, 851);
     c1->Range(0, 0, 1, 1);
     c1->SetFillColor(0);

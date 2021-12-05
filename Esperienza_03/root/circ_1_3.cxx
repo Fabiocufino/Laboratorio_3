@@ -20,10 +20,42 @@ using namespace std;
 void circ_1_3()
 {
     // costanti da excel e logbook
-    double R_in = 55.306 * 1e3;          // KOmh
-    double err_R_in = 0.0228 * 1e3;      // KOhm
-    double v_in = 1020 / 1e3;            // mV
-    double err_v_in = 23.93170839 / 1e3; // mV
+    double R_in = 55.306 * 1e3;                      // Omh
+    double R_f = 681.08e3;                           //ohm
+    double err_R_in = err_res_cap(R_in, 0.07, 8, 1); //0.0228 * 1e3;               // Ohm
+    double err_R_f = err_res_cap(R_f, 0.07, 8, 1);   //ohm
+    double v_in = 1.020;                             // V
+    double err_v_in = err_osc_v(v_in, 0.500);        // V
+    double t_0 = 5e-6;                               //s
+    double err_t_0 = err_osc_t(1e-6);                //s (cfr excel)
+    double q_in = v_in / R_in * t_0;                 //V/Ohm*us Coulomb
+    double err_q_in = sqrt(pow((err_v_in / R_in) * t_0, 2) +
+                           pow((v_in / R_in) * err_t_0, 2) +
+                           pow((v_in / pow(R_in, 2)) * t_0 * err_R_in, 2));
+    double c_0 = 19e-12;                                          //farad
+    double c_f = (237 - 19) * 1e-12;                              //farad
+    double err_c_f = err_res_cap(c_f * 1e12, 2.5, 15, 1) * 1e-12; //farad
+    double v_pre_out_max = v_in / (R_in * c_f) * t_0;             //volt
+    double err_v_pre_out_max = sqrt(pow((err_v_in / (R_in * c_f)) * t_0, 2) +
+                                    pow((err_t_0 * v_in) / (R_in * c_f), 2) +
+                                    pow(((v_in * err_R_in) / (pow(R_in, 2) * c_f)) * t_0, 2) +
+                                    pow(((v_in * err_c_f) / (pow(c_f, 2) * R_in)) * t_0, 2));
+    double tau_th = R_f * c_f;
+    double err_tau_th = sqrt(pow(err_R_f * c_f, 2) + pow(R_f * err_c_f, 2));
+
+    double v_out_pre_sper = 0.428; //v
+    double err_v_out_pre_sper = err_osc_v(v_out_pre_sper, 0.1);
+
+    /////////////////////
+    //Valori di output
+    cout
+        << "V_0_in[mV]:\t" << v_in * 1e3 << " +- " << err_v_in << endl
+        << "q_in_th[Coulomb]:\t" << q_in << " +- " << err_q_in << endl
+        << "v_pre_max_out[volt]:\t" << v_pre_out_max << " +- " << err_v_pre_out_max << endl
+        << "tau_th[s]\t" << tau_th << " +- " << err_tau_th << endl
+        << "v_out_pre_sper\t" << v_out_pre_sper << " +- " << err_v_out_pre_sper << endl;
+
+    ///////////////////
 
     DataContainerGen circ_1_3;
     circ_1_3.read("../Dati/1_3.txt", 3);
@@ -31,8 +63,13 @@ void circ_1_3()
     vector<double> &v_out = circ_1_3.tabella[1];
     vector<double> &fs_v_out = circ_1_3.tabella[2];
 
-
     double err_t = (1. / 10.) * 5 * (1. / sqrt(6.)) * 1e-6;
+    vector<double> err_v_out;
+    circ_1_3.err_oscilloscopio(2, 1, err_v_out);
+    circ_1_3.add_col(err_v_out); //per stampa per latex
+    vector<int> cols_to_print = {0, 1, 3, 2};
+    circ_1_3.dump(cols_to_print);
+
     TCanvas *c1 = new TCanvas("c1", "Circuito 1_3", 468, 206, 1332, 851);
     c1->Range(0, 0, 1, 1);
     c1->SetFillColor(0);
@@ -67,8 +104,6 @@ void circ_1_3()
                                 pow(v_in * err_t / R_in, 2)));
     }
 
-    vector<double> err_v_out;
-    circ_1_3.err_oscilloscopio(2, 1, err_v_out);
     TGraphErrors *fileInput = new TGraphErrors(into_root(Q_in), into_root(v_out), into_root(err_Q_in), into_root(err_v_out));
 
     fileInput->SetMarkerColor(4);

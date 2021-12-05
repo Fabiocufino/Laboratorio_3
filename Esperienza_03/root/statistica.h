@@ -450,3 +450,10 @@ double tstudent_campioni(vector<double> x, vector<double> y)
     double t = (media(x) - media(y)) / (dstd_cumulativa(x, y) * sqrt(1. / x.size() + 1. / y.size()));
     return t;
 }
+
+double err_res_cap(double resistenza, double perc, double digit, double lsd)
+{
+    double gain = perc / 100. * resistenza * 1. / sqrt(3);
+    double read = digit * lsd * 1. / sqrt(3);
+    return sqrt(pow(gain, 2) + pow(read, 2));
+}

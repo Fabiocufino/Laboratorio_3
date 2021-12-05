@@ -32,6 +32,14 @@ double func(double *x, double *par)
 
 void circ_2_1()
 {
+    double v_0 = 1.02; //volt
+    double v_sh = v_0 / exp(1);
+    double err_v_0 = err_osc_v(v_0, 0.200); //volt
+    double err_v_sh = err_v_0 / exp(1);
+
+    cout << "v_0:\t" << v_0 << " +- " << err_v_0 << endl
+         << "v_e:\t" << v_sh << " +_ " << err_v_sh << endl;
+
     DataContainerGen circ_2_1;
     circ_2_1.read("../Dati/2_1.txt", 4);
     vector<double> &t = circ_2_1.tabella[0];
@@ -99,7 +107,6 @@ void circ_2_1()
     teor->SetParameter(1, 14.3502);
     teor->Draw("same");
 
-
     TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
     legend->AddEntry(fileInput, "Dati Sperimentali con errore", "P");
     legend->AddEntry(fileInput_simul, "Dati Simulati", "P");
@@ -108,5 +115,4 @@ void circ_2_1()
     legend->SetTextSize(0.04);
     legend->SetBorderSize(1);
     legend->Draw();
-
 }

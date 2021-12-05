@@ -11,9 +11,10 @@ class DataContainerGen
 {
 public:
     void read(string filename, int n_col);
-    void dump(vector<int> cols_to_print);
+    void dump(vector<int> &cols_to_print);
 
     void err_oscilloscopio(int, int, vector<double> &vec, bool pp = false);
+    void add_col(vector<double> &vec);
     vector<vector<double>> tabella;
 
 private:
@@ -58,9 +59,10 @@ void DataContainerGen::read(string filename, int n_col)
     }
 }
 
-void DataContainerGen::dump(vector<int> cols_to_print)
+void DataContainerGen::dump(vector<int> &cols_to_print)
 {
-    if (cols_to_print.size() != 0)
+    cout << cols_to_print.size() << endl;
+    if (!(cols_to_print.size() == 0))
     {
         for (int j = 0; j < tabella[0].size(); j++)
         {
@@ -105,3 +107,26 @@ void DataContainerGen::err_oscilloscopio(int col_fondoscala, int colonna_v, vect
         }
     }
 };
+
+void DataContainerGen::add_col(vector<double> &vec)
+{
+    if (vec.size() == tabella[0].size())
+    {
+        tabella.push_back(vec);
+    }
+}
+
+//calcolo errori per misure singole da oscilloscopio
+double err_osc_v(double voltage, double fsv)
+{
+    double k = 0.4; // dist trinagolare
+    // contributo di scala sigma_gain = 0.03*k*V_mis  e  (b) contributo di lettura sigma_read = 0.1*V/div*k
+    return sqrt(pow(0.03 * k * voltage, 2) + pow(0.1 * fsv * k, 2));
+}
+
+double err_osc_t(double fst)
+{
+    double k = 0.4; //dist triangolare
+    //Per i tempi: solo contributo di lettura sigma_read = 0.1*Sec/div*k
+    return 0.1 * fst * k;
+}
