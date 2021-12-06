@@ -127,6 +127,9 @@ void circ_1_3()
     retta->SetParameter(1, 4.5e12);
     fit(retta, 2, fileInput, Q_in, v_out, Lin);
 
+    cout << endl
+         << "c_f_from_fit:\t" << 1.0 / Lin.b[0] << "\t" << Lin.err_b[0] / pow(Lin.b[0], 2) << endl;
+
     TPaveStats *info;
     TText *scri;
     informazioni_fit_lineare(info,
