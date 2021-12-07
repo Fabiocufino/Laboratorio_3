@@ -107,11 +107,29 @@ void circ_2_1()
     teor->SetParameter(1, 14.3502);
     teor->Draw("same");
 
+    //
+    DataContainerGen circ_2_1_teor;
+    circ_2_1_teor.read("../Dati/2_1_teor.txt", 2);
+    vector<double> &t_teor = circ_2_1_teor.tabella[0];
+    vector<double> &v_out_teor = circ_2_1_teor.tabella[1];
+
+    vector<double> t_teor_sec;
+    for (int i = 0; i < t_teor.size(); i++)
+    {
+        t_teor_sec.push_back(t_teor[i] * 1e6);
+    }
+
+    TGraph *fileInput_teor = new TGraph(into_root(t_teor_sec), into_root(v_out_teor));
+    fileInput_teor->SetMarkerColor(kGreen - 4);
+    fileInput_teor->SetMarkerStyle(24);
+    fileInput_teor->SetMarkerSize(0.7);
+    fileInput_teor->Draw("Psame");
+
     TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
     legend->AddEntry(fileInput, "Dati Sperimentali con errore", "P");
     legend->AddEntry(fileInput_simul, "Dati Simulati", "P");
     legend->AddEntry(expon, "Fit Dati sperimentali", "L");
-    legend->AddEntry(teor, "Curva di aspettazione teorica", "L");
+    legend->AddEntry(fileInput_teor, "Curva di aspettazione teorica", "L");
     legend->SetTextSize(0.04);
     legend->SetBorderSize(1);
     legend->Draw();
