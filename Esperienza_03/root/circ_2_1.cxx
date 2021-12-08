@@ -25,9 +25,10 @@ double func(double *x, double *par)
 {
 
     double a = par[0];
-    double c = par[1];
-    double ex = (a / c) * (x[0]) * exp(-(x[0]) / c);
-    return ex;
+    double tau_1 = par[1];
+    double tau_2 = par[2];
+    double v_out_teor = (a * (exp(-x[0] / tau_1) - exp(-x[0] / tau_2)) * tau_1) / (tau_1 - tau_2);
+    return v_out_teor;
 }
 
 void circ_2_1()
@@ -72,16 +73,17 @@ void circ_2_1()
     fileInput->Draw("AP");
 
     fit_results Exp;
-    TF1 *expon = new TF1("expon", func, 0, 150, 2);
+    TF1 *expon = new TF1("expon", func, 0, 150, 3);
     expon->SetLineColor(kRed);
     expon->SetLineStyle(2);
     expon->SetLineWidth(2);
-    expon->SetParameter(0, 0.0724);
-    expon->SetParameter(1, 14.3);
+    expon->SetParameter(0, 1);
+    expon->SetParLimits(1,13,15);
+     expon->SetParLimits(2,14,19);
     //expon->Draw("Lsame");
     //expon->SetParLimits(0, 0.01, .1);
     //expon->SetParLimits(1, 14, 15);
-    fit(expon, 2, fileInput, t, v_out, Exp);
+    fit(expon, 3, fileInput, t, v_out, Exp);
 
     //Simulazione
     DataContainerGen circ_2_1_simul;
@@ -101,11 +103,7 @@ void circ_2_1()
     fileInput_simul->SetMarkerSize(0.7);
     fileInput_simul->Draw("Psame");
 
-    //Teorica
-    TF1 *teor = new TF1("teor", func, 0, 100, 2);
-    teor->SetParameter(0, 1);
-    teor->SetParameter(1, 14.3502);
-    teor->Draw("same");
+
 
     //
     DataContainerGen circ_2_1_teor;
