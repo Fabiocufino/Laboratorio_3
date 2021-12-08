@@ -29,10 +29,15 @@ void circ_2_2()
     vector<double> &v_out = circ_2_2.tabella[3];
     vector<double> &fs_v_out = circ_2_2.tabella[4];
 
-    vector<double> err_v_out;
-    circ_2_2.err_oscilloscopio(4, 3, err_v_out);
     vector<double> err_vin;
     circ_2_2.err_oscilloscopio(2, 1, err_vin);
+    circ_2_2.add_col(err_vin);
+
+    vector<double> err_v_out;
+    circ_2_2.err_oscilloscopio(4, 3, err_v_out);
+    circ_2_2.add_col(err_v_out);
+    vector<int> cols_to_print = {0,1,};
+    circ_2_2.dump(cols_to_print);
 
     vector<double> err_f(err_v_out.size(), 0);
 
@@ -74,13 +79,13 @@ void circ_2_2()
     vector<double> &f_sim = circ_2_2_simul.tabella[0];
     vector<double> &v_in_s = circ_2_2_simul.tabella[1];
     vector<double> &v_out_s = circ_2_2_simul.tabella[2];
-    
+
     vector<double> amp_simul;
     for (int i = 0; i < v_out_s.size(); i++)
     {
         amp_simul.push_back(v_out_s[i] - v_in_s[i]);
     }
-    
+
     TGraph *fileInput_simul = new TGraph(into_root(f_sim), into_root(amp_simul));
     fileInput_simul->SetMarkerColor(kAzure - 4);
     fileInput_simul->SetMarkerStyle(24);

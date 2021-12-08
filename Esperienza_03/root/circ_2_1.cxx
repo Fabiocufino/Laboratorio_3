@@ -50,6 +50,9 @@ void circ_2_1()
 
     vector<double> err_v;
     circ_2_1.err_oscilloscopio(3, 2, err_v);
+    //circ_2_1.add_col(err_v);
+    //vector<int> cols_to_print = {};
+    //circ_2_1.dump(cols_to_print);
     vector<double> err_t;
     circ_2_1.err_oscilloscopio(1, 0, err_t, true);
 
@@ -78,8 +81,8 @@ void circ_2_1()
     expon->SetLineStyle(2);
     expon->SetLineWidth(2);
     expon->SetParameter(0, 1);
-    expon->SetParLimits(1,13,15);
-     expon->SetParLimits(2,14,19);
+    expon->SetParLimits(1, 13, 15);
+    expon->SetParLimits(2, 14, 19);
     //expon->Draw("Lsame");
     //expon->SetParLimits(0, 0.01, .1);
     //expon->SetParLimits(1, 14, 15);
@@ -102,8 +105,6 @@ void circ_2_1()
     fileInput_simul->SetMarkerStyle(24);
     fileInput_simul->SetMarkerSize(0.7);
     fileInput_simul->Draw("Psame");
-
-
 
     //
     DataContainerGen circ_2_1_teor;
