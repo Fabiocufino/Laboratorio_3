@@ -18,8 +18,8 @@
 #include "fit_results.h"
 
 using namespace std;
-//Pendo di fare il fit della forma d'onda che ci deve usccire
-//con quella che abiamo preso con la pennetta
+// Pendo di fare il fit della forma d'onda che ci deve usccire
+// con quella che abiamo preso con la pennetta
 
 double func(double *x, double *par)
 {
@@ -33,13 +33,15 @@ double func(double *x, double *par)
 
 void circ_2_1()
 {
-    double v_0 = 1.02; //volt
+    double v_0 = 1.02; // volt
     double v_sh = v_0 / exp(1);
-    double err_v_0 = err_osc_v(v_0, 0.200); //volt
+    double err_v_0 = err_osc_v(v_0, 0.200); // volt
     double err_v_sh = err_v_0 / exp(1);
 
     cout << "v_0:\t" << v_0 << " +- " << err_v_0 << endl
          << "v_e:\t" << v_sh << " +_ " << err_v_sh << endl;
+
+    cout << "v_10tau(mV);\t" << err_osc_v(0, 50) << endl;
 
     DataContainerGen circ_2_1;
     circ_2_1.read("../Dati/2_1.txt", 4);
@@ -77,15 +79,28 @@ void circ_2_1()
     expon->SetLineColor(kRed);
     expon->SetLineStyle(2);
     expon->SetLineWidth(2);
-    expon->SetParameter(0, 1);
-    expon->SetParLimits(1,13,15);
-     expon->SetParLimits(2,14,19);
-    //expon->Draw("Lsame");
-    //expon->SetParLimits(0, 0.01, .1);
-    //expon->SetParLimits(1, 14, 15);
+    expon->SetParLimits(0, 1.01,1.03);
+    expon->SetParLimits(1, 13, 25);
+    expon->SetParLimits(2, 14, 25);
+    // expon->Draw("Lsame");
+    // expon->SetParLimits(0, 0.01, .1);
+    // expon->SetParLimits(1, 14, 15);
     fit(expon, 3, fileInput, t, v_out, Exp);
 
-    //Simulazione
+    TPaveStats *stat;
+    TText *ptstats_LaTex1;
+    informazioni_fit_3_par(stat,
+                           ptstats_LaTex1,
+                           to_string(Exp.chi_square[0]),
+                           to_string(Exp.dof[0]),
+                           to_string(Exp.a[0]),
+                           to_string(Exp.err_a[0]),
+                           to_string(Exp.b[0]),
+                           to_string(Exp.err_b[0]),
+                           to_string(Exp.c[0]),
+                           to_string(Exp.err_c[0]), "Risultati Fit");
+
+    // Simulazione
     DataContainerGen circ_2_1_simul;
     circ_2_1_simul.read("../Dati/2_1_simul.txt", 3);
     vector<double> &t_sim = circ_2_1_simul.tabella[0];
@@ -103,9 +118,7 @@ void circ_2_1()
     fileInput_simul->SetMarkerSize(0.7);
     fileInput_simul->Draw("Psame");
 
-
-
-    //
+    // Teorica
     DataContainerGen circ_2_1_teor;
     circ_2_1_teor.read("../Dati/2_1_teor.txt", 2);
     vector<double> &t_teor = circ_2_1_teor.tabella[0];
@@ -118,10 +131,9 @@ void circ_2_1()
     }
 
     TGraph *fileInput_teor = new TGraph(into_root(t_teor_sec), into_root(v_out_teor));
-    fileInput_teor->SetMarkerColor(kGreen - 4);
-    fileInput_teor->SetMarkerStyle(24);
-    fileInput_teor->SetMarkerSize(0.7);
-    fileInput_teor->Draw("Psame");
+    fileInput_teor->SetLineColor(kGreen - 4);
+    fileInput_teor->SetLineWidth(2);
+    fileInput_teor->Draw("Lsame");
 
     TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
     legend->AddEntry(fileInput, "Dati Sperimentali con errore", "P");
