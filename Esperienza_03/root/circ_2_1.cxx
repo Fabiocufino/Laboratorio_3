@@ -31,6 +31,15 @@ double func(double *x, double *par)
     return v_out_teor;
 }
 
+void run_test_tau(vector<double> &scarti, vector<double> &asse_x, vector<double> &asse_y, double a, double tau_1, double tau_2)
+{
+    for (int i = 0; i < asse_x.size(); i++)
+    {
+        (a * (exp(-asse_x[i] / tau_1) - exp(-asse_x[i] / tau_2)) * tau_1) / (tau_1 - tau_2);
+        scarti.push_back(asse_y[i] - ((a * (exp(-asse_x[i] / tau_1) - exp(-asse_x[i] / tau_2)) * tau_1) / (tau_1 - tau_2)));
+    }
+}
+
 void circ_2_1()
 {
     double v_0 = 1.02; // volt
@@ -52,9 +61,9 @@ void circ_2_1()
 
     vector<double> err_v;
     circ_2_1.err_oscilloscopio(3, 2, err_v);
-    //circ_2_1.add_col(err_v);
-    //vector<int> cols_to_print = {};
-    //circ_2_1.dump(cols_to_print);
+    // circ_2_1.add_col(err_v);
+    // vector<int> cols_to_print = {};
+    // circ_2_1.dump(cols_to_print);
     vector<double> err_t;
     circ_2_1.err_oscilloscopio(1, 0, err_t, true);
 
@@ -82,21 +91,12 @@ void circ_2_1()
     expon->SetLineColor(kRed);
     expon->SetLineStyle(2);
     expon->SetLineWidth(2);
-<<<<<<< HEAD
-    expon->SetParLimits(0, 1.01,1.03);
+    expon->SetParLimits(0, 1.01, 1.03);
     expon->SetParLimits(1, 13, 25);
     expon->SetParLimits(2, 14, 25);
     // expon->Draw("Lsame");
     // expon->SetParLimits(0, 0.01, .1);
     // expon->SetParLimits(1, 14, 15);
-=======
-    expon->SetParameter(0, 1);
-    expon->SetParLimits(1, 13, 15);
-    expon->SetParLimits(2, 14, 19);
-    //expon->Draw("Lsame");
-    //expon->SetParLimits(0, 0.01, .1);
-    //expon->SetParLimits(1, 14, 15);
->>>>>>> main
     fit(expon, 3, fileInput, t, v_out, Exp);
 
     TPaveStats *stat;
@@ -130,11 +130,7 @@ void circ_2_1()
     fileInput_simul->SetMarkerSize(0.7);
     fileInput_simul->Draw("Psame");
 
-<<<<<<< HEAD
     // Teorica
-=======
-    //
->>>>>>> main
     DataContainerGen circ_2_1_teor;
     circ_2_1_teor.read("../Dati/2_1_teor.txt", 2);
     vector<double> &t_teor = circ_2_1_teor.tabella[0];
@@ -159,4 +155,45 @@ void circ_2_1()
     legend->SetTextSize(0.04);
     legend->SetBorderSize(1);
     legend->Draw();
+
+    //--------------------------------------------------------------SCARTI----------------------------------------------
+    vector<double> scarti;
+    run_test_tau(scarti, t, v_out, Exp.a[0], Exp.b[0], Exp.c[0]);
+    vector<double> err_scarti;
+    for (int i = 0; i < scarti.size(); i++)
+    {
+        err_scarti.push_back(sqrt(pow(err_v[i], 2) + pow((Exp.a[0] * (-(exp(-t[i] / Exp.b[0]) / Exp.b[0]) + (exp(-t[i] / Exp.c[0]) / Exp.c[0])) * Exp.b[0]) / (Exp.b[0] - Exp.c[0]), 2) * pow(err_t[i], 2)));
+    }
+    vector<double> err_zero(err_scarti.size(), 0);
+
+    TCanvas *c2 = new TCanvas("c1", "Circuito 2_1", 468, 206, 1332, 851);
+    c2->Range(0, 0, 1, 1);
+    c2->SetFillColor(0);
+    c2->SetBorderMode(0);
+    c2->SetBorderSize(2);
+    c2->SetFrameBorderMode(0);
+
+    TGraphErrors *graph_scarti = new TGraphErrors(into_root(t), into_root(scarti), into_root(err_zero), into_root(err_scarti));
+
+    graph_scarti->SetMarkerColor(kAzure - 3);
+    graph_scarti->SetLineColor(kAzure - 3);
+    graph_scarti->SetMarkerStyle(20);
+    graph_scarti->SetMarkerSize(0.7);
+    graph_scarti->SetTitle("");
+
+    graph_scarti->GetYaxis()->SetTitle("Scarti");
+
+    graph_scarti->Draw("AP");
+
+    TF1 *z = new TF1("z", "pol1", 0, 300);
+    z->SetLineColor(kRed);
+    z->SetLineStyle(2);
+    z->SetLineWidth(2);
+    z->Draw("lsame");
+
+    TLegend *legend2 = new TLegend(0.15, 0.15, 0.5, 0.3);
+    legend2->AddEntry(graph_scarti, "Dati con errore", "P");
+    legend2->SetBorderSize(1);
+
+    legend2->Draw();
 }
