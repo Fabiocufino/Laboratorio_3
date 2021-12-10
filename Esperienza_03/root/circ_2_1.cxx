@@ -49,6 +49,12 @@ void circ_2_1()
 
     cout << "v_0:\t" << v_0 << " +- " << err_v_0 << endl
          << "v_e:\t" << v_sh << " +_ " << err_v_sh << endl;
+    cout << "v_10tau(mV);\t" << err_osc_v(0, 50) << endl;
+    double tau_temp = 15e-6;
+    double err_tau_temp = 1.3e-6;
+    double v_10_tau_th = v_0 * 10.0 * exp(-10);
+    double err_v_10 = err_v_0 * 10 * exp(-10);
+    cout << "v_1otau_th\t:" << v_10_tau_th << "+-" << err_v_10 << endl;
 
     cout << "v_10tau(mV);\t" << err_osc_v(0, 50) << endl;
 
