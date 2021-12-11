@@ -19,6 +19,16 @@
 
 using namespace std;
 
+
+double func(double *x, double *par)
+{
+
+    double a = par[0];
+    double b = par[1];
+    double v_out_teor = (a + b*log10(x[0]));
+    return v_out_teor;
+}
+
 void circ_2_2()
 {
     DataContainerGen circ_2_2;
@@ -36,7 +46,10 @@ void circ_2_2()
     vector<double> err_v_out;
     circ_2_2.err_oscilloscopio(4, 3, err_v_out);
     circ_2_2.add_col(err_v_out);
-    vector<int> cols_to_print = {0,1,};
+    vector<int> cols_to_print = {
+        0,
+        1,
+    };
     circ_2_2.dump(cols_to_print);
 
     vector<double> err_f(err_v_out.size(), 0);
@@ -73,7 +86,14 @@ void circ_2_2()
     fileInput->GetYaxis()->SetAxisColor(14);
     fileInput->Draw("AP");
 
-    //Simulazione
+    fit_results Lin;
+    TF1 *retta = new TF1("retta", func, 0, 100000000,2);
+    retta->SetLineColor(kRed);
+    retta->SetLineStyle(2);
+    retta->SetLineWidth(2);
+    fit(retta, 2, fileInput, f, A, Lin, 22632, 1.06e6);
+
+    // Simulazione
     DataContainerGen circ_2_2_simul;
     circ_2_2_simul.read("../Dati/2_2_simul.txt", 3);
     vector<double> &f_sim = circ_2_2_simul.tabella[0];
@@ -96,26 +116,27 @@ void circ_2_2()
     fileInput_simul->GetXaxis()->SetAxisColor(14);
     fileInput_simul->GetYaxis()->SetAxisColor(14);
     fileInput_simul->Draw("Psame");
+    // Va rifatta con la capacità in parallelo
 
-    //Teorico
+    // Teorico
     TGraph *fileInput_teor = new TGraph("../Dati/2_2_teor.txt");
     fileInput_teor->SetLineColor(kRed);
     fileInput_teor->SetLineStyle(2);
     fileInput_teor->SetLineWidth(2);
     fileInput_teor->Draw("Lsame");
 
-    //Plotto la freuenza relativa al tau
-    //double f_tau = (1. / (2 * M_PI * tau));
-    //cout << f_tau << endl;
-    //TLine *max = new TLine(f_tau, -44, f_tau, 28);
-    //max->SetLineColor(kBlack);
-    //max->SetLineStyle(2);
-    //max->Draw("same");
+    // Plotto la freuenza relativa al tau
+    // double f_tau = (1. / (2 * M_PI * tau));
+    // cout << f_tau << endl;
+    // TLine *max = new TLine(f_tau, -44, f_tau, 28);
+    // max->SetLineColor(kBlack);
+    // max->SetLineStyle(2);
+    // max->Draw("same");
     //
-    //TLatex latex;
-    //latex.SetTextSize(0.25);
-    //latex.SetTextAlign(13); //align at top
-    //latex.DrawLatex(1000, 19, "#it{f_{t}}#approx 1109.3");
+    // TLatex latex;
+    // latex.SetTextSize(0.25);
+    // latex.SetTextAlign(13); //align at top
+    // latex.DrawLatex(1000, 19, "#it{f_{t}}#approx 1109.3");
     //
     TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
     legend->AddEntry(fileInput, "Dati Sperimentali con errore", "P");
