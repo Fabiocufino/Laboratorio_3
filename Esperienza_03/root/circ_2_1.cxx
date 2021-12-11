@@ -37,6 +37,8 @@ void circ_2_1()
     double v_sh = v_0 / exp(1);
     double err_v_0 = err_osc_v(v_0, 0.200); //volt
     double err_v_sh = err_v_0 / exp(1);
+    double v_sh_mis = 338;
+    double err_v_sh_mis = err_osc_v(v_sh_mis, 200);
 
     cout << "v_0:\t" << v_0 << " +- " << err_v_0 << endl
          << "v_e:\t" << v_sh << " +_ " << err_v_sh << endl;
@@ -45,7 +47,7 @@ void circ_2_1()
     double err_tau_temp = 1.3e-6;
     double v_10_tau_th = v_0 * 10.0 * exp(-10);
     double err_v_10 = err_v_0 * 10 * exp(-10);
-    cout << "v_1otau_th\t:" << v_10_tau_th << "+-" << err_v_10 << endl;
+    cout << "v_10tau_th\t:" << v_10_tau_th << "+-" << err_v_10 << endl;
 
     DataContainerGen circ_2_1;
     circ_2_1.read("../Dati/2_1.txt", 4);
