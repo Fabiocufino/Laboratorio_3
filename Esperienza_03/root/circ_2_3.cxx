@@ -21,12 +21,14 @@ using namespace std;
 
 void circ_2_3()
 {
-    double v_max_sh = 131;                         // mv
-    double err_v_max_sh = err_osc_v(v_max_sh, 20); // mv
-    double v_under = 23.2;                         // mv
-    double err_v_under = err_osc_v(v_under, 20);   // mv
-    double t_max = 17;                             // us
-    double err_t_max = err_osc_t(5);               // us
+    double v_max_sh = 131;                             // mv
+    double err_v_max_sh = err_osc_v(v_max_sh, 20);     // mv
+    double v_under = 23.2;                             // mv
+    double err_v_under = err_osc_v(v_under, 20);       // mv
+    double v_under_pz = 0.8;                           // mv
+    double err_v_under_pz = err_osc_v(v_under_pz, 20); // mv
+    double t_max = 17;                                 // us
+    double err_t_max = err_osc_t(5);                   // us
 
     double r_in = 55.306 * 1e3;                      // Omh
     double err_r_in = err_res_cap(r_in, 0.07, 8, 1); // 0.0228 * 1e3;               // Ohm
@@ -53,6 +55,7 @@ void circ_2_3()
 
     cout << "v_max_sh:\t" << v_max_sh << "+-" << err_v_max_sh << endl
          << "v_under:\t" << v_under << "+-" << err_v_under << endl
+         << "v_under_pz:\t" << v_under_pz << "+-" << err_v_under_pz << endl
          << "t_max:\t" << t_max << "+-" << err_t_max << endl
          << "r_pz:\t" << r_pz << "+-" << err_r_pz << endl
          << "r_1:\t" << r_1 << "+-" << err_r_1 << endl

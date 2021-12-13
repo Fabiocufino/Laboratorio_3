@@ -117,6 +117,14 @@ void run_test_lineare(vector<double> &scarti, vector<double> &asse_x, vector<dou
         scarti.push_back(asse_y[i] - (a_int + (b_ang * asse_x[i])));
     }
 }
+//Fa il run test per una retta del tipo a+b*(Log10(x))
+void run_test_lineare_logx(vector<double> &scarti, vector<double> &asse_x, vector<double> &asse_y, double a_int, double b_ang)
+{
+    for (int i = 0; i < asse_x.size(); i++)
+    {
+        scarti.push_back(asse_y[i] - (a_int + (b_ang * log10(asse_x[i]))));
+    }
+}
 //Fa il run test per una funzione del tipo y=a* exp(-(b+x)/c)
 void run_test_esponenziale(vector<double> &scarti, vector<double> &asse_x, vector<double> &asse_y, double a, double b, double c)
 {
