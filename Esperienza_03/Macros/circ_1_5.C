@@ -90,7 +90,7 @@ void circ_1_5()
 
    ci = TColor::GetColor("#000099");
    Graph_Graph01001->SetLineColor(ci);
-   Graph_Graph01001->GetXaxis()->SetTitle("f [kHz]");
+   Graph_Graph01001->GetXaxis()->SetTitle("f [Hz]");
    Graph_Graph01001->GetXaxis()->SetAxisColor(14);
    Graph_Graph01001->GetXaxis()->SetLabelFont(42);
    Graph_Graph01001->GetXaxis()->SetTitleOffset(1);
@@ -224,7 +224,7 @@ void circ_1_5()
 
    ci = TColor::GetColor("#000099");
    Graph_Graph11->SetLineColor(ci);
-   Graph_Graph11->GetXaxis()->SetTitle("f [kHz]");
+   Graph_Graph11->GetXaxis()->SetTitle("f [Hz]");
    Graph_Graph11->GetXaxis()->SetAxisColor(14);
    Graph_Graph11->GetXaxis()->SetLabelFont(42);
    Graph_Graph11->GetXaxis()->SetTitleOffset(1);
@@ -300,7 +300,7 @@ void circ_1_5()
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   TLatex *   tex = new TLatex(261.448,-31.42321,"#it{f_{t}}#approx 1109.3");
+   TLatex *   tex = new TLatex(261.448,-31.42321,"#it{f_{t}}#approx 1109.3 kHz");
    tex->SetTextAlign(13);
    tex->SetTextSize(0.04564315);
    tex->SetLineWidth(2);

@@ -87,8 +87,8 @@ void circ_3_1()
     fileInput->SetMarkerStyle(20);
     fileInput->SetMarkerSize(0.7);
     fileInput->SetTitle("");
-    fileInput->GetXaxis()->SetTitle("Q_{in} [uC]");
-    fileInput->GetYaxis()->SetTitle("V_{pre}^{MAX} [mV]");
+    fileInput->GetXaxis()->SetTitle("Q_{in} [C]");
+    fileInput->GetYaxis()->SetTitle("V_{pre}^{MAX} [V]");
     fileInput->GetXaxis()->SetAxisColor(14);
     fileInput->GetYaxis()->SetAxisColor(14);
 
