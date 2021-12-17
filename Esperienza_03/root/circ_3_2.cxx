@@ -89,7 +89,7 @@ void circ_3_2()
 
     // Simulazione
     DataContainerGen circ_3_2_simul;
-    circ_3_2_simul.read("../Dati/3_2_b_simul.txt", 3);
+    circ_3_2_simul.read("../Dati/3_2_simul.txt", 3);
     vector<double> &f_sim = circ_3_2_simul.tabella[0];
     vector<double> &v_in_s = circ_3_2_simul.tabella[1];
     vector<double> &v_out_s = circ_3_2_simul.tabella[2];
@@ -113,7 +113,7 @@ void circ_3_2()
     // Va rifatta con la capacità in parallelo
 
     // Teorico
-    TGraph *fileInput_teor = new TGraph("../Dati/2_2_teor.txt");
+    TGraph *fileInput_teor = new TGraph("../Dati/3_2_teor_a.txt");
     fileInput_teor->SetLineColor(kRed);
     fileInput_teor->SetLineStyle(2);
     fileInput_teor->SetLineWidth(2);
@@ -121,9 +121,9 @@ void circ_3_2()
 
     // Plotto la freuenza relativa al tau
 
-    double f_tau = 10100;
+    double f_tau = 7180;
     // cout << f_tau << endl;
-    TLine *max = new TLine(f_tau, -55, f_tau, -6.49);
+    TLine *max = new TLine(f_tau, -49, f_tau, 18);
     max->SetLineColor(kBlack);
     max->SetLineStyle(2);
     max->Draw("same");
@@ -131,7 +131,7 @@ void circ_3_2()
     TLatex latex;
     latex.SetTextSize(0.25);
     latex.SetTextAlign(13); // align at top
-    latex.DrawLatex(1000, -30, "#it{f_{t}}#approx 10.1 kHz");
+    latex.DrawLatex(1000, -30, "#it{f_{t}}#approx 7.81 kHz");
     //
     TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
     legend->AddEntry(fileInput, "Dati Sperimentali con errore", "P");

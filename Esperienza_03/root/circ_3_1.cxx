@@ -5,30 +5,24 @@
 #include "TCanvas.h"
 #include <fstream>
 #include <cmath>
-<<<<<<< HEAD
 #include "TFitResult.h"
-=======
-//#include "TFitresult.h"
->>>>>>> main
 #include "TMatrixD.h"
 #include "TVectorD.h"
 #include "TGraphErrors.h"
 #include <vector>
-<<<<<<< HEAD
-=======
 #include <fstream>
 #include "TLine.h"
->>>>>>> main
 
 #include "DATACLASSGEN.h"
 #include "root.h"
 #include "fit_results.h"
 
 using namespace std;
+using namespace std;
 
 void circ_3_1()
 {
-<<<<<<< HEAD
+
     // costanti da excel e logbook
     double R_in = 55.306 * 1e3;                      // Omh
     double R_f = 681.08e3;                           //ohm
@@ -37,34 +31,6 @@ void circ_3_1()
     double v_in = 1.020;                             // V
     double err_v_in = err_osc_v(v_in, 0.500);        // V
     double t_0 = 5e-6;                               //s
-    double err_t_0 = err_osc_t(1e-6);                //s (cfr excel)
-    double q_in = v_in / R_in * t_0;                 //V/Ohm*us Coulomb
-    double err_q_in = sqrt(pow((err_v_in / R_in) * t_0, 2) +
-                           pow((v_in / R_in) * err_t_0, 2) +
-                           pow((v_in / pow(R_in, 2)) * t_0 * err_R_in, 2));
-    double c_0 = 19e-12;                                          //farad
-    double c_f = (237 - 19) * 1e-12;                              //farad
-    double err_c_f = err_res_cap(c_f * 1e12, 2.5, 15, 1) * 1e-12; //farad
-    double v_pre_out_max = v_in / (R_in * c_f) * t_0;             //volt
-    double err_v_pre_out_max = sqrt(pow((err_v_in / (R_in * c_f)) * t_0, 2) +
-                                    pow((err_t_0 * v_in) / (R_in * c_f), 2) +
-                                    pow(((v_in * err_R_in) / (pow(R_in, 2) * c_f)) * t_0, 2) +
-                                    pow(((v_in * err_c_f) / (pow(c_f, 2) * R_in)) * t_0, 2));
-    double tau_th = R_f * c_f;
-    double err_tau_th = sqrt(pow(err_R_f * c_f, 2) + pow(R_f * err_c_f, 2));
-
-    double v_out_pre_sper = 0.428; //v
-    double err_v_out_pre_sper = err_osc_v(v_out_pre_sper, 0.1);
-
-    /////////////////////
-    //Valori di output
-    cout
-        << "V_0_in[mV]:\t" << v_in * 1e3 << " +- " << err_v_in << endl
-        << "q_in_th[Coulomb]:\t" << q_in << " +- " << err_q_in << endl
-        << "v_pre_max_out[volt]:\t" << v_pre_out_max << " +- " << err_v_pre_out_max << endl
-        << "tau_th[s]\t" << tau_th << " +- " << err_tau_th << endl
-        << "v_out_pre_sper\t" << v_out_pre_sper << " +- " << err_v_out_pre_sper << endl;
-
     ///////////////////
 
     DataContainerGen circ_3_1;
@@ -146,8 +112,8 @@ void circ_3_1()
                              to_string((int)Lin.dof[0]),
                              to_string(Lin.a[0]),
                              to_string(Lin.err_a[0]),
-                             "4.507e+12",
-                             "1.326e+11",
+                             "1.56e+04",
+                             "2.04e+02",
                              to_string(Lin.rho[0]),
                              to_string(Lin.t_student[0]),
                              to_string(Lin.sigma_post[0]),
@@ -215,7 +181,6 @@ void circ_3_1()
     legend2->SetBorderSize(1);
     legend2->SetTextSize(0.08447205);
     legend2->Draw();
-=======
 
     double r_1_a = 46.7 * 1e3;                          //Ohm
     double err_r_1_a = err_res_cap(r_1_a, 0.07, 8, 1);  //
@@ -223,41 +188,4 @@ void circ_3_1()
     double err_r_2_a = err_res_cap(r_2_a, 0.07, 8, 10); //
 
     double ampl = r_2_a / r_1_a;
-    double err_ampl = sqrt(pow((err_r_1_a * r_2_a) / pow(r_1_a, 2), 2) +
-                           pow(err_r_2_a / r_1_a, 2));
-
-    double v_out = 2.88;                      //volt
-    double err_v_out = err_osc_v(v_out, 0.5); //volt
-
-    double r_1_a_bias = 9.82 * 1e3;
-    double err_r_1_a_bias = err_res_cap(r_1_a_bias, 0.07, 8, 1);
-    double r_2_a_bias = 148.93 * 1e3;
-    double err_r_2_a_bias = err_res_cap(r_2_a_bias, 0.07, 8, 10);
-    double r_1_b = 9.831 * 1e3;
-    double err_r_1_b = err_res_cap(r_1_b, 0.07, 8, 1);
-    double r_2_b_first = 817.5*1e3;
-    double err_r_2_b_first = err_res_cap(r_2_b_first, 0.07, 8, 10);
-    double r_2_b_second = 100.01*1e3;
-    double err_r_2_b_second = err_res_cap(r_2_b_second, 0.07, 8, 10);
-    double r_3_b = 9.96 * 1e3;
-    double err_r_3_b = err_res_cap(r_3_b, 0.07, 8, 1);
-    double r_2_b = r_2_b_first + r_2_b_second;
-    double err_r_2_b = sqrt(pow(err_r_2_b_first, 2) +
-                            pow(err_r_2_b_second, 2));
-
-    cout
-        << "r_1_a:\t" << r_1_a << "+-" << err_r_1_a << endl
-        << "r_2_a:\t" << r_2_a << "+-" << err_r_2_a << endl
-        << "ampl:\t" << ampl << "+-" << err_ampl << endl
-        << "vout:\t" << v_out << "+-" << err_v_out << endl
-        << endl
-        << "r_1_a_b:\t" << r_1_a_bias << "+-" << err_r_1_a_bias << endl
-        << "r_2_a_b:\t" << r_2_a_bias << "+-" << err_r_2_a_bias << endl
-        << "r_1_b:\t" << r_1_b << "+-" << err_r_1_b << endl
-        << "r_2_b:\t" << r_2_b << "+-" << err_r_2_b << endl
-        << "r_2_b_fi:\t" << r_2_b_first << "+-" << err_r_2_b_first << endl
-        << "r_2_b_se:\t" << r_2_b_second << "+-" << err_r_2_b_second << endl
-
-        << "r_3_b:\t" << r_3_b << "+-" << err_r_3_b << endl;
->>>>>>> main
 }
