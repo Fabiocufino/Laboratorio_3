@@ -1,0 +1,31 @@
+* Z:\home\fabio\Laboratorio_3\Esperienza_03\Circuiti\Circ_6.asc
+C2 0 V- 0.1µ
+V1 0 V- +12
+V2 V+ 0 +12
+C1 V+ 0 0.1µ
+XU2 N004 N005 V+ V- N005 level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+Csh1 N004 N003 97p
+Rsh1 N004 0 147.99k
+Rsh2 N007 N005 148.02k
+Csh2 N007 0 100p
+XU1 0 N002 V+ V- N003 level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+Rf_pre N003 N002 681.08k
+Cf_pre N003 N002 218p
+Rin N002 N006 55.306k
+V3 N006 0 AC 1
+Rpz N004 N003 1500k
+XU4 N007 OUT_sh V+ V- OUT_sh level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+R2a OUT N008 148.93k
+R1a N008 0 9.82k
+R1b N009 OUT_sh 9.831k
+R3b N009 0 9.96k
+R2b N009 V- 917.5k
+XU3 N009 N008 V+ V- OUT level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+XU5 OUT_sh N001 V+ V- OUT2 level3a Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 Phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+R1 OUT2 N001 10k
+R2 N001 0 1k
+;tran 100u
+.ac dec 100u 32 2000000
+.lib UniversalOpamp.lib
+.backanno
+.end

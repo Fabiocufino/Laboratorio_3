@@ -1,8 +1,8 @@
 void circ_2_2()
 {
 //=========Macro generated from canvas: c1/Circuito 2_1
-//=========  (Mon Dec 13 22:32:13 2021) by ROOT version 6.24/02
-   TCanvas *c1 = new TCanvas("c1", "Circuito 2_1",288,117,1332,851);
+//=========  (Tue Dec 14 21:18:28 2021) by ROOT version 6.24/02
+   TCanvas *c1 = new TCanvas("c1", "Circuito 2_1",230,138,1332,851);
    c1->Range(0,0,1,1);
    c1->SetFillColor(0);
    c1->SetBorderMode(0);
@@ -25,7 +25,7 @@ void circ_2_2()
    pad1->SetFrameBorderMode(0);
    pad1->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1001[10] = {
+   Double_t Graph0_fx1006[10] = {
    32,
    100,
    316,
@@ -36,7 +36,7 @@ void circ_2_2()
    100000,
    316228,
    1000000};
-   Double_t Graph0_fy1001[10] = {
+   Double_t Graph0_fy1006[10] = {
    -50.069,
    -41.48203,
    -28.85505,
@@ -47,7 +47,7 @@ void circ_2_2()
    -20.67256,
    -30.04584,
    -40.98099};
-   Double_t Graph0_fex1001[10] = {
+   Double_t Graph0_fex1006[10] = {
    0,
    0,
    0,
@@ -58,7 +58,7 @@ void circ_2_2()
    0,
    0,
    0};
-   Double_t Graph0_fey1001[10] = {
+   Double_t Graph0_fey1006[10] = {
    0.5806653,
    0.2696111,
    0.2541805,
@@ -69,7 +69,7 @@ void circ_2_2()
    0.1819665,
    0.2743841,
    0.2591931};
-   TGraphErrors *gre = new TGraphErrors(10,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
+   TGraphErrors *gre = new TGraphErrors(10,Graph0_fx1006,Graph0_fy1006,Graph0_fex1006,Graph0_fey1006);
    gre->SetName("Graph0");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
@@ -84,295 +84,295 @@ void circ_2_2()
    gre->SetMarkerStyle(20);
    gre->SetMarkerSize(0.7);
    
-   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",100,28.8,1099997);
-   Graph_Graph01001->SetMinimum(-50.98427);
-   Graph_Graph01001->SetMaximum(-1.371438);
-   Graph_Graph01001->SetDirectory(0);
-   Graph_Graph01001->SetStats(0);
+   TH1F *Graph_Graph_Graph010011006 = new TH1F("Graph_Graph_Graph010011006","",100,28.8,1099997);
+   Graph_Graph_Graph010011006->SetMinimum(-50.98427);
+   Graph_Graph_Graph010011006->SetMaximum(-1.371438);
+   Graph_Graph_Graph010011006->SetDirectory(0);
+   Graph_Graph_Graph010011006->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph01001->SetLineColor(ci);
-   Graph_Graph01001->GetXaxis()->SetTitle("f [kHz]");
-   Graph_Graph01001->GetXaxis()->SetAxisColor(14);
-   Graph_Graph01001->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetXaxis()->SetTitleOffset(1);
-   Graph_Graph01001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitle("A [dB]");
-   Graph_Graph01001->GetYaxis()->SetAxisColor(14);
-   Graph_Graph01001->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01001->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01001);
+   Graph_Graph_Graph010011006->SetLineColor(ci);
+   Graph_Graph_Graph010011006->GetXaxis()->SetTitle("f [kHz]");
+   Graph_Graph_Graph010011006->GetXaxis()->SetAxisColor(14);
+   Graph_Graph_Graph010011006->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010011006->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph010011006->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph010011006->GetYaxis()->SetTitle("A [dB]");
+   Graph_Graph_Graph010011006->GetYaxis()->SetAxisColor(14);
+   Graph_Graph_Graph010011006->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010011006->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph010011006->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010011006->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph010011006->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph010011006);
    
    
-   TF1 *retta1002 = new TF1("*retta",0,8502,2);
+   TF1 *retta1007 = new TF1("*retta",0,8502,2);
     //The original function : retta had originally been created by:
     //TF1 *retta = new TF1("retta",retta,0,8502,2, 1, TF1::EAddToList::kNo);
-   retta1002->SetRange(0,8502);
-   retta1002->SetName("retta");
-   retta1002->SetTitle("retta");
-   retta1002->SetSavedPoint(0,-inf);
-   retta1002->SetSavedPoint(1,-41.5653);
-   retta1002->SetSavedPoint(2,-35.62087);
-   retta1002->SetSavedPoint(3,-32.14359);
-   retta1002->SetSavedPoint(4,-29.67643);
-   retta1002->SetSavedPoint(5,-27.76275);
-   retta1002->SetSavedPoint(6,-26.19916);
-   retta1002->SetSavedPoint(7,-24.87716);
-   retta1002->SetSavedPoint(8,-23.73199);
-   retta1002->SetSavedPoint(9,-22.72188);
-   retta1002->SetSavedPoint(10,-21.81831);
-   retta1002->SetSavedPoint(11,-21.00093);
-   retta1002->SetSavedPoint(12,-20.25472);
-   retta1002->SetSavedPoint(13,-19.56827);
-   retta1002->SetSavedPoint(14,-18.93272);
-   retta1002->SetSavedPoint(15,-18.34104);
-   retta1002->SetSavedPoint(16,-17.78756);
-   retta1002->SetSavedPoint(17,-17.26764);
-   retta1002->SetSavedPoint(18,-16.77745);
-   retta1002->SetSavedPoint(19,-16.31377);
-   retta1002->SetSavedPoint(20,-15.87387);
-   retta1002->SetSavedPoint(21,-15.45545);
-   retta1002->SetSavedPoint(22,-15.05649);
-   retta1002->SetSavedPoint(23,-14.67527);
-   retta1002->SetSavedPoint(24,-14.31028);
-   retta1002->SetSavedPoint(25,-13.96019);
-   retta1002->SetSavedPoint(26,-13.62384);
-   retta1002->SetSavedPoint(27,-13.30017);
-   retta1002->SetSavedPoint(28,-12.98828);
-   retta1002->SetSavedPoint(29,-12.68734);
-   retta1002->SetSavedPoint(30,-12.3966);
-   retta1002->SetSavedPoint(31,-12.1154);
-   retta1002->SetSavedPoint(32,-11.84312);
-   retta1002->SetSavedPoint(33,-11.57922);
-   retta1002->SetSavedPoint(34,-11.3232);
-   retta1002->SetSavedPoint(35,-11.0746);
-   retta1002->SetSavedPoint(36,-10.83301);
-   retta1002->SetSavedPoint(37,-10.59804);
-   retta1002->SetSavedPoint(38,-10.36933);
-   retta1002->SetSavedPoint(39,-10.14656);
-   retta1002->SetSavedPoint(40,-9.929437);
-   retta1002->SetSavedPoint(41,-9.717673);
-   retta1002->SetSavedPoint(42,-9.511012);
-   retta1002->SetSavedPoint(43,-9.309214);
-   retta1002->SetSavedPoint(44,-9.112056);
-   retta1002->SetSavedPoint(45,-8.919329);
-   retta1002->SetSavedPoint(46,-8.730837);
-   retta1002->SetSavedPoint(47,-8.5464);
-   retta1002->SetSavedPoint(48,-8.365846);
-   retta1002->SetSavedPoint(49,-8.189014);
-   retta1002->SetSavedPoint(50,-8.015756);
-   retta1002->SetSavedPoint(51,-7.845928);
-   retta1002->SetSavedPoint(52,-7.679398);
-   retta1002->SetSavedPoint(53,-7.516041);
-   retta1002->SetSavedPoint(54,-7.355737);
-   retta1002->SetSavedPoint(55,-7.198375);
-   retta1002->SetSavedPoint(56,-7.043848);
-   retta1002->SetSavedPoint(57,-6.892056);
-   retta1002->SetSavedPoint(58,-6.742904);
-   retta1002->SetSavedPoint(59,-6.596302);
-   retta1002->SetSavedPoint(60,-6.452164);
-   retta1002->SetSavedPoint(61,-6.310409);
-   retta1002->SetSavedPoint(62,-6.170958);
-   retta1002->SetSavedPoint(63,-6.033739);
-   retta1002->SetSavedPoint(64,-5.898681);
-   retta1002->SetSavedPoint(65,-5.765717);
-   retta1002->SetSavedPoint(66,-5.634783);
-   retta1002->SetSavedPoint(67,-5.505818);
-   retta1002->SetSavedPoint(68,-5.378764);
-   retta1002->SetSavedPoint(69,-5.253564);
-   retta1002->SetSavedPoint(70,-5.130166);
-   retta1002->SetSavedPoint(71,-5.008519);
-   retta1002->SetSavedPoint(72,-4.888573);
-   retta1002->SetSavedPoint(73,-4.770281);
-   retta1002->SetSavedPoint(74,-4.653599);
-   retta1002->SetSavedPoint(75,-4.538483);
-   retta1002->SetSavedPoint(76,-4.424892);
-   retta1002->SetSavedPoint(77,-4.312785);
-   retta1002->SetSavedPoint(78,-4.202126);
-   retta1002->SetSavedPoint(79,-4.092876);
-   retta1002->SetSavedPoint(80,-3.985);
-   retta1002->SetSavedPoint(81,-3.878464);
-   retta1002->SetSavedPoint(82,-3.773236);
-   retta1002->SetSavedPoint(83,-3.669283);
-   retta1002->SetSavedPoint(84,-3.566575);
-   retta1002->SetSavedPoint(85,-3.465083);
-   retta1002->SetSavedPoint(86,-3.364777);
-   retta1002->SetSavedPoint(87,-3.265631);
-   retta1002->SetSavedPoint(88,-3.167619);
-   retta1002->SetSavedPoint(89,-3.070714);
-   retta1002->SetSavedPoint(90,-2.974891);
-   retta1002->SetSavedPoint(91,-2.880128);
-   retta1002->SetSavedPoint(92,-2.7864);
-   retta1002->SetSavedPoint(93,-2.693686);
-   retta1002->SetSavedPoint(94,-2.601963);
-   retta1002->SetSavedPoint(95,-2.51121);
-   retta1002->SetSavedPoint(96,-2.421408);
-   retta1002->SetSavedPoint(97,-2.332537);
-   retta1002->SetSavedPoint(98,-2.244577);
-   retta1002->SetSavedPoint(99,-2.15751);
-   retta1002->SetSavedPoint(100,-2.071319);
-   retta1002->SetSavedPoint(101,0);
-   retta1002->SetSavedPoint(102,8502);
-   retta1002->SetFillColor(19);
-   retta1002->SetFillStyle(0);
+   retta1007->SetRange(0,8502);
+   retta1007->SetName("retta");
+   retta1007->SetTitle("retta");
+   retta1007->SetSavedPoint(0,-inf);
+   retta1007->SetSavedPoint(1,-41.5653);
+   retta1007->SetSavedPoint(2,-35.62087);
+   retta1007->SetSavedPoint(3,-32.14359);
+   retta1007->SetSavedPoint(4,-29.67643);
+   retta1007->SetSavedPoint(5,-27.76275);
+   retta1007->SetSavedPoint(6,-26.19916);
+   retta1007->SetSavedPoint(7,-24.87716);
+   retta1007->SetSavedPoint(8,-23.73199);
+   retta1007->SetSavedPoint(9,-22.72188);
+   retta1007->SetSavedPoint(10,-21.81831);
+   retta1007->SetSavedPoint(11,-21.00093);
+   retta1007->SetSavedPoint(12,-20.25472);
+   retta1007->SetSavedPoint(13,-19.56827);
+   retta1007->SetSavedPoint(14,-18.93272);
+   retta1007->SetSavedPoint(15,-18.34104);
+   retta1007->SetSavedPoint(16,-17.78756);
+   retta1007->SetSavedPoint(17,-17.26764);
+   retta1007->SetSavedPoint(18,-16.77745);
+   retta1007->SetSavedPoint(19,-16.31377);
+   retta1007->SetSavedPoint(20,-15.87387);
+   retta1007->SetSavedPoint(21,-15.45545);
+   retta1007->SetSavedPoint(22,-15.05649);
+   retta1007->SetSavedPoint(23,-14.67527);
+   retta1007->SetSavedPoint(24,-14.31028);
+   retta1007->SetSavedPoint(25,-13.96019);
+   retta1007->SetSavedPoint(26,-13.62384);
+   retta1007->SetSavedPoint(27,-13.30017);
+   retta1007->SetSavedPoint(28,-12.98828);
+   retta1007->SetSavedPoint(29,-12.68734);
+   retta1007->SetSavedPoint(30,-12.3966);
+   retta1007->SetSavedPoint(31,-12.1154);
+   retta1007->SetSavedPoint(32,-11.84312);
+   retta1007->SetSavedPoint(33,-11.57922);
+   retta1007->SetSavedPoint(34,-11.3232);
+   retta1007->SetSavedPoint(35,-11.0746);
+   retta1007->SetSavedPoint(36,-10.83301);
+   retta1007->SetSavedPoint(37,-10.59804);
+   retta1007->SetSavedPoint(38,-10.36933);
+   retta1007->SetSavedPoint(39,-10.14656);
+   retta1007->SetSavedPoint(40,-9.929437);
+   retta1007->SetSavedPoint(41,-9.717673);
+   retta1007->SetSavedPoint(42,-9.511012);
+   retta1007->SetSavedPoint(43,-9.309214);
+   retta1007->SetSavedPoint(44,-9.112056);
+   retta1007->SetSavedPoint(45,-8.919329);
+   retta1007->SetSavedPoint(46,-8.730837);
+   retta1007->SetSavedPoint(47,-8.5464);
+   retta1007->SetSavedPoint(48,-8.365846);
+   retta1007->SetSavedPoint(49,-8.189014);
+   retta1007->SetSavedPoint(50,-8.015756);
+   retta1007->SetSavedPoint(51,-7.845928);
+   retta1007->SetSavedPoint(52,-7.679398);
+   retta1007->SetSavedPoint(53,-7.516041);
+   retta1007->SetSavedPoint(54,-7.355737);
+   retta1007->SetSavedPoint(55,-7.198375);
+   retta1007->SetSavedPoint(56,-7.043848);
+   retta1007->SetSavedPoint(57,-6.892056);
+   retta1007->SetSavedPoint(58,-6.742904);
+   retta1007->SetSavedPoint(59,-6.596302);
+   retta1007->SetSavedPoint(60,-6.452164);
+   retta1007->SetSavedPoint(61,-6.310409);
+   retta1007->SetSavedPoint(62,-6.170958);
+   retta1007->SetSavedPoint(63,-6.033739);
+   retta1007->SetSavedPoint(64,-5.898681);
+   retta1007->SetSavedPoint(65,-5.765717);
+   retta1007->SetSavedPoint(66,-5.634783);
+   retta1007->SetSavedPoint(67,-5.505818);
+   retta1007->SetSavedPoint(68,-5.378764);
+   retta1007->SetSavedPoint(69,-5.253564);
+   retta1007->SetSavedPoint(70,-5.130166);
+   retta1007->SetSavedPoint(71,-5.008519);
+   retta1007->SetSavedPoint(72,-4.888573);
+   retta1007->SetSavedPoint(73,-4.770281);
+   retta1007->SetSavedPoint(74,-4.653599);
+   retta1007->SetSavedPoint(75,-4.538483);
+   retta1007->SetSavedPoint(76,-4.424892);
+   retta1007->SetSavedPoint(77,-4.312785);
+   retta1007->SetSavedPoint(78,-4.202126);
+   retta1007->SetSavedPoint(79,-4.092876);
+   retta1007->SetSavedPoint(80,-3.985);
+   retta1007->SetSavedPoint(81,-3.878464);
+   retta1007->SetSavedPoint(82,-3.773236);
+   retta1007->SetSavedPoint(83,-3.669283);
+   retta1007->SetSavedPoint(84,-3.566575);
+   retta1007->SetSavedPoint(85,-3.465083);
+   retta1007->SetSavedPoint(86,-3.364777);
+   retta1007->SetSavedPoint(87,-3.265631);
+   retta1007->SetSavedPoint(88,-3.167619);
+   retta1007->SetSavedPoint(89,-3.070714);
+   retta1007->SetSavedPoint(90,-2.974891);
+   retta1007->SetSavedPoint(91,-2.880128);
+   retta1007->SetSavedPoint(92,-2.7864);
+   retta1007->SetSavedPoint(93,-2.693686);
+   retta1007->SetSavedPoint(94,-2.601963);
+   retta1007->SetSavedPoint(95,-2.51121);
+   retta1007->SetSavedPoint(96,-2.421408);
+   retta1007->SetSavedPoint(97,-2.332537);
+   retta1007->SetSavedPoint(98,-2.244577);
+   retta1007->SetSavedPoint(99,-2.15751);
+   retta1007->SetSavedPoint(100,-2.071319);
+   retta1007->SetSavedPoint(101,0);
+   retta1007->SetSavedPoint(102,8502);
+   retta1007->SetFillColor(19);
+   retta1007->SetFillStyle(0);
 
    ci = TColor::GetColor("#6699ff");
-   retta1002->SetLineColor(ci);
-   retta1002->SetLineWidth(2);
-   retta1002->SetLineStyle(7);
-   retta1002->SetChisquare(69.11535);
-   retta1002->SetNDF(3);
-   retta1002->GetXaxis()->SetLabelFont(42);
-   retta1002->GetXaxis()->SetTitleOffset(1);
-   retta1002->GetXaxis()->SetTitleFont(42);
-   retta1002->GetYaxis()->SetLabelFont(42);
-   retta1002->GetYaxis()->SetTitleFont(42);
-   retta1002->SetParameter(0,-79.66754);
-   retta1002->SetParError(0,0.5280025);
-   retta1002->SetParLimits(0,0,0);
-   retta1002->SetParameter(1,19.74699);
-   retta1002->SetParError(1,0.179297);
-   retta1002->SetParLimits(1,0,0);
-   retta1002->SetParent(gre);
-   gre->GetListOfFunctions()->Add(retta1002);
+   retta1007->SetLineColor(ci);
+   retta1007->SetLineWidth(2);
+   retta1007->SetLineStyle(7);
+   retta1007->SetChisquare(69.11535);
+   retta1007->SetNDF(3);
+   retta1007->GetXaxis()->SetLabelFont(42);
+   retta1007->GetXaxis()->SetTitleOffset(1);
+   retta1007->GetXaxis()->SetTitleFont(42);
+   retta1007->GetYaxis()->SetLabelFont(42);
+   retta1007->GetYaxis()->SetTitleFont(42);
+   retta1007->SetParameter(0,-79.66754);
+   retta1007->SetParError(0,0.5280025);
+   retta1007->SetParLimits(0,0,0);
+   retta1007->SetParameter(1,19.74699);
+   retta1007->SetParError(1,0.179297);
+   retta1007->SetParLimits(1,0,0);
+   retta1007->SetParent(gre);
+   gre->GetListOfFunctions()->Add(retta1007);
    
-   TF1 *retta21003 = new TF1("*retta2",10966,1600000,2);
+   TF1 *retta21008 = new TF1("*retta2",10966,1600000,2);
     //The original function : retta2 had originally been created by:
     //TF1 *retta2 = new TF1("retta2",retta2,10966,1600000,2, 1, TF1::EAddToList::kNo);
-   retta21003->SetRange(10966,1600000);
-   retta21003->SetName("retta2");
-   retta21003->SetTitle("retta2");
-   retta21003->SetSavedPoint(0,-2.351609);
-   retta21003->SetSavedPoint(1,-9.901303);
-   retta21003->SetSavedPoint(2,-13.81892);
-   retta21003->SetSavedPoint(3,-16.48305);
-   retta21003->SetSavedPoint(4,-18.50428);
-   retta21003->SetSavedPoint(5,-20.13334);
-   retta21003->SetSavedPoint(6,-21.49797);
-   retta21003->SetSavedPoint(7,-22.67215);
-   retta21003->SetSavedPoint(8,-23.70257);
-   retta21003->SetSavedPoint(9,-24.62064);
-   retta21003->SetSavedPoint(10,-25.44846);
-   retta21003->SetSavedPoint(11,-26.2022);
-   retta21003->SetSavedPoint(12,-26.89403);
-   retta21003->SetSavedPoint(13,-27.53336);
-   retta21003->SetSavedPoint(14,-28.1276);
-   retta21003->SetSavedPoint(15,-28.68269);
-   retta21003->SetSavedPoint(16,-29.20347);
-   retta21003->SetSavedPoint(17,-29.69393);
-   retta21003->SetSavedPoint(18,-30.15742);
-   retta21003->SetSavedPoint(19,-30.59675);
-   retta21003->SetSavedPoint(20,-31.01431);
-   retta21003->SetSavedPoint(21,-31.41215);
-   retta21003->SetSavedPoint(22,-31.79206);
-   retta21003->SetSavedPoint(23,-32.15558);
-   retta21003->SetSavedPoint(24,-32.50407);
-   retta21003->SetSavedPoint(25,-32.83872);
-   retta21003->SetSavedPoint(26,-33.16059);
-   retta21003->SetSavedPoint(27,-33.47062);
-   retta21003->SetSavedPoint(28,-33.76965);
-   retta21003->SetSavedPoint(29,-34.05844);
-   retta21003->SetSavedPoint(30,-34.33765);
-   retta21003->SetSavedPoint(31,-34.60791);
-   retta21003->SetSavedPoint(32,-34.86978);
-   retta21003->SetSavedPoint(33,-35.12375);
-   retta21003->SetSavedPoint(34,-35.3703);
-   retta21003->SetSavedPoint(35,-35.60984);
-   retta21003->SetSavedPoint(36,-35.84276);
-   retta21003->SetSavedPoint(37,-36.06941);
-   retta21003->SetSavedPoint(38,-36.29013);
-   retta21003->SetSavedPoint(39,-36.50522);
-   retta21003->SetSavedPoint(40,-36.71495);
-   retta21003->SetSavedPoint(41,-36.91959);
-   retta21003->SetSavedPoint(42,-37.11938);
-   retta21003->SetSavedPoint(43,-37.31455);
-   retta21003->SetSavedPoint(44,-37.50529);
-   retta21003->SetSavedPoint(45,-37.69182);
-   retta21003->SetSavedPoint(46,-37.87431);
-   retta21003->SetSavedPoint(47,-38.05293);
-   retta21003->SetSavedPoint(48,-38.22784);
-   retta21003->SetSavedPoint(49,-38.3992);
-   retta21003->SetSavedPoint(50,-38.56714);
-   retta21003->SetSavedPoint(51,-38.7318);
-   retta21003->SetSavedPoint(52,-38.89331);
-   retta21003->SetSavedPoint(53,-39.05178);
-   retta21003->SetSavedPoint(54,-39.20733);
-   retta21003->SetSavedPoint(55,-39.36005);
-   retta21003->SetSavedPoint(56,-39.51006);
-   retta21003->SetSavedPoint(57,-39.65745);
-   retta21003->SetSavedPoint(58,-39.8023);
-   retta21003->SetSavedPoint(59,-39.94471);
-   retta21003->SetSavedPoint(60,-40.08475);
-   retta21003->SetSavedPoint(61,-40.2225);
-   retta21003->SetSavedPoint(62,-40.35803);
-   retta21003->SetSavedPoint(63,-40.49142);
-   retta21003->SetSavedPoint(64,-40.62274);
-   retta21003->SetSavedPoint(65,-40.75203);
-   retta21003->SetSavedPoint(66,-40.87938);
-   retta21003->SetSavedPoint(67,-41.00483);
-   retta21003->SetSavedPoint(68,-41.12844);
-   retta21003->SetSavedPoint(69,-41.25026);
-   retta21003->SetSavedPoint(70,-41.37035);
-   retta21003->SetSavedPoint(71,-41.48875);
-   retta21003->SetSavedPoint(72,-41.60551);
-   retta21003->SetSavedPoint(73,-41.72067);
-   retta21003->SetSavedPoint(74,-41.83429);
-   retta21003->SetSavedPoint(75,-41.94639);
-   retta21003->SetSavedPoint(76,-42.05702);
-   retta21003->SetSavedPoint(77,-42.16622);
-   retta21003->SetSavedPoint(78,-42.27402);
-   retta21003->SetSavedPoint(79,-42.38045);
-   retta21003->SetSavedPoint(80,-42.48557);
-   retta21003->SetSavedPoint(81,-42.58938);
-   retta21003->SetSavedPoint(82,-42.69194);
-   retta21003->SetSavedPoint(83,-42.79326);
-   retta21003->SetSavedPoint(84,-42.89337);
-   retta21003->SetSavedPoint(85,-42.99232);
-   retta21003->SetSavedPoint(86,-43.09011);
-   retta21003->SetSavedPoint(87,-43.18678);
-   retta21003->SetSavedPoint(88,-43.28236);
-   retta21003->SetSavedPoint(89,-43.37686);
-   retta21003->SetSavedPoint(90,-43.47032);
-   retta21003->SetSavedPoint(91,-43.56275);
-   retta21003->SetSavedPoint(92,-43.65418);
-   retta21003->SetSavedPoint(93,-43.74463);
-   retta21003->SetSavedPoint(94,-43.83412);
-   retta21003->SetSavedPoint(95,-43.92267);
-   retta21003->SetSavedPoint(96,-44.01029);
-   retta21003->SetSavedPoint(97,-44.09702);
-   retta21003->SetSavedPoint(98,-44.18286);
-   retta21003->SetSavedPoint(99,-44.26784);
-   retta21003->SetSavedPoint(100,-44.35197);
-   retta21003->SetSavedPoint(101,10966);
-   retta21003->SetSavedPoint(102,1600000);
-   retta21003->SetFillColor(19);
-   retta21003->SetFillStyle(0);
+   retta21008->SetRange(10966,1600000);
+   retta21008->SetName("retta2");
+   retta21008->SetTitle("retta2");
+   retta21008->SetSavedPoint(0,-2.351609);
+   retta21008->SetSavedPoint(1,-9.901303);
+   retta21008->SetSavedPoint(2,-13.81892);
+   retta21008->SetSavedPoint(3,-16.48305);
+   retta21008->SetSavedPoint(4,-18.50428);
+   retta21008->SetSavedPoint(5,-20.13334);
+   retta21008->SetSavedPoint(6,-21.49797);
+   retta21008->SetSavedPoint(7,-22.67215);
+   retta21008->SetSavedPoint(8,-23.70257);
+   retta21008->SetSavedPoint(9,-24.62064);
+   retta21008->SetSavedPoint(10,-25.44846);
+   retta21008->SetSavedPoint(11,-26.2022);
+   retta21008->SetSavedPoint(12,-26.89403);
+   retta21008->SetSavedPoint(13,-27.53336);
+   retta21008->SetSavedPoint(14,-28.1276);
+   retta21008->SetSavedPoint(15,-28.68269);
+   retta21008->SetSavedPoint(16,-29.20347);
+   retta21008->SetSavedPoint(17,-29.69393);
+   retta21008->SetSavedPoint(18,-30.15742);
+   retta21008->SetSavedPoint(19,-30.59675);
+   retta21008->SetSavedPoint(20,-31.01431);
+   retta21008->SetSavedPoint(21,-31.41215);
+   retta21008->SetSavedPoint(22,-31.79206);
+   retta21008->SetSavedPoint(23,-32.15558);
+   retta21008->SetSavedPoint(24,-32.50407);
+   retta21008->SetSavedPoint(25,-32.83872);
+   retta21008->SetSavedPoint(26,-33.16059);
+   retta21008->SetSavedPoint(27,-33.47062);
+   retta21008->SetSavedPoint(28,-33.76965);
+   retta21008->SetSavedPoint(29,-34.05844);
+   retta21008->SetSavedPoint(30,-34.33765);
+   retta21008->SetSavedPoint(31,-34.60791);
+   retta21008->SetSavedPoint(32,-34.86978);
+   retta21008->SetSavedPoint(33,-35.12375);
+   retta21008->SetSavedPoint(34,-35.3703);
+   retta21008->SetSavedPoint(35,-35.60984);
+   retta21008->SetSavedPoint(36,-35.84276);
+   retta21008->SetSavedPoint(37,-36.06941);
+   retta21008->SetSavedPoint(38,-36.29013);
+   retta21008->SetSavedPoint(39,-36.50522);
+   retta21008->SetSavedPoint(40,-36.71495);
+   retta21008->SetSavedPoint(41,-36.91959);
+   retta21008->SetSavedPoint(42,-37.11938);
+   retta21008->SetSavedPoint(43,-37.31455);
+   retta21008->SetSavedPoint(44,-37.50529);
+   retta21008->SetSavedPoint(45,-37.69182);
+   retta21008->SetSavedPoint(46,-37.87431);
+   retta21008->SetSavedPoint(47,-38.05293);
+   retta21008->SetSavedPoint(48,-38.22784);
+   retta21008->SetSavedPoint(49,-38.3992);
+   retta21008->SetSavedPoint(50,-38.56714);
+   retta21008->SetSavedPoint(51,-38.7318);
+   retta21008->SetSavedPoint(52,-38.89331);
+   retta21008->SetSavedPoint(53,-39.05178);
+   retta21008->SetSavedPoint(54,-39.20733);
+   retta21008->SetSavedPoint(55,-39.36005);
+   retta21008->SetSavedPoint(56,-39.51006);
+   retta21008->SetSavedPoint(57,-39.65745);
+   retta21008->SetSavedPoint(58,-39.8023);
+   retta21008->SetSavedPoint(59,-39.94471);
+   retta21008->SetSavedPoint(60,-40.08475);
+   retta21008->SetSavedPoint(61,-40.2225);
+   retta21008->SetSavedPoint(62,-40.35803);
+   retta21008->SetSavedPoint(63,-40.49142);
+   retta21008->SetSavedPoint(64,-40.62274);
+   retta21008->SetSavedPoint(65,-40.75203);
+   retta21008->SetSavedPoint(66,-40.87938);
+   retta21008->SetSavedPoint(67,-41.00483);
+   retta21008->SetSavedPoint(68,-41.12844);
+   retta21008->SetSavedPoint(69,-41.25026);
+   retta21008->SetSavedPoint(70,-41.37035);
+   retta21008->SetSavedPoint(71,-41.48875);
+   retta21008->SetSavedPoint(72,-41.60551);
+   retta21008->SetSavedPoint(73,-41.72067);
+   retta21008->SetSavedPoint(74,-41.83429);
+   retta21008->SetSavedPoint(75,-41.94639);
+   retta21008->SetSavedPoint(76,-42.05702);
+   retta21008->SetSavedPoint(77,-42.16622);
+   retta21008->SetSavedPoint(78,-42.27402);
+   retta21008->SetSavedPoint(79,-42.38045);
+   retta21008->SetSavedPoint(80,-42.48557);
+   retta21008->SetSavedPoint(81,-42.58938);
+   retta21008->SetSavedPoint(82,-42.69194);
+   retta21008->SetSavedPoint(83,-42.79326);
+   retta21008->SetSavedPoint(84,-42.89337);
+   retta21008->SetSavedPoint(85,-42.99232);
+   retta21008->SetSavedPoint(86,-43.09011);
+   retta21008->SetSavedPoint(87,-43.18678);
+   retta21008->SetSavedPoint(88,-43.28236);
+   retta21008->SetSavedPoint(89,-43.37686);
+   retta21008->SetSavedPoint(90,-43.47032);
+   retta21008->SetSavedPoint(91,-43.56275);
+   retta21008->SetSavedPoint(92,-43.65418);
+   retta21008->SetSavedPoint(93,-43.74463);
+   retta21008->SetSavedPoint(94,-43.83412);
+   retta21008->SetSavedPoint(95,-43.92267);
+   retta21008->SetSavedPoint(96,-44.01029);
+   retta21008->SetSavedPoint(97,-44.09702);
+   retta21008->SetSavedPoint(98,-44.18286);
+   retta21008->SetSavedPoint(99,-44.26784);
+   retta21008->SetSavedPoint(100,-44.35197);
+   retta21008->SetSavedPoint(101,10966);
+   retta21008->SetSavedPoint(102,1600000);
+   retta21008->SetFillColor(19);
+   retta21008->SetFillStyle(0);
 
    ci = TColor::GetColor("#6699ff");
-   retta21003->SetLineColor(ci);
-   retta21003->SetLineWidth(2);
-   retta21003->SetLineStyle(7);
-   retta21003->SetChisquare(16.14418);
-   retta21003->SetNDF(2);
-   retta21003->GetXaxis()->SetLabelFont(42);
-   retta21003->GetXaxis()->SetTitleOffset(1);
-   retta21003->GetXaxis()->SetTitleFont(42);
-   retta21003->GetYaxis()->SetLabelFont(42);
-   retta21003->GetYaxis()->SetTitleFont(42);
-   retta21003->SetParameter(0,76.05775);
-   retta21003->SetParError(0,1.003434);
-   retta21003->SetParLimits(0,0,0);
-   retta21003->SetParameter(1,-19.40803);
-   retta21003->SetParError(1,0.197073);
-   retta21003->SetParLimits(1,0,0);
-   retta21003->SetParent(gre);
-   gre->GetListOfFunctions()->Add(retta21003);
+   retta21008->SetLineColor(ci);
+   retta21008->SetLineWidth(2);
+   retta21008->SetLineStyle(7);
+   retta21008->SetChisquare(16.14418);
+   retta21008->SetNDF(2);
+   retta21008->GetXaxis()->SetLabelFont(42);
+   retta21008->GetXaxis()->SetTitleOffset(1);
+   retta21008->GetXaxis()->SetTitleFont(42);
+   retta21008->GetYaxis()->SetLabelFont(42);
+   retta21008->GetYaxis()->SetTitleFont(42);
+   retta21008->SetParameter(0,76.05775);
+   retta21008->SetParError(0,1.003434);
+   retta21008->SetParLimits(0,0,0);
+   retta21008->SetParameter(1,-19.40803);
+   retta21008->SetParError(1,0.197073);
+   retta21008->SetParLimits(1,0,0);
+   retta21008->SetParent(gre);
+   gre->GetListOfFunctions()->Add(retta21008);
    gre->Draw("ap");
    
-   Double_t Graph1_fx1[42] = {
+   Double_t Graph1_fx3[42] = {
    0,
    100,
    125.8925,
@@ -415,7 +415,7 @@ void circ_2_2()
    630957.3,
    794328.2,
    1000000};
-   Double_t Graph1_fy1[42] = {
+   Double_t Graph1_fy3[42] = {
    0,
    -41.02737,
    -39.02786,
@@ -458,7 +458,7 @@ void circ_2_2()
    -36.64256,
    -38.62267,
    -40.59193};
-   TGraph *graph = new TGraph(42,Graph1_fx1,Graph1_fy1);
+   TGraph *graph = new TGraph(42,Graph1_fx3,Graph1_fy3);
    graph->SetName("Graph1");
    graph->SetTitle("");
    graph->SetFillStyle(1000);
@@ -468,31 +468,31 @@ void circ_2_2()
    graph->SetMarkerStyle(24);
    graph->SetMarkerSize(0.7);
    
-   TH1F *Graph_Graph11 = new TH1F("Graph_Graph11","",100,1,1100000);
-   Graph_Graph11->SetMinimum(-45.13011);
-   Graph_Graph11->SetMaximum(4.102737);
-   Graph_Graph11->SetDirectory(0);
-   Graph_Graph11->SetStats(0);
+   TH1F *Graph_Graph_Graph113 = new TH1F("Graph_Graph_Graph113","",100,1,1100000);
+   Graph_Graph_Graph113->SetMinimum(-45.13011);
+   Graph_Graph_Graph113->SetMaximum(4.102737);
+   Graph_Graph_Graph113->SetDirectory(0);
+   Graph_Graph_Graph113->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph11->SetLineColor(ci);
-   Graph_Graph11->GetXaxis()->SetTitle("f [kHz]");
-   Graph_Graph11->GetXaxis()->SetAxisColor(14);
-   Graph_Graph11->GetXaxis()->SetLabelFont(42);
-   Graph_Graph11->GetXaxis()->SetTitleOffset(1);
-   Graph_Graph11->GetXaxis()->SetTitleFont(42);
-   Graph_Graph11->GetYaxis()->SetTitle("A [dB]");
-   Graph_Graph11->GetYaxis()->SetAxisColor(14);
-   Graph_Graph11->GetYaxis()->SetLabelFont(42);
-   Graph_Graph11->GetYaxis()->SetTitleFont(42);
-   Graph_Graph11->GetZaxis()->SetLabelFont(42);
-   Graph_Graph11->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph11->GetZaxis()->SetTitleFont(42);
-   graph->SetHistogram(Graph_Graph11);
+   Graph_Graph_Graph113->SetLineColor(ci);
+   Graph_Graph_Graph113->GetXaxis()->SetTitle("f [kHz]");
+   Graph_Graph_Graph113->GetXaxis()->SetAxisColor(14);
+   Graph_Graph_Graph113->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph113->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph113->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph113->GetYaxis()->SetTitle("A [dB]");
+   Graph_Graph_Graph113->GetYaxis()->SetAxisColor(14);
+   Graph_Graph_Graph113->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph113->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph113->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph113->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph113->GetZaxis()->SetTitleFont(42);
+   graph->SetHistogram(Graph_Graph_Graph113);
    
    graph->Draw("p");
    
-   Double_t Graph2_fx2[10000] = {
+   Double_t Graph2_fx4[10000] = {
    32,
    132,
    232,
@@ -10493,7 +10493,7 @@ void circ_2_2()
    999732,
    999832,
    999932};
-   Double_t Graph2_fy2[10000] = {
+   Double_t Graph2_fy4[10000] = {
    -50.2085,
    -37.9015,
    -33.00649,
@@ -20494,7 +20494,7 @@ void circ_2_2()
    -40.58131,
    -40.58218,
    -40.58304};
-   graph = new TGraph(10000,Graph2_fx2,Graph2_fy2);
+   graph = new TGraph(10000,Graph2_fx4,Graph2_fy4);
    graph->SetName("Graph2");
    graph->SetTitle("../Dati/2_2_teor.txt");
    graph->SetFillStyle(1000);
@@ -20504,23 +20504,23 @@ void circ_2_2()
    graph->SetLineStyle(2);
    graph->SetLineWidth(2);
    
-   TH1F *Graph_Graph22 = new TH1F("Graph_Graph22","../Dati/2_2_teor.txt",10000,28.8,1099922);
-   Graph_Graph22->SetMinimum(-54.58143);
-   Graph_Graph22->SetMaximum(-2.106277);
-   Graph_Graph22->SetDirectory(0);
-   Graph_Graph22->SetStats(0);
+   TH1F *Graph_Graph_Graph224 = new TH1F("Graph_Graph_Graph224","../Dati/2_2_teor.txt",10000,28.8,1099922);
+   Graph_Graph_Graph224->SetMinimum(-54.58143);
+   Graph_Graph_Graph224->SetMaximum(-2.106277);
+   Graph_Graph_Graph224->SetDirectory(0);
+   Graph_Graph_Graph224->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph22->SetLineColor(ci);
-   Graph_Graph22->GetXaxis()->SetLabelFont(42);
-   Graph_Graph22->GetXaxis()->SetTitleOffset(1);
-   Graph_Graph22->GetXaxis()->SetTitleFont(42);
-   Graph_Graph22->GetYaxis()->SetLabelFont(42);
-   Graph_Graph22->GetYaxis()->SetTitleFont(42);
-   Graph_Graph22->GetZaxis()->SetLabelFont(42);
-   Graph_Graph22->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph22->GetZaxis()->SetTitleFont(42);
-   graph->SetHistogram(Graph_Graph22);
+   Graph_Graph_Graph224->SetLineColor(ci);
+   Graph_Graph_Graph224->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph224->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph224->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph224->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph224->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph224->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph224->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph224->GetZaxis()->SetTitleFont(42);
+   graph->SetHistogram(Graph_Graph_Graph224);
    
    graph->Draw("l");
    TLine *line = new TLine(10100,-50.996,10100,-6.49);
@@ -20590,7 +20590,7 @@ void circ_2_2()
    pad2->SetFrameBorderMode(0);
    pad2->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1004[10] = {
+   Double_t Graph0_fx1009[10] = {
    32,
    100,
    316,
@@ -20601,7 +20601,7 @@ void circ_2_2()
    100000,
    316228,
    1000000};
-   Double_t Graph0_fy1004[10] = {
+   Double_t Graph0_fy1009[10] = {
    -0.1236464,
    -1.308477,
    1.451193,
@@ -20612,7 +20612,7 @@ void circ_2_2()
    -39.73998,
    -58.98677,
    -79.7954};
-   Double_t Graph0_fex1004[10] = {
+   Double_t Graph0_fex1009[10] = {
    0,
    0,
    0,
@@ -20623,7 +20623,7 @@ void circ_2_2()
    0,
    0,
    0};
-   Double_t Graph0_fey1004[10] = {
+   Double_t Graph0_fey1009[10] = {
    0.5806653,
    0.2696111,
    0.2541805,
@@ -20634,7 +20634,7 @@ void circ_2_2()
    0.1819665,
    0.2743841,
    0.2591931};
-   gre = new TGraphErrors(10,Graph0_fx1004,Graph0_fy1004,Graph0_fex1004,Graph0_fey1004);
+   gre = new TGraphErrors(10,Graph0_fx1009,Graph0_fy1009,Graph0_fex1009,Graph0_fey1009);
    gre->SetName("Graph0");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
@@ -20645,54 +20645,54 @@ void circ_2_2()
    gre->SetMarkerStyle(20);
    gre->SetMarkerSize(0.7);
    
-   TH1F *Graph_Graph01004 = new TH1F("Graph_Graph01004","",100,28.8,1099997);
-   Graph_Graph01004->SetMinimum(-2.072167);
-   Graph_Graph01004->SetMaximum(3.052561);
-   Graph_Graph01004->SetDirectory(0);
-   Graph_Graph01004->SetStats(0);
+   TH1F *Graph_Graph_Graph010041009 = new TH1F("Graph_Graph_Graph010041009","",100,28.8,1099997);
+   Graph_Graph_Graph010041009->SetMinimum(-2.072167);
+   Graph_Graph_Graph010041009->SetMaximum(3.052561);
+   Graph_Graph_Graph010041009->SetDirectory(0);
+   Graph_Graph_Graph010041009->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph01004->SetLineColor(ci);
-   Graph_Graph01004->GetXaxis()->SetRange(1,1);
-   Graph_Graph01004->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01004->GetXaxis()->SetLabelSize(0.09);
-   Graph_Graph01004->GetXaxis()->SetTitleOffset(1);
-   Graph_Graph01004->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01004->GetYaxis()->SetTitle("Scarti");
-   Graph_Graph01004->GetYaxis()->SetAxisColor(14);
-   Graph_Graph01004->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01004->GetYaxis()->SetLabelOffset(0.004);
-   Graph_Graph01004->GetYaxis()->SetLabelSize(0.09);
-   Graph_Graph01004->GetYaxis()->SetTitleSize(0.11);
-   Graph_Graph01004->GetYaxis()->SetTitleOffset(0.4);
-   Graph_Graph01004->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01004->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01004->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01004->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01004);
+   Graph_Graph_Graph010041009->SetLineColor(ci);
+   Graph_Graph_Graph010041009->GetXaxis()->SetRange(1,1);
+   Graph_Graph_Graph010041009->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010041009->GetXaxis()->SetLabelSize(0.09);
+   Graph_Graph_Graph010041009->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph010041009->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph010041009->GetYaxis()->SetTitle("Scarti");
+   Graph_Graph_Graph010041009->GetYaxis()->SetAxisColor(14);
+   Graph_Graph_Graph010041009->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010041009->GetYaxis()->SetLabelOffset(0.004);
+   Graph_Graph_Graph010041009->GetYaxis()->SetLabelSize(0.09);
+   Graph_Graph_Graph010041009->GetYaxis()->SetTitleSize(0.11);
+   Graph_Graph_Graph010041009->GetYaxis()->SetTitleOffset(0.4);
+   Graph_Graph_Graph010041009->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph010041009->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010041009->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph010041009->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph010041009);
    
    gre->Draw("ap");
    
-   TF1 *z1004 = new TF1("z","pol1",0,10000, TF1::EAddToList::kDefault);
-   z1004->SetFillColor(19);
-   z1004->SetFillStyle(0);
+   TF1 *z1009 = new TF1("z","pol1",0,10000, TF1::EAddToList::kDefault);
+   z1009->SetFillColor(19);
+   z1009->SetFillStyle(0);
 
    ci = TColor::GetColor("#ff0000");
-   z1004->SetLineColor(ci);
-   z1004->SetLineWidth(2);
-   z1004->SetLineStyle(2);
-   z1004->GetXaxis()->SetLabelFont(42);
-   z1004->GetXaxis()->SetTitleOffset(1);
-   z1004->GetXaxis()->SetTitleFont(42);
-   z1004->GetYaxis()->SetLabelFont(42);
-   z1004->GetYaxis()->SetTitleFont(42);
-   z1004->SetParameter(0,0);
-   z1004->SetParError(0,0);
-   z1004->SetParLimits(0,0,0);
-   z1004->SetParameter(1,0);
-   z1004->SetParError(1,0);
-   z1004->SetParLimits(1,0,0);
-   z1004->Draw("lsame");
+   z1009->SetLineColor(ci);
+   z1009->SetLineWidth(2);
+   z1009->SetLineStyle(2);
+   z1009->GetXaxis()->SetLabelFont(42);
+   z1009->GetXaxis()->SetTitleOffset(1);
+   z1009->GetXaxis()->SetTitleFont(42);
+   z1009->GetYaxis()->SetLabelFont(42);
+   z1009->GetYaxis()->SetTitleFont(42);
+   z1009->SetParameter(0,0);
+   z1009->SetParError(0,0);
+   z1009->SetParLimits(0,0,0);
+   z1009->SetParameter(1,0);
+   z1009->SetParError(1,0);
+   z1009->SetParLimits(1,0,0);
+   z1009->Draw("lsame");
    
    leg = new TLegend(0.6079027,0.7266436,0.9574468,0.8788927,NULL,"brNDC");
    leg->SetBorderSize(1);
@@ -20730,7 +20730,7 @@ void circ_2_2()
    pad2->SetFrameBorderMode(0);
    pad2->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1005[10] = {
+   Double_t Graph0_fx1010[10] = {
    32,
    100,
    316,
@@ -20741,7 +20741,7 @@ void circ_2_2()
    100000,
    316228,
    1000000};
-   Double_t Graph0_fy1005[10] = {
+   Double_t Graph0_fy1010[10] = {
    -96.91477,
    -78.72373,
    -56.39881,
@@ -20752,7 +20752,7 @@ void circ_2_2()
    0.3098133,
    0.6405515,
    -0.5905857};
-   Double_t Graph0_fex1005[10] = {
+   Double_t Graph0_fex1010[10] = {
    0,
    0,
    0,
@@ -20763,7 +20763,7 @@ void circ_2_2()
    0,
    0,
    0};
-   Double_t Graph0_fey1005[10] = {
+   Double_t Graph0_fey1010[10] = {
    0.5806653,
    0.2696111,
    0.2541805,
@@ -20774,7 +20774,7 @@ void circ_2_2()
    0.1819665,
    0.2743841,
    0.2591931};
-   gre = new TGraphErrors(10,Graph0_fx1005,Graph0_fy1005,Graph0_fex1005,Graph0_fey1005);
+   gre = new TGraphErrors(10,Graph0_fx1010,Graph0_fy1010,Graph0_fex1010,Graph0_fey1010);
    gre->SetName("Graph0");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
@@ -20785,53 +20785,53 @@ void circ_2_2()
    gre->SetMarkerStyle(20);
    gre->SetMarkerSize(0.7);
    
-   TH1F *Graph_Graph01005 = new TH1F("Graph_Graph01005","",100,28.8,1099997);
-   Graph_Graph01005->SetMinimum(-2.02942);
-   Graph_Graph01005->SetMaximum(3.124041);
-   Graph_Graph01005->SetDirectory(0);
-   Graph_Graph01005->SetStats(0);
+   TH1F *Graph_Graph_Graph010051010 = new TH1F("Graph_Graph_Graph010051010","",100,28.8,1099997);
+   Graph_Graph_Graph010051010->SetMinimum(-2.02942);
+   Graph_Graph_Graph010051010->SetMaximum(3.124041);
+   Graph_Graph_Graph010051010->SetDirectory(0);
+   Graph_Graph_Graph010051010->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph01005->SetLineColor(ci);
-   Graph_Graph01005->GetXaxis()->SetRange(2,98);
-   Graph_Graph01005->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01005->GetXaxis()->SetLabelSize(0.09);
-   Graph_Graph01005->GetXaxis()->SetTitleOffset(1);
-   Graph_Graph01005->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01005->GetYaxis()->SetTitle("Scarti");
-   Graph_Graph01005->GetYaxis()->SetAxisColor(14);
-   Graph_Graph01005->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01005->GetYaxis()->SetLabelSize(0.09);
-   Graph_Graph01005->GetYaxis()->SetTitleSize(0.11);
-   Graph_Graph01005->GetYaxis()->SetTitleOffset(0.4);
-   Graph_Graph01005->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01005->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01005->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01005->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01005);
+   Graph_Graph_Graph010051010->SetLineColor(ci);
+   Graph_Graph_Graph010051010->GetXaxis()->SetRange(2,98);
+   Graph_Graph_Graph010051010->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010051010->GetXaxis()->SetLabelSize(0.09);
+   Graph_Graph_Graph010051010->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph010051010->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph010051010->GetYaxis()->SetTitle("Scarti");
+   Graph_Graph_Graph010051010->GetYaxis()->SetAxisColor(14);
+   Graph_Graph_Graph010051010->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010051010->GetYaxis()->SetLabelSize(0.09);
+   Graph_Graph_Graph010051010->GetYaxis()->SetTitleSize(0.11);
+   Graph_Graph_Graph010051010->GetYaxis()->SetTitleOffset(0.4);
+   Graph_Graph_Graph010051010->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph010051010->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010051010->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph010051010->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph010051010);
    
    gre->Draw("ap");
    
-   TF1 *zz1005 = new TF1("zz","pol1",10000,1e+07, TF1::EAddToList::kDefault);
-   zz1005->SetFillColor(19);
-   zz1005->SetFillStyle(0);
+   TF1 *zz1010 = new TF1("zz","pol1",10000,1e+07, TF1::EAddToList::kDefault);
+   zz1010->SetFillColor(19);
+   zz1010->SetFillStyle(0);
 
    ci = TColor::GetColor("#ff0000");
-   zz1005->SetLineColor(ci);
-   zz1005->SetLineWidth(2);
-   zz1005->SetLineStyle(2);
-   zz1005->GetXaxis()->SetLabelFont(42);
-   zz1005->GetXaxis()->SetTitleOffset(1);
-   zz1005->GetXaxis()->SetTitleFont(42);
-   zz1005->GetYaxis()->SetLabelFont(42);
-   zz1005->GetYaxis()->SetTitleFont(42);
-   zz1005->SetParameter(0,0);
-   zz1005->SetParError(0,0);
-   zz1005->SetParLimits(0,0,0);
-   zz1005->SetParameter(1,0);
-   zz1005->SetParError(1,0);
-   zz1005->SetParLimits(1,0,0);
-   zz1005->Draw("lsame");
+   zz1010->SetLineColor(ci);
+   zz1010->SetLineWidth(2);
+   zz1010->SetLineStyle(2);
+   zz1010->GetXaxis()->SetLabelFont(42);
+   zz1010->GetXaxis()->SetTitleOffset(1);
+   zz1010->GetXaxis()->SetTitleFont(42);
+   zz1010->GetYaxis()->SetLabelFont(42);
+   zz1010->GetYaxis()->SetTitleFont(42);
+   zz1010->SetParameter(0,0);
+   zz1010->SetParError(0,0);
+   zz1010->SetParLimits(0,0,0);
+   zz1010->SetParameter(1,0);
+   zz1010->SetParError(1,0);
+   zz1010->SetParLimits(1,0,0);
+   zz1010->Draw("lsame");
    
    leg = new TLegend(0.5652842,0.733564,0.9155146,0.8858131,NULL,"brNDC");
    leg->SetBorderSize(1);
