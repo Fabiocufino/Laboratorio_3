@@ -1,49 +1,21 @@
-Circuit: * C:\Users\berto\NotSync\GitHub\Laboratorio_3\Esperienza_03\Circuiti\Draft1.asc
+Circuit: * \\wsl.localhost\Ubuntu-20.04\home\fabiocufino\Laboratorio_3\Esperienza_03\Circuiti\Draft1.asc
 
-Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
-Starting Gmin stepping
-Gmin = 10
-Gmin = 1.07374
-Gmin = 0.115292
-Gmin = 0.0123794
-Gmin = 0.00132923
-Gmin = 0.000142725
-Gmin = 1.5325e-005
-Gmin = 1.6455e-006
-Gmin = 1.76685e-007
-vernier = 0.5
-vernier = 0.25
-Gmin = 8.37991e-008
-vernier = 0.333333
-vernier = 0.444444
-Gmin = 3.71958e-008
-vernier = 0.592592
-Gmin = 1.06531e-008
-vernier = 0.790123
-vernier = 1
-Gmin = 1.47951e-009
-Gmin = 1.58861e-010
-Gmin = 1.70576e-011
-Gmin = 1.83154e-012
-Gmin = 1.9666e-013
-Gmin = 0
-Gmin stepping succeeded in finding the operating point.
+.OP point found by inspection.
 
-
-Date: Tue Nov 23 23:17:34 2021
-Total elapsed time: 0.146 seconds.
+Date: Sat Dec 11 12:16:25 2021
+Total elapsed time: 0.347 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 2796
-traniter = 2082
+totiter = 2123
+traniter = 2123
 tranpoints = 1042
 accept = 1042
 rejected = 0
-matrix size = 13
-fillins = 5
+matrix size = 3
+fillins = 0
 solver = Normal
-Matrix Compiler1: 1.35 KB object code size  0.4/0.3/[0.3]
-Matrix Compiler2: 1.29 KB object code size  0.1/0.2/[0.1]
+Matrix Compiler1:       5 opcodes  0.1/[0.1]/0.1
+Matrix Compiler2: off  [0.1]/0.1/0.2
 
