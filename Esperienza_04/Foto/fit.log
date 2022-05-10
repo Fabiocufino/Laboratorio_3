@@ -1,0 +1,49 @@
+
+
+*******************************************************************************
+Mon May  9 11:00:01 2022
+
+
+FIT:    data read from "distanza.txt"
+        format = z
+        #datapoints = 7
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=a/((x-b)*(x-b))
+BREAK: Need via and either parameter list or file
+
+*******************************************************************************
+Mon May  9 11:00:19 2022
+
+
+FIT:    data read from "distanza.txt"
+        format = z
+        #datapoints = 7
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=a/((x-b)*(x-b))
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 5.9585100110e+04   0.00e+00  6.77e+01    1.000000e+00   1.000000e+00
+  85 6.1907212350e+02  -3.81e-03  6.77e-08    2.405283e+03  -2.256333e+00
+
+After 85 iterations the fit converged.
+final sum of squares of residuals : 619.072
+rel. change during last iteration : -3.80593e-08
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 11.1272
+variance of residuals (reduced chisquare) = WSSR/ndf   : 123.814
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 2405.28          +/- 494.6        (20.56%)
+b               = -2.25633         +/- 0.4028       (17.85%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.978  1.000 
