@@ -131,12 +131,14 @@ int AnaBragg(const char *filename = "", int blto = 60, int intfrom = 100, int in
           double y2 = signal.s[i + 1];
           double y1 = signal.s[i];
           posmin = i + ((vmax * thr_frac) - y1) * ((i + 1 - i) / (y2 - y1));
+          cout << "MIN" << i << "  " << posmin << " \n";
         }
         else
         {
           double y2 = signal.s[i + 1];
           double y1 = signal.s[i];
           posmax = i + ((vmax * thr_frac) - y1) * ((i + 1 - i) / (y2 - y1));
+          cout << "MAX" << i << "  " << posmax << " \n";
         }
       }
     }
