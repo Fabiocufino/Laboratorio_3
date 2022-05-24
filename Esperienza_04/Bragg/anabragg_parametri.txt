@@ -1,0 +1,11 @@
+nome_file   blto    intfrom intto
+bragg_1000_350mb.root 100 110 200
+bragg_1000_375mb.root   100 110 200
+bragg_1000_400mb.root   100 110 200
+bragg_1000_425mb.root   100 110 200
+bragg_2000_450mb.root   100 110 195
+bragg_2000_500mb.root   100 110 190 invariato da prima analisi
+bragg_2000_550mb.root   100 110 190 invariato da prima analisi
+bragg_2000_600mb.root   100 110 190 invariato da prima analisi
+bragg_2000_650mb.root   100 110 190 invariato da prima analisi
+bragg_5000_600mb.root
