@@ -1,4 +1,4 @@
-#press mean errmean sigma errsigma
+press:mean:errmean:sigma:errsigma
 650  2.06655e+02   9.70240e-02  3.40166e+00   6.80842e-02   
 600 1.98412e+02   8.19161e-02   3.12434e+00   6.69174e-02
 550 1.85754e+02   8.36424e-02   3.19439e+00   6.75949e-02
