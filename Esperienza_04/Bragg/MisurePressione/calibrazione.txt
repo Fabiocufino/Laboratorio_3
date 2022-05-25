@@ -1,12 +1,12 @@
 # np237
-#energia errenergia vmedio errvmedio
-4788.0  0.9 5.55996e+03   1.52654e+01
-
 # am241
-5485.56 0.12    6.37574e+03   2.99270e+00
-
 #cm 244
+energia:errenergia:vmedio:errvmedio
+4788.0  0.90    5.55996e+03   1.52654e+01
+5485.56 0.12    6.37574e+03   2.99270e+00
 5804.77 0.05    6.75673e+03   3.87436e+00
+
+
 
 
 #sigma
