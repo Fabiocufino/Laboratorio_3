@@ -64,13 +64,18 @@ void bk_1()
     }
     TGraphErrors *unoq = new TGraphErrors(into_root(x_v), into_root(y_v), into_root(er_x_v), into_root(er_y_v));
 
-    unoq->SetMarkerColor(kAzure - 3);
+    unoq->SetMarkerColor(4);
+    unoq->SetLineColor(kAzure - 3);
+    unoq->SetMarkerStyle(20);
+    unoq->SetMarkerSize(0.7);
+    unoq->SetTitle("");
+    unoq->SetTitle("Np-237");
     unoq->SetMarkerStyle(20);
     unoq->SetMarkerSize(0.5);
     unoq->GetXaxis()->SetAxisColor(14);
     unoq->GetYaxis()->SetAxisColor(14);
     unoq->GetXaxis()->SetTitle("1/P [1/mb]");
-    unoq->GetYaxis()->SetTitle("Ranges []");
+    unoq->GetYaxis()->SetTitle("Ranges [m]");
     unoq->Draw("ap");
 
     // Faccio il fit Lineare
@@ -79,6 +84,15 @@ void bk_1()
     retta->SetLineStyle(2);
     retta->SetLineWidth(2);
     unoq->Fit(retta, "S");
+
+
+
+    TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
+    legend->AddEntry(unoq, "Dati con errore", "P");
+    legend->AddEntry(retta, "Retta Interpolante", "L");
+    legend->SetTextSize(0.04);
+    legend->SetBorderSize(1);
+    legend->Draw();
 
     pad2->cd(); //----------------------------------------------------------SCARTI---------------------------------
     pad2->SetFillColor(0);
@@ -112,7 +126,7 @@ void bk_1()
     graph_scarti->GetXaxis()->SetLabelSize(0.09);
     graph_scarti->GetXaxis()->SetTitleOffset(1);
     graph_scarti->GetXaxis()->SetTitleFont(42);
-    graph_scarti->GetYaxis()->SetTitle("Scarti");
+    graph_scarti->GetYaxis()->SetTitle("Scarti [m]");
     graph_scarti->GetYaxis()->SetAxisColor(14);
     graph_scarti->GetYaxis()->SetLabelFont(42);
     graph_scarti->GetYaxis()->SetLabelSize(0.09);

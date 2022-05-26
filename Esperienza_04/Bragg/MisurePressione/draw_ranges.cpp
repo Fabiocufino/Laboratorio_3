@@ -1,4 +1,4 @@
-// Fa il run test per una retta del tipo a+bx
+//Fa il run test per una retta del tipo a+bx
 void run_test_lineare(vector<double> &scarti, vector<double> &asse_x, vector<double> &asse_y, double a_int, double b_ang)
 {
     for (int i = 0; i < asse_x.size(); i++)
@@ -13,9 +13,10 @@ TVectorD into_root(vector<double> x)
     return root_x;
 }
 
-void bk_2()
+
+void draw_ranges()
 {
-    TCanvas *c1 = new TCanvas("c1", "Bragg_kleeman", 468, 206, 1332, 851);
+    TCanvas *c1 = new TCanvas("c1", "Circuito 1_3", 468, 206, 1332, 851);
     c1->Range(0, 0, 1, 1);
     c1->SetFillColor(0);
     c1->SetBorderMode(0);
@@ -37,22 +38,22 @@ void bk_2()
     pad1->SetBottomMargin(0.4549199);
     pad1->SetFrameBorderMode(0);
     pad1->SetFrameBorderMode(0);
-
     TNtuple *nt = new TNtuple("nt", "nt", "pre:e_pre:r1:er1:r2:er2:r3:er3");
     nt->ReadFile("range.txt");
 
-    nt->Draw("pre:e_pre:r1:er1:r2:er2", "", "goff");
+    nt->Draw("pre:e_pre:r1:er1", "", "goff");
     Int_t nentries = (Int_t)nt->GetEntries();
 
     Double_t *x = nt->GetVal(0);
     Double_t *er_x = nt->GetVal(1);
-    Double_t *y = nt->GetVal(4);
-    Double_t *er_y = nt->GetVal(5);
+    Double_t *y = nt->GetVal(2);
+    Double_t *er_y = nt->GetVal(3);
 
     vector<double> x_v;
     vector<double> er_x_v;
     vector<double> y_v;
     vector<double> er_y_v;
+
     for (int i = 0; i < 5; i++)
     {
         x_v.push_back(1 / x[i]);
@@ -62,19 +63,13 @@ void bk_2()
     }
     TGraphErrors *unoq = new TGraphErrors(into_root(x_v), into_root(y_v), into_root(er_x_v), into_root(er_y_v));
 
-    unoq->SetMarkerColor(4);
-    unoq->SetLineColor(kAzure - 3);
-    unoq->SetMarkerStyle(20);
-    unoq->SetMarkerSize(0.7);
-    unoq->SetTitle("");
-    unoq->SetTitle("Am-241");
+    unoq->SetMarkerColor(kAzure - 3);
     unoq->SetMarkerStyle(20);
     unoq->SetMarkerSize(0.5);
     unoq->GetXaxis()->SetAxisColor(14);
     unoq->GetYaxis()->SetAxisColor(14);
-    unoq->SetLineColor(kAzure - 3);
     unoq->GetXaxis()->SetTitle("1/P [1/mb]");
-    unoq->GetYaxis()->SetTitle("Ranges [m]");
+    unoq->GetYaxis()->SetTitle("Ranges []");
     unoq->Draw("ap");
 
     // Faccio il fit Lineare
@@ -83,13 +78,6 @@ void bk_2()
     retta->SetLineStyle(2);
     retta->SetLineWidth(2);
     unoq->Fit(retta, "S");
-
-    TLegend *legend = new TLegend(0.15, 0.65, 0.3, 0.95);
-    legend->AddEntry(unoq, "Dati con errore", "P");
-    legend->AddEntry(retta, "Retta Interpolante", "L");
-    legend->SetTextSize(0.04);
-    legend->SetBorderSize(1);
-    legend->Draw();
 
     pad2->cd(); //----------------------------------------------------------SCARTI---------------------------------
     pad2->SetFillColor(0);
@@ -123,7 +111,7 @@ void bk_2()
     graph_scarti->GetXaxis()->SetLabelSize(0.09);
     graph_scarti->GetXaxis()->SetTitleOffset(1);
     graph_scarti->GetXaxis()->SetTitleFont(42);
-    graph_scarti->GetYaxis()->SetTitle("Scarti [m]");
+    graph_scarti->GetYaxis()->SetTitle("Scarti");
     graph_scarti->GetYaxis()->SetAxisColor(14);
     graph_scarti->GetYaxis()->SetLabelFont(42);
     graph_scarti->GetYaxis()->SetLabelSize(0.09);
